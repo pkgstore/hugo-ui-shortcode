@@ -1,0 +1,11 @@
+name: 'UI Shortcode'
+license: 'MIT'
+licenselink: 'https://github.com/pkgstore/hugo-ui-shortcode/blob/main/LICENSE'
+description: 'Shortcode User Interface'
+homepage: 'https://ihub.to'
+tags: [ 'website', 'responsive', 'multilingual', 'mobile' ]
+min_version: '0.88.0'
+
+author:
+  name: 'iHub TO'
+  homepage: 'https://ihub.to'
