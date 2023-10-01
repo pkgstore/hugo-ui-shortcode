@@ -1,0 +1,123 @@
+# -------------------------------------------------------------------------------------------------------------------- #
+# Form.
+# -------------------------------------------------------------------------------------------------------------------- #
+
+form:
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # Contact Form.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  contact:
+    email: { other: 'Email' }
+    message_placeholder: { other: 'Введите сообщение...' }
+    name: { other: 'Имя' }
+    phone: { other: 'Телефон' }
+    submit: { other: 'Отправить' }
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # Donation Form.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  donate:
+    address: { other: 'Адрес' }
+    address_help: { other: 'Отметьте, если хотите указать адрес отправителя.' }
+    btc: { other: 'BTC' }
+    buymeacoffee: { other: 'Buy Me a Coffee' }
+    card: { other: 'Банковская карта' }
+    cards: { other: 'Банковские карты' }
+    comment_help: { other: 'Введите сопроводительный комментарий (не более 200 символов).' }
+    comment_placeholder: { other: 'Введите комментарий (если имеется)...' }
+    crypto: { other: 'Crypto' }
+    email: { other: 'E-mail' }
+    email_help: { other: 'Отметьте, если хотите указать электронную почту отправителя.' }
+    eth: { other: 'ETH' }
+    kofi: { other: 'Ko-fi' }
+    liberapay: { other: 'Liberapay' }
+    mobile_phone: { other: 'Мобильный телефон' }
+    name: { other: 'ФИО' }
+    name_help: { other: 'Отметьте, если хотите указать ФИО отправителя.' }
+    patreon: { other: 'Patreon' }
+    payment_type_help: { other: 'Выберите способ перевода.' }
+    paypal: { other: 'PayPal' }
+    phone: { other: 'Телефон' }
+    phone_help: { other: 'Отметьте, если хотите указать телефон отправителя.' }
+    services: { other: 'Сервисы' }
+    submit: { other: 'Перевести' }
+    sum_help: { other: 'Укажите сумму.' }
+    targets: { other: 'Назначение перевода...' }
+    targets_help: { other: 'Укажите назначение перевода.' }
+    xmr: { other: 'XMR' }
+    yooMoney: { other: 'ЮMoney' }
+
+# -------------------------------------------------------------------------------------------------------------------- #
+# Requisites.
+# -------------------------------------------------------------------------------------------------------------------- #
+
+requisites:
+  organization:
+    account_correspondent: { other: 'Корреспондентский счёт' }
+    account_current: { other: 'Расчётный счёт' }
+    accountant: { other: 'Главный бухгалтер' }
+    accountant_deputy: { other: 'Заместители главного бухгалтера' }
+    address_legal: { other: 'Юридический адрес' }
+    address_location: { other: 'Адрес местонахождения' }
+    address_mailing: { other: 'Почтовый адрес' }
+    bank: { other: 'Банк' }
+    bic: { other: 'БИК' }
+    director: { other: 'Руководитель' }
+    email: { other: 'E-mail' }
+    inn: { other: 'ИНН' }
+    kpp: { other: 'КПП' }
+    name_full: { other: 'Полное наименование' }
+    name_short: { other: 'Сокращённое наименование' }
+    ogrn: { other: 'ОГРН' }
+    okato: { other: 'ОКАТО' }
+    okfs: { other: 'ОКФС' }
+    okogu: { other: 'ОКОГУ' }
+    okopf: { other: 'ОКОПФ' }
+    okpo: { other: 'ОКПО' }
+    oktmo: { other: 'ОКТМО' }
+    okved: { other: 'ОКВЭД' }
+    phone: { other: 'Телефон' }
+    site: { other: 'Сайт' }
+    title_bank: { other: 'Банк организации' }
+    title_codes: { other: 'Коды организации' }
+    title_general: { other: 'Основные реквизиты' }
+  bank:
+    account:
+      usd:
+        beneficiary_account: { other: 'Beneficiary Account' }
+        beneficiary_bank: { other: 'Beneficiary Bank' }
+        beneficiary_name: { other: 'Beneficiary Name' }
+        correspondent_bank: { other: 'Correspondent Bank' }
+        correspondent_swift: { other: 'Correspondent SWIFT' }
+        currency: { other: 'USD' }
+        swift: { other: 'SWIFT' }
+        target: { other: 'Purpose of Payment' }
+      eur:
+        beneficiary_account: { other: 'Beneficiary Account' }
+        beneficiary_bank: { other: 'Beneficiary Bank' }
+        beneficiary_name: { other: 'Beneficiary Name' }
+        correspondent_bank: { other: 'Correspondent Bank' }
+        correspondent_swift: { other: 'Correspondent SWIFT' }
+        currency: { other: 'EUR' }
+        swift: { other: 'SWIFT' }
+        target: { other: 'Purpose of Payment' }
+      rub:
+        beneficiary_account: { other: 'Счёт получателя' }
+        beneficiary_bank: { other: 'Банк получателя' }
+        beneficiary_name: { other: 'Получатель' }
+        bic: { other: 'БИК' }
+        correspondent_account: { other: 'Корреспондентский счёт' }
+        currency: { other: 'RUB' }
+        inn: { other: 'ИНН' }
+        kpp: { other: 'КПП' }
+        target: { other: 'Назначение платежа' }
+
+# -------------------------------------------------------------------------------------------------------------------- #
+# CodeBox.
+# -------------------------------------------------------------------------------------------------------------------- #
+
+codebox:
+  copy: { other: 'Скопировать в буфер обмена' }
