@@ -1,0 +1,17 @@
+{{ $title := (.Get "title") }}
+{{ $lang := (.Get "lang") }}
+
+{{ with ($lang) }}
+    {{ $lang = (printf "language-%s" (.)) }}
+{{ end }}
+
+<div class="shortcode shortcode-{{ (.Name) }} mb-3">
+  <div class="card">
+      {{ with ($title) }}
+        <h5 class="card-header">{{ ($title) }}</h5>
+      {{ end }}
+    <div class="card-body pb-0">
+      <pre><code class="{{ ($lang) }}">{{ with (.Inner) }}{{ (((trim . "\n\r") | htmlEscape) | safeHTML) }}{{ end }}</code></pre>
+    </div>
+  </div>
+</div>
