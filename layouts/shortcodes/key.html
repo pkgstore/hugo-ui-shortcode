@@ -2,7 +2,7 @@
 
     {{- $key := (delimit ((split (.Get 0) "|")) " + ") -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }}"><kbd>{{ ($key) }}</kbd></span>
+    <span class="shortcode shortcode-{{ ($.Name) }} text-nowrap"><kbd>{{ ($key) }}</kbd></span>
 
 {{- else -}}
 

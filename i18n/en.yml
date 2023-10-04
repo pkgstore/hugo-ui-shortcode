@@ -150,3 +150,26 @@ sc:
       copy: { other: 'Copy to clipboard' }
       download: { other: 'Download original file' }
       link: { other: 'Open original file' }
+    org:
+      blog: { other: 'Site' }
+      email: { other: 'Email' }
+      repos: { other: 'Repositories' }
+      twitter: { other: 'Twitter' }
+    repo:
+      forks: { other: 'Forks' }
+      license: { other: 'License' }
+      stargazers: { other: 'Stars' }
+      subscribers: { other: 'Watchers' }
+    user:
+      followers: { other: 'Followers' }
+      following: { other: 'Following' }
+      repos: { other: 'Repositories' }
+      org:
+        blog: { other: 'Site' }
+        email: { other: 'Email' }
+        repos: { other: 'Repositories' }
+        twitter: { other: 'Twitter' }
+      repo:
+        forks: { other: 'Forks' }
+        license: { other: 'License' }
+        stargazers: { other: 'Stars' }

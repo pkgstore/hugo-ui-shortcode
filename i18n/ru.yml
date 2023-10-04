@@ -150,3 +150,26 @@ sc:
       copy: { other: 'Скопировать в буфер обмена' }
       download: { other: 'Скачать оригинал файла' }
       link: { other: 'Открыть оригинал файла' }
+    org:
+      blog: { other: 'Сайт' }
+      email: { other: 'Email' }
+      repos: { other: 'Репозитории' }
+      twitter: { other: 'Twitter' }
+    repo:
+      forks: { other: 'Вилки' }
+      license: { other: 'Лицензия' }
+      stargazers: { other: 'Звёзды' }
+      subscribers: { other: 'Подписки' }
+    user:
+      followers: { other: 'Подписчики' }
+      following: { other: 'Подписки' }
+      repos: { other: 'Репозитории' }
+      org:
+        blog: { other: 'Сайт' }
+        email: { other: 'Email' }
+        repos: { other: 'Репозитории' }
+        twitter: { other: 'Twitter' }
+      repo:
+        forks: { other: 'Вилки' }
+        license: { other: 'Лицензия' }
+        stargazers: { other: 'Подписки' }

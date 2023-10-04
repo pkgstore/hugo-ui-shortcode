@@ -41,7 +41,7 @@
                               </div>
                               <div class="mt-auto">
                                 <ul class="list-inline m-0 mt-3">
-                                  <li class="list-inline-item">
+                                  <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.repos") }}'>
                                     <a class="btn btn-light btn-sm text-muted" href="{{ ($org.html_url) }}"
                                        target="_blank" rel="noopener nofollow" role="button">
                                       <i class="fas fa-book fa-fw me-1"></i>
@@ -49,7 +49,7 @@
                                     </a>
                                   </li>
                                     {{ if ($org.blog) }}
-                                      <li class="list-inline-item">
+                                      <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.blog") }}'>
                                           {{ $url := (urls.Parse ($org.blog)) }}
                                           {{ $scheme := "http://" }}
                                           {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
@@ -60,7 +60,7 @@
                                       </li>
                                     {{ end }}
                                     {{ if ($org.twitter_username) }}
-                                      <li class="list-inline-item">
+                                      <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.twitter") }}'>
                                         <a class="btn btn-light btn-sm text-muted" href="https://twitter.com/{{ ($org.twitter_username) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fab fa-twitter fa-fw"></i>
@@ -68,7 +68,7 @@
                                       </li>
                                     {{ end }}
                                     {{ if ($org.email) }}
-                                      <li class="list-inline-item">
+                                      <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.email") }}'>
                                         <a class="btn btn-light btn-sm text-muted" href="mailto:{{ ($org.email) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fas fa-envelope-open-text fa-fw"></i>
