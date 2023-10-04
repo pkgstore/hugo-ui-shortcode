@@ -18,13 +18,13 @@
         <div class="card">
           <div class="card-header">
             <div class="d-flex align-items-center">
-              <div>
+              <div class="flex-shrink-0">
                 <i class="fab fa-wikipedia-w fa-fw"></i>
               </div>
               <div class="flex-grow-1 mx-2">
                 <h5 class="mb-0">{{ (.title) }}</h5>
               </div>
-              <div>
+              <div class="flex-shrink-0">
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.wiki.link") }}'>
                       {{ $url := (printf "https://%s.wikipedia.org/wiki/%s" ($lang) (replace (.title) " " "_")) }}
