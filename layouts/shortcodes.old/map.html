@@ -11,7 +11,7 @@
     {{ $id := (delimit (shuffle (seq 999)) "" | md5) }}
     {{ $fn := ((printf "sc_diagram_%s" $id) | safeJS) }}
 
-    <div class="shortcode shortcode-{{ .Name }} mb-3">
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div id="sc-map-{{ $id }}" class="rounded ratio ratio-16x9 ext-map"
            data-map-lat="{{ $lat }}"
            data-map-lon="{{ $lon }}"

@@ -5,13 +5,13 @@
 {{ if (eq ($type) "warning") }}{{ $icon = "fas fa-exclamation-triangle" }}{{ end }}
 {{ if (eq ($type) "info") }}{{ $icon = "fas fa-info" }}{{ end }}
 
-<div class="shortcode shortcode-{{ (.Name) }}">
+<div class="shortcode shortcode-{{ ($.Name) }}">
   <div class="alert alert-{{ ($type) }} d-flex" role="alert">
     <div class="flex-shrink-0 align-self-center">
       <i class="{{ ($icon) }} fa-fw fa-2x"></i>
     </div>
     <div class="flex-grow-1 ms-3">
-        {{ with (.Inner) }}{{ . | $.Page.RenderString (dict "display" "block") }}{{ end }}
+        {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>
   </div>
 </div>

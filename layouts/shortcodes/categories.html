@@ -1,9 +1,7 @@
-<div class="shortcode shortcode-{{ (.Name) }}">
-  <ul class="list-inline">
-      {{ range ($.Site.Taxonomies.categories) }}
-        <li class="list-inline-item">
-          <a href="{{ (.Page.RelPermalink) }}">{{ (.Page.Title) }}</a>
-        </li>
+<div class="shortcode shortcode-{{ ($.Name) }}">
+  <ul>
+      {{ range (site.Taxonomies.categories) }}
+        <li><a href="{{ (.Page.RelPermalink) }}">{{ (.Page.Title) }}</a></li>
       {{ end }}
   </ul>
 </div>

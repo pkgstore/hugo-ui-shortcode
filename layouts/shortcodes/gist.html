@@ -1,8 +1,16 @@
-{{ $user := ((.Get 0) | default "") }}
-{{ $gist := ((.Get 1) | default "") }}
-{{ $file := "" }}
+{{- if (and (.Get 0) (.Get 1)) -}}
 
-{{ if ((len (.Params)) | eq 3) }}
-    {{ $file = ((printf "?file=%s" (.Get 2)) | default "") }}
-{{ end }}
-<script src="https://gist.github.com/{{ ($user) }}/{{ ($gist) }}.js{{ ($file) }}"></script>
+    {{ $user := (.Get 0) }}
+    {{ $gist := (.Get 1) }}
+    {{ $file := "" }}
+
+    {{ if ((len (.Params)) | eq 3) }}
+        {{ $file = ((printf "?file=%s" (.Get 2)) | default "") }}
+    {{ end }}
+    <script src="https://gist.github.com/{{ ($user) }}/{{ ($gist) }}.js{{ ($file) }}"></script>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

@@ -1,123 +1,151 @@
-# -------------------------------------------------------------------------------------------------------------------- #
-# Form.
-# -------------------------------------------------------------------------------------------------------------------- #
-
-form:
+sc:
 
   # ------------------------------------------------------------------------------------------------------------------ #
-  # Contact Form.
+  # Global.
   # ------------------------------------------------------------------------------------------------------------------ #
 
-  contact:
-    email: { other: 'Email' }
-    message_placeholder: { other: 'Enter message...' }
-    name: { other: 'Name' }
-    phone: { other: 'Phone' }
-    submit: { other: 'Submit' }
+  global:
+    alert:
+      error: { other: 'ShortCode error!' }
+      name: { other: 'ShortCode' }
+      no_params: { other: 'ShortCode parameters not specified.' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
-  # Donation Form.
+  # Form.
   # ------------------------------------------------------------------------------------------------------------------ #
 
-  donate:
-    address: { other: 'Address' }
-    address_help: { other: 'Check if you want to specify sender address.' }
-    btc: { other: 'BTC' }
-    buymeacoffee: { other: 'Buy Me a Coffee' }
-    card: { other: 'Bank Card' }
-    cards: { other: 'Bank Cards' }
-    comment_help: { other: 'Enter an accompanying comment (max 200 characters).' }
-    comment_placeholder: { other: 'Enter a comment (if available)...' }
-    crypto: { other: 'Crypto' }
-    email: { other: 'E-mail' }
-    email_help: { other: "Check if you want to specify sender's e-mail." }
-    eth: { other: 'ETH' }
-    kofi: { other: 'Ko-fi' }
-    liberapay: { other: 'Liberapay' }
-    mobile_phone: { other: 'Mobile Phone' }
-    name: { other: 'Name' }
-    name_help: { other: 'Check if you want to specify name of sender.' }
-    patreon: { other: 'Patreon' }
-    payment_type_help: { other: 'Select a transfer method.' }
-    paypal: { other: 'PayPal' }
-    phone: { other: 'Phone' }
-    phone_help: { other: "Check if you want to specify sender's phone number." }
-    services: { other: 'Services' }
-    submit: { other: 'Transfer' }
-    sum_help: { other: 'Set amount.' }
-    targets: { other: 'Target transfer...' }
-    targets_help: { other: 'Enter target transfer.' }
-    xmr: { other: 'XMR' }
-    yooMoney: { other: 'YooMoney' }
+  form:
 
-# -------------------------------------------------------------------------------------------------------------------- #
-# Requisites.
-# -------------------------------------------------------------------------------------------------------------------- #
+    # ---------------------------------------------------------------------------------------------------------------- #
+    # Contact Form.
+    # ---------------------------------------------------------------------------------------------------------------- #
 
-requisites:
-  organization:
-    account_correspondent: { other: 'Correspondent Account' }
-    account_current: { other: 'Current Account' }
-    accountant: { other: 'Accountant' }
-    accountant_deputy: { other: 'Deputy Accountant' }
-    address_legal: { other: 'Legal Address' }
-    address_location: { other: 'Location' }
-    address_mailing: { other: 'Mailing Address' }
-    bank: { other: 'Bank' }
-    bic: { other: 'BIC' }
-    director: { other: 'Director' }
-    email: { other: 'E-mail' }
-    inn: { other: 'INN' }
-    kpp: { other: 'KPP' }
-    name_full: { other: 'Full Name' }
-    name_short: { other: 'Short Name' }
-    ogrn: { other: 'OGRN' }
-    okato: { other: 'OKATO' }
-    okfs: { other: 'OKFS' }
-    okogu: { other: 'OKOGU' }
-    okopf: { other: 'OKOPF' }
-    okpo: { other: 'OKPO' }
-    oktmo: { other: 'OKTMO' }
-    okved: { other: 'OKVED' }
-    phone: { other: 'Phone' }
-    site: { other: 'Site' }
-    title_bank: { other: 'Organization Bank' }
-    title_codes: { other: 'Organization Codes' }
-    title_general: { other: 'General Requisites' }
-  bank:
-    account:
-      usd:
-        beneficiary_account: { other: 'Beneficiary Account' }
-        beneficiary_bank: { other: 'Beneficiary Bank' }
-        beneficiary_name: { other: 'Beneficiary Name' }
-        correspondent_bank: { other: 'Correspondent Bank' }
-        correspondent_swift: { other: 'Correspondent SWIFT' }
-        currency: { other: 'USD' }
-        swift: { other: 'SWIFT' }
-        target: { other: 'Purpose of Payment' }
-      eur:
-        beneficiary_account: { other: 'Beneficiary Account' }
-        beneficiary_bank: { other: 'Beneficiary Bank' }
-        beneficiary_name: { other: 'Beneficiary Name' }
-        correspondent_bank: { other: 'Correspondent Bank' }
-        correspondent_swift: { other: 'Correspondent SWIFT' }
-        currency: { other: 'EUR' }
-        swift: { other: 'SWIFT' }
-        target: { other: 'Purpose of Payment' }
-      rub:
-        beneficiary_account: { other: 'Beneficiary Account' }
-        beneficiary_bank: { other: 'Beneficiary Bank' }
-        beneficiary_name: { other: 'Beneficiary Name' }
-        bic: { other: 'BIC' }
-        correspondent_account: { other: 'Correspondent Account' }
-        currency: { other: 'RUB' }
-        inn: { other: 'ITN' }
-        kpp: { other: 'IEC' }
-        target: { other: 'Purpose of Payment' }
+    contact:
+      email: { other: 'Email' }
+      message_placeholder: { other: 'Enter message...' }
+      name: { other: 'Name' }
+      phone: { other: 'Phone' }
+      submit: { other: 'Submit' }
 
-# -------------------------------------------------------------------------------------------------------------------- #
-# CodeBox.
-# -------------------------------------------------------------------------------------------------------------------- #
+    # ---------------------------------------------------------------------------------------------------------------- #
+    # Donation Form.
+    # ---------------------------------------------------------------------------------------------------------------- #
 
-codebox:
-  copy: { other: 'Copy to clipboard' }
+    donate:
+      address: { other: 'Address' }
+      address_help: { other: 'Check if you want to specify sender address.' }
+      btc: { other: 'BTC' }
+      buymeacoffee: { other: 'Buy Me a Coffee' }
+      card: { other: 'Bank Card' }
+      cards: { other: 'Bank Cards' }
+      comment_help: { other: 'Enter an accompanying comment (max 200 characters).' }
+      comment_placeholder: { other: 'Enter a comment (if available)...' }
+      crypto: { other: 'Crypto' }
+      email: { other: 'E-mail' }
+      email_help: { other: "Check if you want to specify sender's e-mail." }
+      eth: { other: 'ETH' }
+      kofi: { other: 'Ko-fi' }
+      liberapay: { other: 'Liberapay' }
+      mobile_phone: { other: 'Mobile Phone' }
+      name: { other: 'Name' }
+      name_help: { other: 'Check if you want to specify name of sender.' }
+      patreon: { other: 'Patreon' }
+      payment_type_help: { other: 'Select a transfer method.' }
+      paypal: { other: 'PayPal' }
+      phone: { other: 'Phone' }
+      phone_help: { other: "Check if you want to specify sender's phone number." }
+      services: { other: 'Services' }
+      submit: { other: 'Transfer' }
+      sum_help: { other: 'Set amount.' }
+      targets: { other: 'Target transfer...' }
+      targets_help: { other: 'Enter target transfer.' }
+      xmr: { other: 'XMR' }
+      yooMoney: { other: 'YooMoney' }
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # Requisites.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  requisites:
+    organization:
+      account_correspondent: { other: 'Correspondent Account' }
+      account_current: { other: 'Current Account' }
+      accountant: { other: 'Accountant' }
+      accountant_deputy: { other: 'Deputy Accountant' }
+      address_legal: { other: 'Legal Address' }
+      address_location: { other: 'Location' }
+      address_mailing: { other: 'Mailing Address' }
+      bank: { other: 'Bank' }
+      bic: { other: 'BIC' }
+      director: { other: 'Director' }
+      email: { other: 'E-mail' }
+      inn: { other: 'INN' }
+      kpp: { other: 'KPP' }
+      name_full: { other: 'Full Name' }
+      name_short: { other: 'Short Name' }
+      ogrn: { other: 'OGRN' }
+      okato: { other: 'OKATO' }
+      okfs: { other: 'OKFS' }
+      okogu: { other: 'OKOGU' }
+      okopf: { other: 'OKOPF' }
+      okpo: { other: 'OKPO' }
+      oktmo: { other: 'OKTMO' }
+      okved: { other: 'OKVED' }
+      phone: { other: 'Phone' }
+      site: { other: 'Site' }
+      title_bank: { other: 'Organization Bank' }
+      title_codes: { other: 'Organization Codes' }
+      title_general: { other: 'General Requisites' }
+    bank:
+      account:
+        usd:
+          beneficiary_account: { other: 'Beneficiary Account' }
+          beneficiary_bank: { other: 'Beneficiary Bank' }
+          beneficiary_name: { other: 'Beneficiary Name' }
+          correspondent_bank: { other: 'Correspondent Bank' }
+          correspondent_swift: { other: 'Correspondent SWIFT' }
+          currency: { other: 'USD' }
+          swift: { other: 'SWIFT' }
+          target: { other: 'Purpose of Payment' }
+        eur:
+          beneficiary_account: { other: 'Beneficiary Account' }
+          beneficiary_bank: { other: 'Beneficiary Bank' }
+          beneficiary_name: { other: 'Beneficiary Name' }
+          correspondent_bank: { other: 'Correspondent Bank' }
+          correspondent_swift: { other: 'Correspondent SWIFT' }
+          currency: { other: 'EUR' }
+          swift: { other: 'SWIFT' }
+          target: { other: 'Purpose of Payment' }
+        rub:
+          beneficiary_account: { other: 'Beneficiary Account' }
+          beneficiary_bank: { other: 'Beneficiary Bank' }
+          beneficiary_name: { other: 'Beneficiary Name' }
+          bic: { other: 'BIC' }
+          correspondent_account: { other: 'Correspondent Account' }
+          currency: { other: 'RUB' }
+          inn: { other: 'ITN' }
+          kpp: { other: 'IEC' }
+          target: { other: 'Purpose of Payment' }
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # CodeBox.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  codebox:
+    copy: { other: 'Copy to clipboard' }
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # Wiki.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  wiki:
+    link: { other: 'Open original article' }
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # GitHub.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  github:
+    file:
+      copy: { other: 'Copy to clipboard' }
+      link: { other: 'Open original file' }

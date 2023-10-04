@@ -1,14 +1,15 @@
-{{ $title := ((.Get "title") | default "Spoiler") }}
-{{ $type := ((.Get "type") | default "primary") }}
-{{ $id := ((delimit (shuffle (seq 999)) "") | md5) }}
+{{ $title := ((.Get 0) | default "Spoiler") }}
+{{ $type := ((.Get 1) | default "primary") }}
 
-<div class="shortcode shortcode-{{ (.Name) }}">
+{{ $id := (printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+
+<div class="shortcode shortcode-{{ ($.Name) }}">
   <p>
-    <button type="button" class="btn btn-{{ ($type) }} is-label" data-bs-toggle="collapse" data-bs-target="#sc-spb-{{ ($id) }}">
+    <button type="button" class="btn btn-{{ ($type) }} is-label" data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}">
       <span>{{ ($title) }}</span>
     </button>
   </p>
-  <div class="collapse" id="sc-spb-{{ ($id) }}">
+  <div class="collapse" id="{{ ($id) }}">
     <div class="card card-body mb-3">
         {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>

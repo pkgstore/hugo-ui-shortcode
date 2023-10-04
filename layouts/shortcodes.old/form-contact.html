@@ -4,7 +4,7 @@
     {{ $subject = (htmlEscape (printf "[%s] %s" $.Site.Title $subject)) }}
     {{ $token := ((.Get "token") | default "") }}
 
-    <div class="shortcode shortcode-form shortcode-{{ .Name }} mb-3">
+    <div class="shortcode shortcode-form shortcode-{{ ($.Name) }} mb-3">
       <form method="post" action="https://api.staticforms.xyz/submit">
         <input type="hidden" name="accessKey" value="{{ $token }}"/>
         <input type="hidden" name="redirectTo" value="{{ .Page.Permalink }}"/>
@@ -16,19 +16,19 @@
               <div class="col">
                 <div class="input-group">
                   <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
-                  <input class="form-control" type="text" name="name" placeholder='{{ i18n "form.contact.name" }}' required/>
+                  <input class="form-control" type="text" name="name" placeholder='{{ i18n "sc.form.contact.name" }}' required/>
                 </div>
               </div>
               <div class="col">
                 <div class="input-group">
                   <span class="input-group-text"><i class="fas fa-envelope-open-text fa-fw"></i></span>
-                  <input class="form-control" type="email" name="email" placeholder='{{ i18n "form.contact.email" }}' required/>
+                  <input class="form-control" type="email" name="email" placeholder='{{ i18n "sc.form.contact.email" }}' required/>
                 </div>
               </div>
               <div class="col">
                 <div class="input-group">
                   <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
-                  <input class="form-control" type="tel" name="phone" placeholder='{{ i18n "form.contact.phone" }}'/>
+                  <input class="form-control" type="tel" name="phone" placeholder='{{ i18n "sc.form.contact.phone" }}'/>
                 </div>
               </div>
             </div>
@@ -36,7 +36,7 @@
           <div class="col">
             <div class="row g-3">
               <div class="col">
-                <textarea class="form-control" rows="5" name="message" placeholder='{{ i18n "form.contact.message_placeholder" }}' required></textarea>
+                <textarea class="form-control" rows="5" name="message" placeholder='{{ i18n "sc.form.contact.message_placeholder" }}' required></textarea>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
             <div class="row g-3">
               <div class="col text-end">
                 <button class="btn btn-primary" type="submit">
-                  <i class="fas fa-upload fa-fw me-2"></i>{{ i18n "form.contact.submit" }}
+                  <i class="fas fa-upload fa-fw me-2"></i>{{ i18n "sc.form.contact.submit" }}
                 </button>
               </div>
             </div>

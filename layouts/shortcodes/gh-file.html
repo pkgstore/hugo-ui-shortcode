@@ -1,0 +1,66 @@
+{{- if (.Get 0) -}}
+
+    {{ $files := (split (.Get 0) "|") }}
+
+    {{ $ts := (now.Unix) }}
+    {{ $headers := (dict
+    "User-Agent" (site.Params.api.user_agent)
+    "Authorization" (printf "Bearer %s" ((site.Params.api.github.token) | base64Decode))
+    ) }}
+    {{ $api := "https://api.github.com" }}
+
+    {{ range ($files) }}
+
+        {{ $data := (newScratch) }}
+        {{ range ((split . "/") | first 2) }}{{ ($data.Add "repo" (slice .)) }}{{ end }}
+        {{ range ((split . "/") | after 2) }}{{ ($data.Add "path" (slice .)) }}{{ end }}
+        {{ $file := (getJSON ($api) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ts=" ($ts) ($headers)) }}
+        {{ $id := (printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+
+        <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                <div>
+                  <i class="fab fa-github fa-fw"></i>
+                </div>
+                <div class="flex-grow-1 text-center mx-3">
+                  <h5 class="mb-0">{{ ($file.path) }}</h5>
+                </div>
+                <div>
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                      <a class="text-muted" href="#"
+                         data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'
+                         data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($id) }}"
+                         role="button">
+                        <i class="fas fa-copy fa-fw"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a class="text-muted" href="{{ $file.html_url }}"
+                         data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'
+                         target="_blank" rel="noopener nofollow"
+                         role="button">
+                        <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="node-body">
+                <pre class="mb-0"><code id="{{ ($id) }}">{{ (($file.content) | base64Decode) }}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    {{ end }}
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

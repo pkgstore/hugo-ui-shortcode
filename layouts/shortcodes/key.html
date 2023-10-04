@@ -1,3 +1,11 @@
-{{ $key := ((.Get 0) | default "") }}
+{{- if (.Get 0) -}}
 
-<span class="shortcode shortcode-{{ (.Name) }}"><kbd>{{ ($key) }}</kbd></span>
+    {{- $key := (delimit ((split (.Get 0) "|")) " + ") -}}
+
+    <span class="shortcode shortcode-{{ ($.Name) }}"><kbd>{{ ($key) }}</kbd></span>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

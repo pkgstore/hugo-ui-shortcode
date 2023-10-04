@@ -4,7 +4,7 @@
 {{ $url := ("https://api.vk.com") }}
 {{ $users := (split (.Get 0) "|") }}
 
-<div class="shortcode shortcode-{{ .Name }} mb-3">
+<div class="shortcode shortcode-{{ ($.Name) }} mb-3">
   <div class="row row-cols-1 row-cols-lg-2 g-3">
       {{ range $users }}
           {{ $user := (getJSON $url "/method/users.get?user_ids=" . "&v=" $ver "&access_token=" $token "&fields=" $fields) }}

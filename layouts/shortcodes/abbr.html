@@ -1,4 +1,12 @@
-{{ $abbr := ((.Get 0) | default "") }}
-{{ $title := ((.Get 1) | default "") }}
+{{- if (and (.Get 0) (.Get 1)) -}}
 
-<span class="shortcode shortcode-{{ (.Name) }}"><abbr title="{{ ($title) }}">{{ ($abbr) }}</abbr></span>
+    {{- $abbr := (.Get 0) -}}
+    {{- $title := (.Get 1) -}}
+
+    <span class="shortcode shortcode-{{ ($.Name) }}"><abbr title="{{ ($title) }}">{{ ($abbr) }}</abbr></span>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

@@ -1,7 +1,15 @@
-{{- $uuid := ((.Get 0) | default "") -}}
-{{- $text := ((.Get 1) | default "") -}}
-{{- range ($.Site.Pages.ByParam "uuid") -}}
-    {{- if (eq (.Param "uuid") $uuid) -}}
-      <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ (.RelPermalink) }}">{{ (($text) | default (.Title)) }}</a></span>
+{{- if (.Get 0) -}}
+
+    {{- $uuid := (.Get 0) -}}
+    {{- $text := (.Get 1) -}}
+    {{- range (site.Pages.ByParam "uuid") -}}
+        {{- if (eq (.Param "uuid") $uuid) -}}
+          <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ (.RelPermalink) }}">{{ (($text) | default (.Title)) }}</a></span>
+        {{- end -}}
     {{- end -}}
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
 {{- end -}}

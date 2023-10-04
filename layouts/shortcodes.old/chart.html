@@ -4,7 +4,7 @@
 {{ $id := ((delimit (shuffle (seq 999)) "") | md5) }}
 {{ $fn := ((printf "sc_chart_%s" ($id)) | safeJS) }}
 
-<div class="shortcode shortcode-{{ (.Name) }} mb-3">
+<div class="shortcode shortcode-{{ ($.Name) }} mb-3">
   <canvas id="sc-chart-{{ ($id) }}"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js" onload="{{ ($fn) }}();" crossorigin="anonymous" async></script>

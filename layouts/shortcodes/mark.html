@@ -1,3 +1,11 @@
-{{ $text := ((.Get 0) | default "") }}
+{{- if (.Get 0) -}}
 
-<span class="shortcode shortcode-{{ (.Name) }}"><mark>{{ ($text) }}</mark></span>
+    {{- $text := (.Get 0) -}}
+
+    <span class="shortcode shortcode-{{ ($.Name) }}"><mark>{{ ($text) }}</mark></span>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

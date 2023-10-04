@@ -1,9 +1,18 @@
-{{ $user := (.Get 0) }}
-{{ $url := (($user) | urlize) }}
-{{ $taxonomy := "authors" }}
+{{- if (.Get 0) -}}
 
-{{ $page := ($.Site.GetPage (printf "/%s/%s" ($taxonomy) ($url))) }}
-{{ $name := ($page.Title | default (($user) | markdownify)) }}
+    {{- $user := (.Get 0) -}}
+    {{- $url := (($user) | urlize) -}}
+    {{- $taxonomy := "authors" -}}
 
-{{ with $page }}
-<span class="shortcode shortcode-user"><a href="{{ ($page.RelPermalink) }}">{{ ($name) }}</a></span>{{ else }}{{ ($name) }}{{ end }}
+    {{- $page := (site.GetPage (printf "/%s/%s" ($taxonomy) ($url))) -}}
+    {{- $name := ($page.Title | default (($user) | markdownify)) -}}
+
+    {{- with ($page) -}}
+      <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ ($page.RelPermalink) }}">{{ ($name) }}</a></span>{{ else }}{{ ($name) }}
+    {{- end -}}
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

@@ -1,32 +1,43 @@
-{{ $title := (.Get "title") }}
-{{ $file := (.Get "file") }}
-{{ $lang := (.Get "lang") }}
-{{ $id := (printf "%s-%s" (.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+{{- if (.IsNamedParams) -}}
 
-{{ with ($lang) }}
-    {{ $lang = (printf "language-%s" (.)) }}
-{{ end }}
+    {{ $title := (.Get "title") }}
+    {{ $file := (.Get "file") }}
+    {{ $lang := (.Get "lang") }}
 
-<div class="shortcode shortcode-{{ (.Name) }} mb-3">
-  <div class="card">
-    <div class="card-header">
-      <div class="d-flex align-items-center">
-          {{ if ($title) }}
-            <h5 class="mb-0">{{ ($title) }}</h5>
-          {{ else }}
-            <code>{{ ($file) }}</code>
-          {{ end }}
-        <div class="d-flex ms-auto">
-          <button type="button" class="btn btn-light btn-sm"
-                  data-bs-tooltip data-bs-title='{{ (i18n "codebox.copy") }}'
-                  data-fn="clipboard" data-clipboard-target="#{{ ($id) }}">
-            <i class="far fa-copy fa-fw"></i>
-          </button>
+    {{ $id := (printf "sc-%s-%s" (.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+    {{ with ($lang) }}{{ $lang = (printf "language-%s" (.)) }}{{ end }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+              {{ if ($title) }}
+                <h5 class="mb-0">{{ ($title) }}</h5>
+              {{ else }}
+                <code>{{ ($file) }}</code>
+              {{ end }}
+            <div class="d-flex ms-auto">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                  <a class="text-muted" href="#"
+                     data-bs-tooltip data-bs-title='{{ (i18n "sc.codebox.copy") }}'
+                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($id) }}"
+                     role="button">
+                    <i class="fas fa-copy fa-fw"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <pre class="mb-0"><code id="{{ ($id) }}" class="{{ ($lang) }}">{{ with (.Inner) }}{{ (((trim . "\n\r") | htmlEscape) | safeHTML) }}{{ end }}</code></pre>
         </div>
       </div>
     </div>
-    <div class="card-body pb-0">
-      <pre><code id="{{ ($id) }}" class="{{ ($lang) }}">{{ with (.Inner) }}{{ (((trim . "\n\r") | htmlEscape) | safeHTML) }}{{ end }}</code></pre>
-    </div>
-  </div>
-</div>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}
