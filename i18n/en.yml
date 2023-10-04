@@ -148,4 +148,5 @@ sc:
   github:
     file:
       copy: { other: 'Copy to clipboard' }
+      download: { other: 'Download original file' }
       link: { other: 'Open original file' }

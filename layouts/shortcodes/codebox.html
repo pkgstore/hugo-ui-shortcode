@@ -1,22 +1,22 @@
-{{- if (.IsNamedParams) -}}
+{{- if (.Get 0) -}}
 
-    {{ $title := (.Get "title") }}
-    {{ $file := (.Get "file") }}
-    {{ $lang := (.Get "lang") }}
+    {{ $file := (.Get 0) }}
+    {{ $lang := (.Get 1) }}
 
-    {{ $id := (printf "sc-%s-%s" (.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
     {{ with ($lang) }}{{ $lang = (printf "language-%s" (.)) }}{{ end }}
+    {{ $id := (printf "sc-%s-%s" (.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="card">
         <div class="card-header">
           <div class="d-flex align-items-center">
-              {{ if ($title) }}
-                <h5 class="mb-0">{{ ($title) }}</h5>
-              {{ else }}
-                <code>{{ ($file) }}</code>
-              {{ end }}
-            <div class="d-flex ms-auto">
+            <div>
+              <i class="fas fa-file-code fa-fw"></i>
+            </div>
+            <div class="flex-grow-1 mx-2">
+              <code>{{ ($file) }}</code>
+            </div>
+            <div>
               <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                   <a class="text-muted" href="#"

@@ -1,7 +1,7 @@
-{{ if (.IsNamedParams) }}
+{{- if (.Get 0) -}}
 
-    {{ $title := (.Get "title") }}
-    {{ $lang := ((.Get "lang") | default "ru") }}
+    {{ $title := (.Get 0) }}
+    {{ $lang := ((.Get 1) | default "ru") }}
 
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
@@ -21,7 +21,7 @@
               <div>
                 <i class="fab fa-wikipedia-w fa-fw"></i>
               </div>
-              <div class="flex-grow-1 text-center mx-3">
+              <div class="flex-grow-1 mx-2">
                 <h5 class="mb-0">{{ (.title) }}</h5>
               </div>
               <div>
@@ -47,8 +47,8 @@
 
     {{ end }}
 
-{{ else }}
+{{- else -}}
 
     {{ (partial "alerts/no_params" .) }}
 
-{{ end }}
+{{- end -}}
