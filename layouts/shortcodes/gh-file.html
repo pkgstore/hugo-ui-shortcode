@@ -32,25 +32,22 @@
                     <li class="list-inline-item">
                       <code>{{ (div ($file.size) 1000) }} KB</code>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
                       <a class="text-muted" href="#"
-                         data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'
                          data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($id) }}"
                          role="button">
                         <i class="fas fa-copy fa-fw"></i>
                       </a>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.download") }}'>
                       <a class="text-muted" href="{{ $file.download_url }}"
-                         data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.download") }}'
                          target="_blank" rel="noopener nofollow"
                          role="button">
                         <i class="fas fa-download fa-fw"></i>
                       </a>
                     </li>
-                    <li class="list-inline-item">
+                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'>
                       <a class="text-muted" href="{{ $file.html_url }}"
-                         data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'
                          target="_blank" rel="noopener nofollow"
                          role="button">
                         <i class="fas fa-arrow-up-right-from-square fa-fw"></i>

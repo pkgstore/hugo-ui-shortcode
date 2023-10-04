@@ -26,10 +26,9 @@
               </div>
               <div>
                 <ul class="list-inline mb-0">
-                  <li class="list-inline-item">
+                  <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.wiki.link") }}'>
                       {{ $url := (printf "https://%s.wikipedia.org/wiki/%s" ($lang) (replace (.title) " " "_")) }}
                     <a class="text-muted" href="{{ ($url) }}"
-                       data-bs-tooltip data-bs-title='{{ (i18n "sc.wiki.link") }}'
                        target="_blank" rel="noopener nofollow"
                        role="button">
                       <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
