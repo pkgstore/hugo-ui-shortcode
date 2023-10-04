@@ -5,7 +5,7 @@
 
 <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
   <div class="d-flex">
-    <div class="w-100">
+    <div class="flex-grow-1 overflow-hidden">
       <pre class="mb-0"><code id="{{ ($id) }}" class="{{ ($lang) }}">{{ with (.Inner) }}{{ (((trim . "\n\r") | htmlEscape) | safeHTML) }}{{ end }}</code></pre>
     </div>
     <div>
