@@ -38,21 +38,21 @@
                           <div class="mt-auto">
                             <ul class="list-inline m-0 mt-3">
                               <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repos") }}'>
-                                <a class="btn btn-light btn-sm text-muted" href="{{ ($user.html_url) }}?tab=repositories"
+                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=repositories"
                                    target="_blank" rel="noopener nofollow" role="button">
                                   <i class="fas fa-book fa-fw me-1"></i>
                                     {{ ($user.public_repos) }}
                                 </a>
                               </li>
                               <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.followers") }}'>
-                                <a class="btn btn-light btn-sm text-muted" href="{{ ($user.html_url) }}?tab=followers"
+                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=followers"
                                    target="_blank" rel="noopener nofollow" role="button">
                                   <i class="fas fa-user-friends fa-fw me-1"></i>
                                     {{ ($user.followers) }}
                                 </a>
                               </li>
                               <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.following") }}'>
-                                <a class="btn btn-light btn-sm text-muted" href="{{ ($user.html_url) }}?tab=following"
+                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=following"
                                    target="_blank" rel="noopener nofollow" role="button">
                                   <i class="fas fa-user-check fa-fw me-1"></i>
                                     {{ ($user.following) }}

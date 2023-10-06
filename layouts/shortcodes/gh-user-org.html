@@ -42,7 +42,7 @@
                               <div class="mt-auto">
                                 <ul class="list-inline m-0 mt-3">
                                   <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.repos") }}'>
-                                    <a class="btn btn-light btn-sm text-muted" href="{{ ($org.html_url) }}"
+                                    <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($org.html_url) }}"
                                        target="_blank" rel="noopener nofollow" role="button">
                                       <i class="fas fa-book fa-fw me-1"></i>
                                         {{ ($org.public_repos) }}
@@ -53,7 +53,7 @@
                                           {{ $url := (urls.Parse ($org.blog)) }}
                                           {{ $scheme := "http://" }}
                                           {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
-                                        <a class="btn btn-light btn-sm text-muted" href="{{ ($scheme) }}{{ ($org.blog) }}"
+                                        <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($org.blog) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fas fa-globe fa-fw"></i>
                                         </a>
@@ -61,7 +61,7 @@
                                     {{ end }}
                                     {{ if ($org.twitter_username) }}
                                       <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.twitter") }}'>
-                                        <a class="btn btn-light btn-sm text-muted" href="https://twitter.com/{{ ($org.twitter_username) }}"
+                                        <a class="btn btn-light btn-sm text-body-secondary" href="https://twitter.com/{{ ($org.twitter_username) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fab fa-twitter fa-fw"></i>
                                         </a>
@@ -69,7 +69,7 @@
                                     {{ end }}
                                     {{ if ($org.email) }}
                                       <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.email") }}'>
-                                        <a class="btn btn-light btn-sm text-muted" href="mailto:{{ ($org.email) }}"
+                                        <a class="btn btn-light btn-sm text-body-secondary" href="mailto:{{ ($org.email) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fas fa-envelope-open-text fa-fw"></i>
                                         </a>
