@@ -2,14 +2,15 @@
 {{ $type := ((.Get 1) | default "primary") }}
 
 {{ $id := (printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+{{ $bs := (printf "bs-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
 
-<div class="shortcode shortcode-{{ ($.Name) }}">
+<div class="shortcode shortcode-{{ ($.Name) }}" id="{{ ($id) }}">
   <p>
-    <button type="button" class="btn btn-{{ ($type) }} is-label" data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}">
+    <button type="button" class="btn btn-{{ ($type) }} is-label" data-bs-toggle="collapse" data-bs-target="#{{ ($bs) }}">
       <span>{{ ($title) }}</span>
     </button>
   </p>
-  <div class="collapse" id="{{ ($id) }}">
+  <div class="collapse" id="{{ ($bs) }}">
     <div class="card card-body mb-3">
         {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>

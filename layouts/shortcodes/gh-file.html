@@ -15,8 +15,9 @@
     {{ range ((split $file "/") | after 2) }}{{ ($data.Add "path" (slice .)) }}{{ end }}
     {{ $file = (getJSON ($api) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ts=" ($ts) ($headers)) }}
     {{ $id := (printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+    {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
 
-    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3" id="{{ ($id) }}">
       <div class="card overflow-hidden">
         <div class="card-header">
           <div class="d-flex align-items-center">
@@ -33,7 +34,7 @@
                 </li>
                 <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
                   <a class="text-body" href="#"
-                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($id) }}"
+                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
                      role="button">
                     <i class="fas fa-copy fa-fw"></i>
                   </a>
@@ -56,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="card-body" id="{{ ($id) }}">
+        <div class="card-body" id="{{ ($cp) }}">
             {{ (highlight (($file.content) | base64Decode) ($lang)) }}
         </div>
       </div>
