@@ -3,10 +3,10 @@ DESCRIPTION:
   GitLab repository.
 
 SYNTAX:
-  {{<gl-repo "REPO_PATH">}}
+  {{<gl-repo "PROJECT_ID_01|PROJECT_ID_02|PROJECT_ID_03">}}
 
 EXAMPLE:
-  {{<gl-repo "github/docs">}}
+  {{<gl-repo "278964">}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -48,12 +48,12 @@ EXAMPLE:
                                   {{ (($project.name) | default ($project.path)) }}
                               </a>
                             </h5>
-                              {{ with ($project.owner.name) }}
+                              {{ if ($project.owner.name) }}
                                 <h6 class="card-subtitle mb-2 text-body-secondary">
                                     {{ . }}
                                 </h6>
                               {{ end }}
-                              {{ with ($project.description) }}
+                              {{ if ($project.description) }}
                                 <p class="card-text">{{ (. | plainify) }}</p>
                               {{ end }}
                           </div>
@@ -80,7 +80,7 @@ EXAMPLE:
                                     {{ ($project.forks_count) }}
                                 </a>
                               </div>
-                                {{ with ($project.license_url) }}
+                                {{ if ($project.license_url) }}
                                   <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.repo.license") }}'>
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ $project.license.html_url }}"
                                        target="_blank" rel="noopener nofollow" role="button">

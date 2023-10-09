@@ -188,3 +188,9 @@ sc:
       starrers: { other: 'Stars' }
       forks: { other: 'Forks' }
       license: { other: 'License' }
+    user:
+      followers: { other: 'Followers' }
+      following: { other: 'Following' }
+      linkedin: { other: 'LinkedIn' }
+      twitter: { other: 'Twitter' }
+      site: { other: 'Site' }

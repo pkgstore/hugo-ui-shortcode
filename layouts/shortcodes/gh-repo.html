@@ -3,7 +3,7 @@ DESCRIPTION:
   GitHub repository.
 
 SYNTAX:
-  {{<gh-repo "REPO_PATH">}}
+  {{<gh-repo "REPO_PATH_01|REPO_PATH_02|REPO_PATH_03">}}
 
 EXAMPLE:
   {{<gh-repo "github/docs">}}
@@ -52,7 +52,9 @@ EXAMPLE:
                             <h6 class="card-subtitle mb-2 text-body-secondary">
                                 {{ (($owner.name) | default ($owner.login)) }}
                             </h6>
-                            <p class="card-text">{{ (($repo.description) | plainify) }}</p>
+                              {{ if ($repo.description) }}
+                                <p class="card-text">{{ (($repo.description) | plainify) }}</p>
+                              {{ end }}
                           </div>
                           <div class="mt-auto">
                             <div class="row row-cols-auto g-2 mt-3">

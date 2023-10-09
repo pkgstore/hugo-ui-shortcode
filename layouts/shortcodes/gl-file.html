@@ -54,9 +54,7 @@ EXAMPLE:
             </div>
           </div>
         </div>
-        <div class="card-body" id="{{ ($cp) }}">
-            {{ (highlight (($file.content) | base64Decode) ($lang)) }}
-        </div>
+        <div class="card-body" id="{{ ($cp) }}">{{ (highlight (($file.content) | base64Decode) ($lang)) }}</div>
       </div>
     </div>
 

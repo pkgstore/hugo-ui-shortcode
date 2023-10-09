@@ -1,0 +1,117 @@
+{{- /*
+DESCRIPTION:
+  GitLab user.
+
+SYNTAX:
+  {{<gl-user "USER_ID_01|USER_ID_02|USER_ID_03">}}
+
+EXAMPLE:
+  {{<gl-user "2363093">}}
+*/ -}}
+
+{{- if (.Get 0) -}}
+
+    {{ $users := (split (.Get 0) "|") }}
+
+    {{ $api := (site.Params.api) }}
+    {{ $ts := (now.Unix) }}
+    {{ $headers := (dict
+    "User-Agent" ($api.user_agent)
+    "Authorization" (printf "Bearer %s" (($api.gitlab.token) | base64Decode))
+    ) }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <div class="row row-cols-1 row-cols-lg-2 g-3">
+
+          {{ range ($users) }}
+
+              {{ $user := (getJSON ($api.gitlab.url) "/users/" . "?ts=" ($ts) ($headers)) }}
+
+              <div class="col">
+                <div class="card">
+                  <div class="row g-0">
+                    <!--
+                      {{ if ($user.avatar_url) }}
+                        <div class="col-md-4 p-1">
+                          <a class="d-inline-block" href="{{ ($user.web_url) }}" target="_blank" rel="noopener nofollow">
+                            <img class="card-img"
+                                 src="{{ ($user.avatar_url) }}"
+                                 alt="{{ (($user.name) | default ($user.username)) }}" loading="lazy"/>
+                          </a>
+                        </div>
+                      {{ end }}
+                      -->
+                    <div class="col">
+                      <div class="card-body h-100">
+                        <div class="d-flex flex-column h-100">
+                          <div class="flex-shrink-0">
+                            <h5 class="card-title">
+                              <a href="{{ ($user.web_url) }}" target="_blank" rel="noopener nofollow">
+                                  {{ (($user.name) | default ($user.username)) }}
+                              </a>
+                            </h5>
+                              {{ if ($user.bio) }}
+                                <p class="card-text">{{ (($user.bio) | plainify) }}</p>
+                              {{ end }}
+                          </div>
+                          <div class="mt-auto">
+                            <div class="row row-cols-auto g-2 mt-3">
+                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.followers") }}'>
+                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.web_url) }}/followers"
+                                   target="_blank" rel="noopener nofollow" role="button">
+                                  <i class="fas fa-user-friends fa-fw me-1"></i>
+                                    {{ ($user.followers) }}
+                                </a>
+                              </div>
+                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.following") }}'>
+                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.web_url) }}/following"
+                                   target="_blank" rel="noopener nofollow" role="button">
+                                  <i class="fas fa-user-check fa-fw me-1"></i>
+                                    {{ ($user.following) }}
+                                </a>
+                              </div>
+                                {{ if ($user.linkedin) }}
+                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.linkedin") }}'>
+                                    <a class="btn btn-light btn-sm text-body-secondary" href="https://linkedin.com/in/{{ ($user.linkedin) }}"
+                                       target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fab fa-linkedin-in fa-fw"></i>
+                                    </a>
+                                  </div>
+                                {{ end }}
+                                {{ if ($user.twitter) }}
+                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.twitter") }}'>
+                                    <a class="btn btn-light btn-sm text-body-secondary" href="https://twitter.com/{{ ($user.twitter) }}"
+                                       target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fab fa-twitter fa-fw"></i>
+                                    </a>
+                                  </div>
+                                {{ end }}
+                                {{ if ($user.website_url) }}
+                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.site") }}'>
+                                      {{ $url := (urls.Parse ($user.website_url)) }}{{ $scheme := "http://" }}
+                                      {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
+                                    <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($user.website_url) }}"
+                                       target="_blank" rel="noopener nofollow" role="button">
+                                      <i class="fas fa-globe fa-fw"></i>
+                                    </a>
+                                  </div>
+                                {{ end }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          {{ end }}
+
+      </div>
+    </div>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

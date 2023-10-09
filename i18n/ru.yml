@@ -188,3 +188,9 @@ sc:
       starrers: { other: 'Звёзды' }
       forks: { other: 'Вилки' }
       license: { other: 'Лицензия' }
+    user:
+      followers: { other: 'Подписчики' }
+      following: { other: 'Подписки' }
+      linkedin: { other: 'LinkedIn' }
+      twitter: { other: 'Twitter' }
+      site: { other: 'Сайт' }

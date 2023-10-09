@@ -3,7 +3,7 @@ DESCRIPTION:
   GitHub user organizations.
 
 SYNTAX:
-  {{<gh-user-org "USER_NAME">}}
+  {{<gh-user-org "USER_NAME_01|USER_NAME_02|USER_NAME_03">}}
 
 EXAMPLE:
   {{<gh-user-org "octocat">}}
@@ -52,7 +52,9 @@ EXAMPLE:
                                       {{ (($org.name) | default ($org.login)) }}
                                   </a>
                                 </h5>
-                                <p class="card-text">{{ (($org.description) | plainify) }}</p>
+                                  {{ if ($org.description) }}
+                                    <p class="card-text">{{ (($org.description) | plainify) }}</p>
+                                  {{ end }}
                               </div>
                               <div class="mt-auto">
                                 <div class="row row-cols-auto g-2 mt-3">
@@ -65,8 +67,7 @@ EXAMPLE:
                                   </div>
                                     {{ if ($org.blog) }}
                                       <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.blog") }}'>
-                                          {{ $url := (urls.Parse ($org.blog)) }}
-                                          {{ $scheme := "http://" }}
+                                          {{ $url := (urls.Parse ($org.blog)) }}{{ $scheme := "http://" }}
                                           {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
                                         <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($org.blog) }}"
                                            target="_blank" rel="noopener nofollow" role="button">

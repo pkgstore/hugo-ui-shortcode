@@ -3,7 +3,7 @@ DESCRIPTION:
   GitHub user repositories.
 
 SYNTAX:
-  {{<gh-user-repo "USER_NAME">}}
+  {{<gh-user-repo "USER_NAME_01|USER_NAME_02|USER_NAME_03">}}
 
 EXAMPLE:
   {{<gh-user-repo "octocat">}}
@@ -55,7 +55,9 @@ EXAMPLE:
                                 <h6 class="card-subtitle mb-2 text-body-secondary">
                                     {{ (($owner.name) | default ($owner.login)) }}
                                 </h6>
-                                <p class="card-text">{{ ((.description) | plainify) }}</p>
+                                  {{ if (.description) }}
+                                    <p class="card-text">{{ ((.description) | plainify) }}</p>
+                                  {{ end }}
                               </div>
                               <div class="mt-auto">
                                 <div class="row row-cols-auto g-2 mt-3">
