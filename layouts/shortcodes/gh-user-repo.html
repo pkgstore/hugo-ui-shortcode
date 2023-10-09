@@ -1,20 +1,31 @@
+{{- /*
+DESCRIPTION:
+  GitHub user repositories.
+
+SYNTAX:
+  {{<gh-user-repo "USER_NAME">}}
+
+EXAMPLE:
+  {{<gh-user-repo "octocat">}}
+*/ -}}
+
 {{- if (.Get 0) -}}
 
     {{ $users_repos := (split (.Get 0) "|") }}
 
+    {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
-    "User-Agent" (site.Params.api.user_agent)
-    "Authorization" (printf "Bearer %s" ((site.Params.api.github.token) | base64Decode))
+    "User-Agent" ($api.user_agent)
+    "Authorization" (printf "Bearer %s" (($api.github.token) | base64Decode))
     ) }}
-    {{ $api := "https://api.github.com" }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
 
           {{ range ($users_repos) }}
 
-              {{ $repos := (getJSON ($api) "/users/" . "/repos" "?ts=" ($ts) ($headers)) }}
+              {{ $repos := (getJSON ($api.github.url) "/users/" . "/repos" "?ts=" ($ts) ($headers)) }}
 
               {{ range ($repos) }}
 
@@ -23,12 +34,16 @@
                   <div class="col">
                     <div class="card">
                       <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                          <a class="d-inline-block" href="{{ (.html_url) }}" target="_blank" rel="noopener nofollow">
-                            <img src="{{ (.owner.avatar_url) }}" class="card-img" alt="{{ (.name) }}"/>
-                          </a>
-                        </div>
-                        <div class="col-md-8">
+                          {{ if (.owner.avatar_url) }}
+                            <div class="col-md-4 p-1">
+                              <a class="d-inline-block" href="{{ (.html_url) }}" target="_blank" rel="noopener nofollow">
+                                <img class="card-img"
+                                     src="{{ (.owner.avatar_url) }}"
+                                     alt="{{ (.name) }}" loading="lazy"/>
+                              </a>
+                            </div>
+                          {{ end }}
+                        <div class="col">
                           <div class="card-body h-100">
                             <div class="d-flex flex-column h-100">
                               <div class="flex-shrink-0">
@@ -43,32 +58,32 @@
                                 <p class="card-text">{{ ((.description) | plainify) }}</p>
                               </div>
                               <div class="mt-auto">
-                                <ul class="list-inline m-0 mt-3">
-                                  <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repo.stargazers") }}'>
+                                <div class="row row-cols-auto g-2 mt-3">
+                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repo.stargazers") }}'>
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ (.html_url) }}/stargazers"
                                        target="_blank" rel="noopener nofollow" role="button">
                                       <i class="fas fa-star fa-fw me-1"></i>
                                         {{ (.stargazers_count) }}
                                     </a>
-                                  </li>
-                                  <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repo.forks") }}'>
+                                  </div>
+                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repo.forks") }}'>
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ (.html_url) }}/network/members"
                                        target="_blank" rel="noopener nofollow" role="button">
                                       <i class="fas fa-code-branch fa-fw me-1"></i>
                                         {{ (.forks_count) }}
                                     </a>
-                                  </li>
+                                  </div>
                                     {{ if (.license) }}
                                         {{ $license := (getJSON (.license.url) "?ts=" ($ts) ($headers)) }}
-                                        <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repo.license") }}'>
+                                        <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repo.license") }}'>
                                           <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($license.html_url) }}"
                                              target="_blank" rel="noopener nofollow" role="button">
                                             <i class="fas fa-copyright fa-fw me-1"></i>
                                               {{ ($license.spdx_id) }}
                                           </a>
-                                        </li>
+                                        </div>
                                     {{ end }}
-                                </ul>
+                                </div>
                               </div>
                             </div>
                           </div>

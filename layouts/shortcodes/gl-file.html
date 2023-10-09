@@ -1,0 +1,67 @@
+{{- /*
+DESCRIPTION:
+  GitLab file content.
+
+SYNTAX:
+  {{<gl-file project="PROJECT_ID" file="FILE_PATH" ref="BRANCH / TAG / COMMIT" lang="LANG">}}
+
+EXAMPLE:
+  {{<gl-file project="278964" file="README.md" ref="master" lang="md">}}
+*/ -}}
+
+{{- if (.IsNamedParams) -}}
+
+    {{ $project := (.Get "project") }}
+    {{ $file := (.Get "file") }}
+    {{ $ref := ((.Get "ref") | default "main") }}
+    {{ $lang := ((.Get "lang") | default "text") }}
+
+    {{ $api := (site.Params.api) }}
+    {{ $ts := (now.Unix) }}
+    {{ $headers := (dict
+    "User-Agent" ($api.user_agent)
+    "Authorization" (printf "Bearer %s" (($api.gitlab.token) | base64Decode))
+    ) }}
+
+    {{ $file = (getJSON ($api.gitlab.url) "/projects/" ($project) "/repository/files/" ($file) "?ref=" ($ref) "&ts=" ($ts) ($headers)) }}
+    {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <div class="card overflow-hidden">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <i class="fab fa-github fa-fw"></i>
+            </div>
+            <div class="flex-grow-1 mx-2">
+              <code>{{ ($file.file_name) }}</code>
+            </div>
+            <div class="flex-shrink-0">
+              <ul class="list-inline mb-0">
+                  {{ with ($file.size) }}
+                    <li class="list-inline-item">
+                      <code>{{ (div . 1000) }} KB</code>
+                    </li>
+                  {{ end }}
+                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.file.copy") }}'>
+                  <a class="text-body" href="#"
+                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
+                     role="button">
+                    <i class="fas fa-copy fa-fw"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" id="{{ ($cp) }}">
+            {{ (highlight (($file.content) | base64Decode) ($lang)) }}
+        </div>
+      </div>
+    </div>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

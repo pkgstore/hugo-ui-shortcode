@@ -1,23 +1,33 @@
+{{- /*
+DESCRIPTION:
+  GitHub file content.
+
+SYNTAX:
+  {{<gh-file "FILE_PATH" "LANG">}}
+
+EXAMPLE:
+  {{<gh-file "github/docs/README.md" "md">}}
+*/ -}}
+
 {{- if (.Get 0) -}}
 
     {{ $file := (.Get 0) }}
-    {{ $lang := (.Get 1) }}
+    {{ $lang := ((.Get 1) | default "text") }}
 
+    {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
-    "User-Agent" (site.Params.api.user_agent)
-    "Authorization" (printf "Bearer %s" ((site.Params.api.github.token) | base64Decode))
+    "User-Agent" ($api.user_agent)
+    "Authorization" (printf "Bearer %s" (($api.github.token) | base64Decode))
     ) }}
-    {{ $api := "https://api.github.com" }}
 
     {{ $data := (newScratch) }}
     {{ range ((split $file "/") | first 2) }}{{ ($data.Add "repo" (slice .)) }}{{ end }}
     {{ range ((split $file "/") | after 2) }}{{ ($data.Add "path" (slice .)) }}{{ end }}
-    {{ $file = (getJSON ($api) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ts=" ($ts) ($headers)) }}
-    {{ $id := (printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 999)) "" | md5)) }}
+    {{ $file = (getJSON ($api.github.url) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ts=" ($ts) ($headers)) }}
     {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
 
-    <div class="shortcode shortcode-{{ ($.Name) }} mb-3" id="{{ ($id) }}">
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="card overflow-hidden">
         <div class="card-header">
           <div class="d-flex align-items-center">
@@ -29,9 +39,11 @@
             </div>
             <div class="flex-shrink-0">
               <ul class="list-inline mb-0">
-                <li class="list-inline-item">
-                  <code>{{ (div ($file.size) 1000) }} KB</code>
-                </li>
+                  {{ with ($file.size) }}
+                    <li class="list-inline-item">
+                      <code>{{ (div . 1000) }} KB</code>
+                    </li>
+                  {{ end }}
                 <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
                   <a class="text-body" href="#"
                      data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
@@ -39,20 +51,24 @@
                     <i class="fas fa-copy fa-fw"></i>
                   </a>
                 </li>
-                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.download") }}'>
-                  <a class="text-body" href="{{ ($file.download_url) }}"
-                     target="_blank" rel="noopener nofollow"
-                     role="button">
-                    <i class="fas fa-download fa-fw"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'>
-                  <a class="text-body" href="{{ ($file.html_url) }}"
-                     target="_blank" rel="noopener nofollow"
-                     role="button">
-                    <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
-                  </a>
-                </li>
+                  {{ with ($file.download_url) }}
+                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.download") }}'>
+                      <a class="text-body" href="{{ . }}"
+                         target="_blank" rel="noopener nofollow"
+                         role="button">
+                        <i class="fas fa-download fa-fw"></i>
+                      </a>
+                    </li>
+                  {{ end }}
+                  {{ with ($file.html_url) }}
+                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'>
+                      <a class="text-body" href="{{ . }}"
+                         target="_blank" rel="noopener nofollow"
+                         role="button">
+                        <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
+                      </a>
+                    </li>
+                  {{ end }}
               </ul>
             </div>
           </div>

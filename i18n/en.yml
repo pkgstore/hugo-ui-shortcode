@@ -180,3 +180,11 @@ sc:
         forks: { other: 'Forks' }
         license: { other: 'License' }
         stargazers: { other: 'Stars' }
+  gitlab:
+    file:
+      copy: { other: 'Copy to clipboard' }
+    repo:
+      issues: { other: 'Issues' }
+      starrers: { other: 'Stars' }
+      forks: { other: 'Forks' }
+      license: { other: 'License' }

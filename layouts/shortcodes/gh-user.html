@@ -1,30 +1,45 @@
+{{- /*
+DESCRIPTION:
+  GitHub user.
+
+SYNTAX:
+  {{<gh-user "USER_NAME">}}
+
+EXAMPLE:
+  {{<gh-user "octocat">}}
+*/ -}}
+
 {{- if (.Get 0) -}}
 
     {{ $users := (split (.Get 0) "|") }}
 
+    {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
-    "User-Agent" (site.Params.api.user_agent)
-    "Authorization" (printf "Bearer %s" ((site.Params.api.github.token) | base64Decode))
+    "User-Agent" ($api.user_agent)
+    "Authorization" (printf "Bearer %s" (($api.github.token) | base64Decode))
     ) }}
-    {{ $api := "https://api.github.com" }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
 
           {{ range ($users) }}
 
-              {{ $user := (getJSON ($api) "/users/" . "?ts=" ($ts) ($headers)) }}
+              {{ $user := (getJSON ($api.github.url) "/users/" . "?ts=" ($ts) ($headers)) }}
 
               <div class="col">
                 <div class="card">
                   <div class="row g-0">
-                    <div class="col-md-4 p-1">
-                      <a class="d-inline-block" href="{{ ($user.html_url) }}" target="_blank" rel="noopener nofollow">
-                        <img src="{{ ($user.avatar_url) }}" class="card-img" alt="{{ (($user.name) | default ($user.login)) }}"/>
-                      </a>
-                    </div>
-                    <div class="col-md-8">
+                      {{ if ($user.avatar_url) }}
+                        <div class="col-md-4 p-1">
+                          <a class="d-inline-block" href="{{ ($user.html_url) }}" target="_blank" rel="noopener nofollow">
+                            <img class="card-img"
+                                 src="{{ ($user.avatar_url) }}"
+                                 alt="{{ (($user.name) | default ($user.login)) }}" loading="lazy"/>
+                          </a>
+                        </div>
+                      {{ end }}
+                    <div class="col">
                       <div class="card-body h-100">
                         <div class="d-flex flex-column h-100">
                           <div class="flex-shrink-0">
@@ -36,29 +51,29 @@
                             <p class="card-text">{{ (($user.bio) | plainify) }}</p>
                           </div>
                           <div class="mt-auto">
-                            <ul class="list-inline m-0 mt-3">
-                              <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repos") }}'>
+                            <div class="row row-cols-auto g-2 mt-3">
+                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repos") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=repositories"
                                    target="_blank" rel="noopener nofollow" role="button">
                                   <i class="fas fa-book fa-fw me-1"></i>
                                     {{ ($user.public_repos) }}
                                 </a>
-                              </li>
-                              <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.followers") }}'>
+                              </div>
+                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.followers") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=followers"
                                    target="_blank" rel="noopener nofollow" role="button">
                                   <i class="fas fa-user-friends fa-fw me-1"></i>
                                     {{ ($user.followers) }}
                                 </a>
-                              </li>
-                              <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.following") }}'>
+                              </div>
+                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.following") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=following"
                                    target="_blank" rel="noopener nofollow" role="button">
                                   <i class="fas fa-user-check fa-fw me-1"></i>
                                     {{ ($user.following) }}
                                 </a>
-                              </li>
-                            </ul>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

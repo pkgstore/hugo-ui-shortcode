@@ -180,3 +180,11 @@ sc:
         forks: { other: 'Вилки' }
         license: { other: 'Лицензия' }
         stargazers: { other: 'Подписки' }
+  gitlab:
+    file:
+      copy: { other: 'Скопировать в буфер обмена' }
+    repo:
+      issues: { other: 'Задачи' }
+      starrers: { other: 'Звёзды' }
+      forks: { other: 'Вилки' }
+      license: { other: 'Лицензия' }

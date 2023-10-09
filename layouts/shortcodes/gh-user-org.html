@@ -1,34 +1,49 @@
+{{- /*
+DESCRIPTION:
+  GitHub user organizations.
+
+SYNTAX:
+  {{<gh-user-org "USER_NAME">}}
+
+EXAMPLE:
+  {{<gh-user-org "octocat">}}
+*/ -}}
+
 {{- if (.Get 0) -}}
 
     {{ $users_orgs := (split (.Get 0) "|") }}
 
+    {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
-    "User-Agent" (site.Params.api.user_agent)
-    "Authorization" (printf "Bearer %s" ((site.Params.api.github.token) | base64Decode))
+    "User-Agent" ($api.user_agent)
+    "Authorization" (printf "Bearer %s" (($api.github.token) | base64Decode))
     ) }}
-    {{ $api := "https://api.github.com" }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
 
           {{ range ($users_orgs) }}
 
-              {{ $orgs := (getJSON ($api) "/users/" . "/orgs" "?ts=" ($ts) ($headers)) }}
+              {{ $orgs := (getJSON ($api.github.url) "/users/" . "/orgs" "?ts=" ($ts) ($headers)) }}
 
               {{ range ($orgs) }}
 
-                  {{ $org := (getJSON ($api) "/orgs/" (.login) "?ts=" ($ts) ($headers)) }}
+                  {{ $org := (getJSON ($api.github.url) "/orgs/" (.login) "?ts=" ($ts) ($headers)) }}
 
                   <div class="col">
                     <div class="card">
                       <div class="row g-0">
-                        <div class="col-md-4 p-1">
-                          <a class="d-inline-block" href="{{ ($org.html_url) }}" target="_blank" rel="noopener nofollow">
-                            <img src="{{ ($org.avatar_url) }}" class="card-img" alt="{{ (($org.name) | default ($org.login)) }}"/>
-                          </a>
-                        </div>
-                        <div class="col-md-8">
+                          {{ if ($org.avatar_url) }}
+                            <div class="col-md-4 p-1">
+                              <a class="d-inline-block" href="{{ ($org.html_url) }}" target="_blank" rel="noopener nofollow">
+                                <img class="card-img"
+                                     src="{{ ($org.avatar_url) }}"
+                                     alt="{{ (($org.name) | default ($org.login)) }}" loading="lazy"/>
+                              </a>
+                            </div>
+                          {{ end }}
+                        <div class="col">
                           <div class="card-body h-100">
                             <div class="d-flex flex-column h-100">
                               <div class="flex-shrink-0">
@@ -40,16 +55,16 @@
                                 <p class="card-text">{{ (($org.description) | plainify) }}</p>
                               </div>
                               <div class="mt-auto">
-                                <ul class="list-inline m-0 mt-3">
-                                  <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.repos") }}'>
+                                <div class="row row-cols-auto g-2 mt-3">
+                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.repos") }}'>
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($org.html_url) }}"
                                        target="_blank" rel="noopener nofollow" role="button">
                                       <i class="fas fa-book fa-fw me-1"></i>
                                         {{ ($org.public_repos) }}
                                     </a>
-                                  </li>
+                                  </div>
                                     {{ if ($org.blog) }}
-                                      <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.blog") }}'>
+                                      <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.blog") }}'>
                                           {{ $url := (urls.Parse ($org.blog)) }}
                                           {{ $scheme := "http://" }}
                                           {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
@@ -57,25 +72,25 @@
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fas fa-globe fa-fw"></i>
                                         </a>
-                                      </li>
+                                      </div>
                                     {{ end }}
                                     {{ if ($org.twitter_username) }}
-                                      <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.twitter") }}'>
+                                      <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.twitter") }}'>
                                         <a class="btn btn-light btn-sm text-body-secondary" href="https://twitter.com/{{ ($org.twitter_username) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fab fa-twitter fa-fw"></i>
                                         </a>
-                                      </li>
+                                      </div>
                                     {{ end }}
                                     {{ if ($org.email) }}
-                                      <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.email") }}'>
+                                      <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.org.email") }}'>
                                         <a class="btn btn-light btn-sm text-body-secondary" href="mailto:{{ ($org.email) }}"
                                            target="_blank" rel="noopener nofollow" role="button">
                                           <i class="fas fa-envelope-open-text fa-fw"></i>
                                         </a>
-                                      </li>
+                                      </div>
                                     {{ end }}
-                                </ul>
+                                </div>
                               </div>
                             </div>
                           </div>
