@@ -1,3 +1,14 @@
+{{- /*
+DESCRIPTION:
+  Imgur.
+
+SYNTAX:
+  {{<imgur id="IMAGE_ID" size="[s|m|l]" caption="TEXT" align="[left|right]">}}
+
+EXAMPLE:
+  {{<imgur project="278964" file="README.md" ref="master" lang="md">}}
+*/ -}}
+
 {{- if (.IsNamedParams) -}}
 
     {{ $file := ((.Get "id") | default "") }}
