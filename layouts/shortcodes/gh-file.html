@@ -3,16 +3,17 @@ DESCRIPTION:
   GitHub file content.
 
 SYNTAX:
-  {{<gh-file "FILE_PATH" "LANG">}}
+  {{<gh-file file="FILE_PATH" ref="BRANCH / TAG / COMMIT" lang="LANG">}}
 
 EXAMPLE:
-  {{<gh-file "github/docs/README.md" "md">}}
+  {{<gh-file file="github/docs/README.md" lang="md">}}
 */ -}}
 
-{{- if (.Get 0) -}}
+{{- if (.IsNamedParams) -}}
 
-    {{ $file := (.Get 0) }}
-    {{ $lang := ((.Get 1) | default "text") }}
+    {{ $file := (.Get "file") }}
+    {{ $ref := ((.Get "ref") | default "main") }}
+    {{ $lang := ((.Get "lang") | default "text") }}
 
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
@@ -24,7 +25,7 @@ EXAMPLE:
     {{ $data := (newScratch) }}
     {{ range ((split $file "/") | first 2) }}{{ ($data.Add "repo" (slice .)) }}{{ end }}
     {{ range ((split $file "/") | after 2) }}{{ ($data.Add "path" (slice .)) }}{{ end }}
-    {{ $file = (getJSON ($api.github.url) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ts=" ($ts) ($headers)) }}
+    {{ $file = (getJSON ($api.github.url) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ref=" ($ref) "&ts=" ($ts) ($headers)) }}
     {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
