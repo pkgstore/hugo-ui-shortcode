@@ -1,0 +1,51 @@
+{{- /*
+DESCRIPTION:
+  This shortcode allows you to create a simulation of an OS interface window.
+
+SYNTAX:
+  {{<window title="TEXT" icon="ICON" type="[primary|secondary|success|danger|warning|info|light|dark]">}}
+  <TEXT>
+  {{</window>}}
+
+EXAMPLE:
+  {{<window title="Hello World!" icon="fas fa-computer">}}
+  Application failed to start because no Qt platform plugin could be initialized.
+  {{</window>}}
+*/ -}}
+
+{{ $title := ((.Get "title") | default (i18n "sc.window.title")) }}
+{{ $icon := ((.Get "icon") | default "fas fa-computer") }}
+{{ $type := (.Get "type") }}
+
+{{ with $type }}{{ $type = printf "text-bg-%s" . }}{{ end }}
+
+<div class="shortcode shortcode-{{ ($.Name) }}">
+  <div class="card {{ ($type) }} mb-3 overflow-hidden">
+    <div class="card-header">
+      <div class="d-flex align-items-center">
+        <div class="flex-shrink-0">
+          <i class="{{ ($icon) }} fa-fw"></i>
+        </div>
+        <div class="flex-grow-1 mx-2">
+          <h5 class="mb-0">{{ ($title) }}</h5>
+        </div>
+        <div class="flex-shrink-0">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <i class="fas fa-circle fa-fw"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-circle fa-fw"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-circle fa-fw"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+        {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
+    </div>
+  </div>
+</div>

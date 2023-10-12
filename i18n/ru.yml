@@ -194,3 +194,5 @@ sc:
       linkedin: { other: 'LinkedIn' }
       twitter: { other: 'Twitter' }
       site: { other: 'Сайт' }
+  window:
+    title: { other: 'Информация' }
