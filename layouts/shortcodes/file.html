@@ -1,0 +1,40 @@
+{{- if (.Get 0) -}}
+
+    {{ $file := (.Get 0) }}
+    {{ $lang := ((.Get 1) | default "text") }}
+
+    {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <div class="card overflow-hidden">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <i class="far fa-file-code fa-fw"></i>
+            </div>
+            <div class="flex-grow-1 mx-2">
+              <code>{{ ($file) }}</code>
+            </div>
+            <div class="flex-shrink-0">
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
+                  <a class="text-body" href="#"
+                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
+                     role="button">
+                    <i class="fas fa-copy fa-fw"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+          {{ $file = (path.Join ("content") ($.Page.File.Lang) ($.Page.File.Dir) ($file)) }}
+        <div class="card-body" id="{{ ($cp) }}">{{ (highlight (os.ReadFile ($file)) ($lang)) }}</div>
+      </div>
+    </div>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}
