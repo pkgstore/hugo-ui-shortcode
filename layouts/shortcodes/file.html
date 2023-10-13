@@ -1,7 +1,7 @@
 {{- if (.Get 0) -}}
 
     {{ $file := (.Get 0) }}
-    {{ $lang := ((.Get 1) | default "text") }}
+    {{ $lang := (.Get 1) }}
 
     {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
 
@@ -29,6 +29,9 @@
           </div>
         </div>
           {{ $file = (path.Join ("content") ($.Page.File.Lang) ($.Page.File.Dir) ($file)) }}
+          {{ if (eq (($lang) | len) 0) }}
+              {{ $lang = ((replace (path.Ext ($file)) "." "") | default "text") }}
+          {{ end }}
         <div class="card-body" id="{{ ($cp) }}">{{ (highlight (os.ReadFile ($file)) ($lang)) }}</div>
       </div>
     </div>
