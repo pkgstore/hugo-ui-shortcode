@@ -32,7 +32,7 @@
           {{ if (eq (($lang) | len) 0) }}
               {{ $lang = ((replace (path.Ext ($file)) "." "") | default "text") }}
           {{ end }}
-        <div class="card-body" id="{{ ($cp) }}">{{ (highlight (os.ReadFile ($file)) ($lang)) }}</div>
+        <div class="card-body" id="{{ ($cp) }}">{{ (highlight (readFile ($file)) ($lang)) }}</div>
       </div>
     </div>
 
