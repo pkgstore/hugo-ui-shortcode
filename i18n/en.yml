@@ -132,21 +132,21 @@ sc:
   # ------------------------------------------------------------------------------------------------------------------ #
 
   code:
-    copy: { other: 'Copy to clipboard' }
+    copy: { other: 'Copy' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # CodeBox.
   # ------------------------------------------------------------------------------------------------------------------ #
 
   codebox:
-    copy: { other: 'Copy to clipboard' }
+    copy: { other: 'Copy' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Wiki.
   # ------------------------------------------------------------------------------------------------------------------ #
 
   wiki:
-    link: { other: 'Open original article' }
+    link: { other: 'Open article' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # GitHub.
@@ -154,9 +154,9 @@ sc:
 
   github:
     file:
-      copy: { other: 'Copy to clipboard' }
-      download: { other: 'Download original file' }
-      link: { other: 'Open original file' }
+      copy: { other: 'Copy' }
+      download: { other: 'Download file' }
+      link: { other: 'Open file' }
     org:
       blog: { other: 'Site' }
       email: { other: 'Email' }
@@ -182,7 +182,7 @@ sc:
         stargazers: { other: 'Stars' }
   gitlab:
     file:
-      copy: { other: 'Copy to clipboard' }
+      copy: { other: 'Copy' }
     repo:
       issues: { other: 'Issues' }
       starrers: { other: 'Stars' }
@@ -202,6 +202,6 @@ sc:
   # ------------------------------------------------------------------------------------------------------------------ #
 
   file:
-    copy: { other: 'Copy to clipboard' }
-    download: { other: 'Download original file' }
-    link: { other: 'Open original file' }
+    copy: { other: 'Copy' }
+    download: { other: 'Download file' }
+    link: { other: 'Open file' }
