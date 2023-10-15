@@ -196,3 +196,12 @@ sc:
       site: { other: 'Site' }
   window:
     title: { other: 'Information' }
+
+  # ------------------------------------------------------------------------------------------------------------------ #
+  # File.
+  # ------------------------------------------------------------------------------------------------------------------ #
+
+  file:
+    copy: { other: 'Copy to clipboard' }
+    download: { other: 'Download original file' }
+    link: { other: 'Open original file' }
