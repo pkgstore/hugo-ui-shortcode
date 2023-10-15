@@ -30,11 +30,20 @@ EXAMPLE:
             </div>
             <div class="flex-shrink-0">
               <ul class="list-inline mb-0">
-                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
+                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.copy") }}'>
                   <a class="text-body" href="#"
-                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
-                     role="button">
+                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}" role="button">
                     <i class="fas fa-copy fa-fw"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.download") }}'>
+                  <a class="text-body" href="{{ ($file) }}" download role="button">
+                    <i class="fas fa-download fa-fw"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.link") }}'>
+                  <a class="text-body" href="{{ ($file) }}" target="_blank" role="button">
+                    <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
                   </a>
                 </li>
               </ul>

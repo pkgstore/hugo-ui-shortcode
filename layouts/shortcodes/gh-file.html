@@ -47,16 +47,14 @@ EXAMPLE:
                   {{ end }}
                 <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
                   <a class="text-body" href="#"
-                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
-                     role="button">
+                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}" role="button">
                     <i class="fas fa-copy fa-fw"></i>
                   </a>
                 </li>
                   {{ with ($file.download_url) }}
                     <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.download") }}'>
                       <a class="text-body" href="{{ . }}"
-                         target="_blank" rel="noopener nofollow"
-                         role="button">
+                         target="_blank" rel="noopener nofollow" role="button">
                         <i class="fas fa-download fa-fw"></i>
                       </a>
                     </li>
@@ -64,8 +62,7 @@ EXAMPLE:
                   {{ with ($file.html_url) }}
                     <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'>
                       <a class="text-body" href="{{ . }}"
-                         target="_blank" rel="noopener nofollow"
-                         role="button">
+                         target="_blank" rel="noopener nofollow" role="button">
                         <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
                       </a>
                     </li>
