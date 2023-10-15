@@ -146,7 +146,7 @@ sc:
   # ------------------------------------------------------------------------------------------------------------------ #
 
   wiki:
-    link: { other: 'Open article' }
+    link: { other: 'Open original' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # GitHub.
@@ -155,8 +155,8 @@ sc:
   github:
     file:
       copy: { other: 'Copy' }
-      download: { other: 'Download file' }
-      link: { other: 'Open file' }
+      download: { other: 'Download' }
+      link: { other: 'Open' }
     org:
       blog: { other: 'Site' }
       email: { other: 'Email' }
@@ -203,5 +203,5 @@ sc:
 
   file:
     copy: { other: 'Copy' }
-    download: { other: 'Download file' }
-    link: { other: 'Open file' }
+    download: { other: 'Download' }
+    link: { other: 'Open' }
