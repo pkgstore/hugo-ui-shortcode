@@ -60,7 +60,7 @@ sc:
       targets: { other: 'Target transfer...' }
       targets_help: { other: 'Enter target transfer.' }
       xmr: { other: 'XMR' }
-      yooMoney: { other: 'YooMoney' }
+      yoomoney: { other: 'YooMoney' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Requisites.

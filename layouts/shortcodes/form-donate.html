@@ -1,4 +1,41 @@
-{{- if .IsNamedParams -}}
+{{- /*
+DESCRIPTION:
+  Donation form.
+
+SYNTAX:
+  {{<form-donate
+  wallet="WALLET_YOOMONEY"
+  paypal="PAYPAL_USERNAME"
+  patreon="PATREON_USERNAME"
+  liberapay="LIBERAPAY_USERNAME"
+  ko-fi="KO-FI_USERNAME"
+  buymeacoffee="BUYMEACOFFEE_USERNAME"
+  usd="BANK_CARD_USD"
+  eur="BANK_CARD_EUR"
+  rub="BANK_CARD_RUB"
+  btc="WALLET_BTC"
+  eth="WALLET_ETC"
+  xmr="WALLET_XMR">}}
+
+
+EXAMPLE:
+  {{<form-donate
+  wallet="0000000000000000"
+  paypal="pp_username"
+  patreon="patr_username"
+  liberapay="lp_username"
+  ko-fi="kf_username"
+  buymeacoffee="bmc_username"
+  usd="000 0000 0000 0000"
+  eur="000 0000 0000 0000"
+  rub="000 0000 0000 0000"
+  btc="bc1q855dt7p8mtd74yw96vvu93wy59j0fl8gaqh62h"
+  eth="0x7252D91B61E18eDE4c8ec43a0EE7F1dFD17542ab"
+  xmr="48Q1zEztoECNyijSoQVhHC12LaxzNLPrhBgwGdM2847QY8ayusQ6XBjCD9hgeQk2LLUKbBvC5yKxDDmzkGvGyMGE9o95YkR">}}
+
+*/ -}}
+
+{{- if (.IsNamedParams) -}}
 
     {{ $wallet := (.Get "wallet") }}
     {{ $paypal := (.Get "paypal") }}
@@ -15,15 +52,13 @@
     {{ $eur := (.Get "eur") }}
     {{ $rub := (.Get "rub") }}
 
-    {{ $size := "150" }}
-
     <div class="shortcode shortcode-form shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 g-3">
         <!-- yooMoney -->
           {{ if ($wallet) }}
             <div class="col">
               <div class="card">
-                <h5 class="card-header">{{ (i18n "sc.form.donate.yooMoney") }}</h5>
+                <h5 class="card-header">{{ (i18n "sc.form.donate.yoomoney") }}</h5>
                 <div class="card-body">
                   <form method="post" action="https://yoomoney.ru/quickpay/confirm.xml">
                     <input type="hidden" name="receiver" value="{{ ($wallet) }}"/>
@@ -164,7 +199,7 @@
                         <div class="col-lg">
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.paypal") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
-                             href="https://paypal.me/{{ $paypal }}" target="_blank"
+                             href="https://paypal.me/{{ ($paypal) }}" target="_blank"
                              data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.paypal") }}'
                              rel="noopener nofollow" role="button"><i class="fab fa-paypal fa-fw"></i></a>
                         </div>
@@ -173,7 +208,7 @@
                         <div class="col-lg">
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.patreon") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
-                             href="https://patreon.com/{{ $patreon }}" target="_blank"
+                             href="https://patreon.com/{{ ($patreon) }}" target="_blank"
                              data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.patreon") }}'
                              rel="noopener nofollow" role="button"><i class="fab fa-patreon fa-fw"></i></a>
                         </div>
@@ -182,7 +217,7 @@
                         <div class="col-lg">
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.liberapay") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
-                             href="https://liberapay.com/{{ $liberapay }}" target="_blank"
+                             href="https://liberapay.com/{{ ($liberapay) }}" target="_blank"
                              data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.liberapay") }}'
                              rel="noopener nofollow" role="button"><i class="fas fa-gift fa-fw"></i></a>
                         </div>
@@ -191,7 +226,7 @@
                         <div class="col-lg">
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.kofi") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
-                             href="https://ko-fi.com/{{ $kofi }}" target="_blank"
+                             href="https://ko-fi.com/{{ ($kofi) }}" target="_blank"
                              data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.kofi") }}'
                              rel="noopener nofollow" role="button"><i class="fas fa-coffee fa-fw"></i></a>
                         </div>
@@ -200,7 +235,7 @@
                         <div class="col-lg">
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.buymeacoffee") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
-                             href="https://buymeacoffee.com/{{ $buymeacoffee }}" target="_blank"
+                             href="https://buymeacoffee.com/{{ ($buymeacoffee) }}" target="_blank"
                              data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.buymeacoffee") }}'
                              rel="noopener nofollow" role="button"><i class="fas fa-coffee fa-fw"></i></a>
                         </div>
