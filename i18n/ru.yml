@@ -156,6 +156,7 @@ sc:
     file:
       copy: { other: 'Копировать' }
       download: { other: 'Скачать' }
+      kB: { other: 'kB' }
       link: { other: 'Открыть' }
     org:
       blog: { other: 'Сайт' }

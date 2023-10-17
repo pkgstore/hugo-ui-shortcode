@@ -42,7 +42,7 @@ EXAMPLE:
               <ul class="list-inline mb-0">
                   {{ with ($file.size) }}
                     <li class="list-inline-item">
-                      <code>{{ (div . 1000) }} KB</code>
+                      <code>{{ (div . 1000) }} {{ (i18n "sc.github.file.kB") }}</code>
                     </li>
                   {{ end }}
                 <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
