@@ -10,7 +10,7 @@
     <div class="flex-shrink-0 align-self-center">
       <i class="{{ ($icon) }} fa-fw fa-2x"></i>
     </div>
-    <div class="flex-grow-1 ms-3">
+    <div class="flex-grow-1 ms-3 overflow-hidden">
         {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>
   </div>
