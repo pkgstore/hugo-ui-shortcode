@@ -30,7 +30,7 @@
                       {{ $url := (printf "https://%s.wikipedia.org/wiki/%s" ($lang) (replace (.title) " " "_")) }}
                     <a class="text-body-secondary" href="{{ ($url) }}"
                        target="_blank" rel="noopener nofollow"
-                       role="button">
+                       role="button" aria-label='{{ (i18n "sc.wiki.link") }}'>
                       <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
                     </a>
                   </li>

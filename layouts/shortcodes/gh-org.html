@@ -56,7 +56,8 @@ EXAMPLE:
                             <div class="row row-cols-auto g-2 mt-3">
                               <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.repos") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($org.html_url) }}"
-                                   target="_blank" rel="noopener nofollow" role="button">
+                                   target="_blank" rel="noopener nofollow"
+                                   role="button" aria-label='{{ (i18n "sc.github.org.repos") }}'>
                                   <i class="fas fa-book fa-fw me-1"></i>
                                     {{ ($org.public_repos) }}
                                 </a>
@@ -66,7 +67,8 @@ EXAMPLE:
                                       {{ $url := (urls.Parse ($org.blog)) }}{{ $scheme := "http://" }}
                                       {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($org.blog) }}"
-                                       target="_blank" rel="noopener nofollow" role="button">
+                                       target="_blank" rel="noopener nofollow"
+                                       role="button" aria-label='{{ (i18n "sc.github.org.blog") }}'>
                                       <i class="fas fa-globe fa-fw"></i>
                                     </a>
                                   </div>
@@ -74,7 +76,8 @@ EXAMPLE:
                                 {{ if ($org.twitter_username) }}
                                   <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.twitter") }}'>
                                     <a class="btn btn-light btn-sm text-body-secondary" href="https://twitter.com/{{ ($org.twitter_username) }}"
-                                       target="_blank" rel="noopener nofollow" role="button">
+                                       target="_blank" rel="noopener nofollow"
+                                       role="button" aria-label='{{ (i18n "sc.github.org.twitter") }}'>
                                       <i class="fab fa-twitter fa-fw"></i>
                                     </a>
                                   </div>
@@ -82,7 +85,8 @@ EXAMPLE:
                                 {{ if ($org.email) }}
                                   <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.email") }}'>
                                     <a class="btn btn-light btn-sm text-body-secondary" href="mailto:{{ ($org.email) }}"
-                                       target="_blank" rel="noopener nofollow" role="button">
+                                       target="_blank" rel="noopener nofollow"
+                                       role="button" aria-label='{{ (i18n "sc.github.org.email") }}'>
                                       <i class="fas fa-envelope-open-text fa-fw"></i>
                                     </a>
                                   </div>

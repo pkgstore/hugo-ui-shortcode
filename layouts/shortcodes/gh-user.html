@@ -56,21 +56,24 @@ EXAMPLE:
                             <div class="row row-cols-auto g-2 mt-3">
                               <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repos") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=repositories"
-                                   target="_blank" rel="noopener nofollow" role="button">
+                                   target="_blank" rel="noopener nofollow"
+                                   role="button" aria-label='{{ (i18n "sc.github.user.repos") }}'>
                                   <i class="fas fa-book fa-fw me-1"></i>
                                     {{ ($user.public_repos) }}
                                 </a>
                               </div>
                               <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.followers") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=followers"
-                                   target="_blank" rel="noopener nofollow" role="button">
+                                   target="_blank" rel="noopener nofollow"
+                                   role="button" aria-label='{{ (i18n "sc.github.user.followers") }}'>
                                   <i class="fas fa-user-friends fa-fw me-1"></i>
                                     {{ ($user.followers) }}
                                 </a>
                               </div>
                               <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.following") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=following"
-                                   target="_blank" rel="noopener nofollow" role="button">
+                                   target="_blank" rel="noopener nofollow"
+                                   role="button" aria-label='{{ (i18n "sc.github.user.following") }}'>
                                   <i class="fas fa-user-check fa-fw me-1"></i>
                                     {{ ($user.following) }}
                                 </a>
@@ -80,7 +83,8 @@ EXAMPLE:
                                       {{ $url := (urls.Parse ($user.blog)) }}{{ $scheme := "http://" }}
                                       {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($user.blog) }}"
-                                       target="_blank" rel="noopener nofollow" role="button">
+                                       target="_blank" rel="noopener nofollow"
+                                       role="button" aria-label='{{ (i18n "sc.github.org.blog") }}'>
                                       <i class="fas fa-globe fa-fw"></i>
                                     </a>
                                   </div>
