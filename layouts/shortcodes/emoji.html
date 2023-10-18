@@ -1,6 +1,10 @@
-{{- $id := ((.Get 0) | default "1f603") -}}
-{{- $size := ((.Get 1) | default "1") -}}
-{{- $style := (((printf "height: %srem; width: auto;" ($size)) | default "") | safeCSS) -}}
+{{- $id := ((.Get 0) | default "smile") -}}
 
-<span class="shortcode shortcode-{{ ($.Name) }}"><img src="https://twemoji.maxcdn.com/v/latest/svg/{{ ($id) }}.svg" alt="" style="{{ $style }}"/></span>
+{{- if (strings.Contains ($id) ":") -}}
+    {{- $id = ((printf "%s" ($id)) | emojify) -}}
+{{- else -}}
+    {{- $id = ((printf ":%s:" ($id)) | emojify) -}}
+{{- end -}}
+
+<span class="shortcode shortcode-{{ ($.Name) }}">{{ ($id) }}</span>
 {{- /* This comment removes trailing newlines. */ -}}
