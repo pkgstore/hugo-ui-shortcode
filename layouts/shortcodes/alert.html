@@ -1,14 +1,16 @@
 {{- /*
 DESCRIPTION:
-  Including file contents in article.
-  If no syntax highlighting language is specified,
-  the syntax highlighting language from the file extension will be automatically selected.
+  Notes in article.
 
 SYNTAX:
   {{<alert "[tip|important|warning|info]">}}
+    ALERT_TEXT
+  {{</alert>}}
 
 EXAMPLE:
   {{<alert "tip">}}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in egestas lacus, sed faucibus augue.
+  {{</alert>}}
 */ -}}
 
 {{ $type := (.Get 0) }}
