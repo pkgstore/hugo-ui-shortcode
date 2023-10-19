@@ -1,12 +1,43 @@
-{{ $type := ((.Get 0) | default "primary") }}
+{{- /*
+DESCRIPTION:
+  Including file contents in article.
+  If no syntax highlighting language is specified,
+  the syntax highlighting language from the file extension will be automatically selected.
+
+SYNTAX:
+  {{<alert "[tip|important|warning|info]">}}
+
+EXAMPLE:
+  {{<alert "tip">}}
+*/ -}}
+
+{{ $type := (.Get 0) }}
+
 {{ $icon := "fas fa-sticky-note" }}
-{{ if (eq ($type) "success") }}{{ $icon = "fas fa-lightbulb" }}{{ end }}
-{{ if (eq ($type) "danger") }}{{ $icon = "fas fa-ban" }}{{ end }}
-{{ if (eq ($type) "warning") }}{{ $icon = "fas fa-exclamation-triangle" }}{{ end }}
-{{ if (eq ($type) "info") }}{{ $icon = "fas fa-info" }}{{ end }}
+{{ $class := "primary" }}
+
+{{ if (eq ($type) ("tip")) }}
+    {{ $icon = "fas fa-lightbulb" }}
+    {{ $class = "success" }}
+{{ end }}
+
+{{ if (eq ($type) ("important")) }}
+    {{ $icon = "fas fa-exclamation-triangle" }}
+    {{ $class = "warning" }}
+{{ end }}
+
+{{ if (eq ($type) ("warning")) }}
+    {{ $icon = "fas fa-circle-radiation" }}
+    {{ $class = "danger" }}
+{{ end }}
+
+{{ if (eq ($type) ("info")) }}
+    {{ $icon = "fas fa-info" }}
+    {{ $class = "info" }}
+{{ end }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
-  <div class="alert alert-{{ ($type) }} d-flex overflow-hidden" role="alert">
+  <div class="alert alert-{{ ($class) }} d-flex overflow-hidden" role="alert">
     <div class="flex-shrink-0 align-self-center">
       <i class="{{ ($icon) }} fa-fw fa-2x"></i>
     </div>
