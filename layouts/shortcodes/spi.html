@@ -2,7 +2,7 @@
 
     {{- $text := (.Get 0) -}}
 
-    {{- $id := (printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 999)) "" | md5)) -}}
+    {{- $id := (printf "sc-%s-%s" ($.Name) ((delimit (shuffle (seq 11 99)) "") | md5)) -}}
 
     <span id="{{ ($id) }}" class="shortcode shortcode-{{ ($.Name) }}"><span class="d-inline"><i class="fas fa-question-circle fa-fw"></i></span><span class="d-none">{{ ($text) }}</span></span>
     {{- /* This comment removes trailing newlines. */ -}}

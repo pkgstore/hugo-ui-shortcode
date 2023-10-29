@@ -24,7 +24,7 @@ EXAMPLE:
     ) }}
 
     {{ $file = (getJSON ($api.gitlab.url) "/projects/" ($project) "/repository/files/" ($file) "?ref=" ($ref) "&ts=" ($ts) ($headers)) }}
-    {{ $cp := (printf "clipboard-%s" (delimit (shuffle (seq 999)) "" | md5)) }}
+    {{ $cp := (printf "clipboard-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="card overflow-hidden">
