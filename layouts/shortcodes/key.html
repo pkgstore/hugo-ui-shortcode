@@ -1,8 +1,8 @@
 {{- if (.Get 0) -}}
 
-    {{- $key := (delimit ((split (.Get 0) "|")) " + ") -}}
+    {{- $text := (delimit ((split (.Get 0) "|")) " + ") -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }}"><kbd>{{ ($key) }}</kbd></span>
+    <span class="shortcode shortcode-{{ ($.Name) }} d-inline-block"><kbd>{{ ($text) }}</kbd></span>
 
 {{- else -}}
 

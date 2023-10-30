@@ -1,0 +1,12 @@
+{{- if (.Get 0) -}}
+
+    {{- $text := (.Get 0) -}}
+    {{- $color := ((.Get 1) | default "primary") -}}
+
+    <span class="shortcode shortcode-{{ ($.Name) }} d-inline-block"><kbd class="bg-{{ ($color) }}">{{ ($text) }}</kbd></span>
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}
