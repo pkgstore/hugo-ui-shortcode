@@ -1,11 +1,11 @@
-{{ $title := ((.Get 0) | default "Spoiler") }}
+{{ $title := ((.Get 0) | default (printf "Spoiler #%d" (.Ordinal))) }}
 {{ $type := ((.Get 1) | default "primary") }}
 
 {{ $id := (printf "sc-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
   <p>
-    <a class="btn btn-{{ ($type) }} is-label" href="#" role="button" tabindex="0"
+    <a class="btn btn-{{ ($type) }}" href="#" role="button" tabindex="0"
        data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
        aria-label="{{ ($title) }}">
       <span>{{ ($title) }}</span>
