@@ -5,7 +5,7 @@
     {{ $pid := (printf "sc-%s" ((printf "%s-%d" (.Parent.Name) (.Parent.Ordinal)) | md5)) }}
     <div class="accordion-item">
       <div class="accordion-header">
-        <a class="accordion-button collapsed" href="#" role="button"
+        <a class="accordion-button collapsed" href="#" role="button" tabindex="0"
            data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
            aria-expanded="false" aria-controls="{{ ($id) }}" aria-label="{{ ($title) }}">
             {{ ($title) }}
