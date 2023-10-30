@@ -1,19 +1,37 @@
 {{ $title := ((.Get 0) | default (printf "Accordion Item #%d" (.Ordinal))) }}
-
 {{ $id := (printf "sc-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
-{{ $pid := (printf "sc-%s" ((printf "%s-%d" (.Parent.Name) (.Parent.Ordinal)) | md5)) }}
 
-<div class="accordion-item">
-  <div class="accordion-header">
-    <button class="accordion-button collapsed" type="button"
-            data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
-            aria-expanded="false" aria-controls="{{ ($id) }}">
-        {{ ($title) }}
-    </button>
-  </div>
-  <div class="accordion-collapse collapse" id="{{ ($id) }}" data-bs-parent="#{{ ($pid) }}">
-    <div class="accordion-body">
-        {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
+{{ if (and (ne (.Parent) nil) (eq (.Parent.Name) "accordion")) }}
+    {{ $pid := (printf "sc-%s" ((printf "%s-%d" (.Parent.Name) (.Parent.Ordinal)) | md5)) }}
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
+                aria-expanded="false" aria-controls="{{ ($id) }}">
+            {{ ($title) }}
+        </button>
+      </div>
+      <div class="accordion-collapse collapse" id="{{ ($id) }}" data-bs-parent="#{{ ($pid) }}">
+        <div class="accordion-body">
+            {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
+        </div>
+      </div>
+    </div>
+{{ else }}
+  <div class="accordion mb-3">
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button class="accordion-button collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
+                aria-expanded="false" aria-controls="{{ ($id) }}">
+            {{ ($title) }}
+        </button>
+      </div>
+      <div class="accordion-collapse collapse" id="{{ ($id) }}">
+        <div class="accordion-body">
+            {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
+        </div>
+      </div>
     </div>
   </div>
-</div>
+{{ end }}
