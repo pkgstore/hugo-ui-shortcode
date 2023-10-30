@@ -5,9 +5,11 @@
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
   <p>
-    <button type="button" class="btn btn-{{ ($type) }} is-label" data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}">
+    <a class="btn btn-{{ ($type) }} is-label" href="#" role="button"
+       data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
+       aria-label="{{ ($title) }}">
       <span>{{ ($title) }}</span>
-    </button>
+    </a>
   </p>
   <div class="collapse" id="{{ ($id) }}">
     <div class="card card-body mb-3">

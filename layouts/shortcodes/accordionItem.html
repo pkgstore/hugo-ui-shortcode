@@ -5,11 +5,12 @@
     {{ $pid := (printf "sc-%s" ((printf "%s-%d" (.Parent.Name) (.Parent.Ordinal)) | md5)) }}
     <div class="accordion-item">
       <div class="accordion-header">
-        <button class="accordion-button collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
-                aria-expanded="false" aria-controls="{{ ($id) }}">
+        <a class="accordion-button collapsed" href="#" role="button"
+           data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
+           aria-expanded="false" aria-controls="{{ ($id) }}"
+           aria-label="{{ ($title) }}">
             {{ ($title) }}
-        </button>
+        </a>
       </div>
       <div class="accordion-collapse collapse" id="{{ ($id) }}" data-bs-parent="#{{ ($pid) }}">
         <div class="accordion-body">
@@ -21,11 +22,12 @@
   <div class="accordion mb-3">
     <div class="accordion-item">
       <div class="accordion-header">
-        <button class="accordion-button collapsed" type="button"
-                data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
-                aria-expanded="false" aria-controls="{{ ($id) }}">
+        <a class="accordion-button collapsed" href="#" role="button"
+           data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
+           aria-expanded="false" aria-controls="{{ ($id) }}"
+           aria-label="{{ ($title) }}">
             {{ ($title) }}
-        </button>
+        </a>
       </div>
       <div class="accordion-collapse collapse" id="{{ ($id) }}">
         <div class="accordion-body">
