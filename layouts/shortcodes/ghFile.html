@@ -13,7 +13,7 @@ EXAMPLE:
 
     {{ $file := (.Get "file") }}
     {{ $ref := ((.Get "ref") | default "main") }}
-    {{ $lang := ((.Get "lang") | default "text") }}
+    {{ $lang := ((.Get "lang") | default "plaintext") }}
 
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
