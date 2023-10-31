@@ -58,7 +58,7 @@ EXAMPLE:
                 {{ if (eq (($lang) | len) 0) }}
                     {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
                 {{ end }}
-                {{ (highlight (.Content) ($lang)) }}
+                {{ (highlight ((.Content) | chomp) ($lang)) }}
             {{ end }}
         </div>
       </div>
