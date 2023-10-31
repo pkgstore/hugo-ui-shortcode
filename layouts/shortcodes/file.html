@@ -53,7 +53,7 @@ EXAMPLE:
             </div>
           </div>
         </div>
-          {{ $file = (path.Join ("content") ($.Page.File.Lang) ($.Page.File.Dir) ($file)) }}
+          {{ $file = (path.Join ("content") (.Page.File.Lang) (.Page.File.Dir) ($file)) }}
           {{ if (eq (($lang) | len) 0) }}
               {{ $lang = ((replace (path.Ext ($file)) "." "") | default "text") }}
           {{ end }}
