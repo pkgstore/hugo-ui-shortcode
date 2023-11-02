@@ -2,6 +2,7 @@
 
     {{- $uuid := (.Get 0) -}}
     {{- $text := (.Get 1) -}}
+
     {{- range (site.Pages.ByParam "uuid") -}}
         {{- if (eq (.Param "uuid") $uuid) -}}
           <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ (.RelPermalink) }}">{{ (($text) | default (.Title)) }}</a></span>
