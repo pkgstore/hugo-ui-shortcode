@@ -13,7 +13,7 @@ EXAMPLE:
 
     {{ $file := (.Get "file") }}
     {{ $ref := ((.Get "ref") | default "main") }}
-    {{ $lang := ((.Get "lang") | default "plaintext") }}
+    {{ $lang := (.Get "lang") }}
 
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
@@ -74,7 +74,12 @@ EXAMPLE:
             </div>
           </div>
         </div>
-        <div class="card-body" id="{{ ($cp) }}">{{ (highlight ((($file.content) | base64Decode) | chomp) ($lang)) }}</div>
+        <div class="card-body" id="{{ ($cp) }}">
+            {{ if (eq (($lang) | len) 0) }}
+                {{ $lang = ((replace (path.Ext (delimit ($data.Get "path") "/")) "." "") | default "plaintext") }}
+            {{ end }}
+            {{ (highlight ((($file.content) | base64Decode) | chomp) ($lang)) }}
+        </div>
       </div>
     </div>
 
