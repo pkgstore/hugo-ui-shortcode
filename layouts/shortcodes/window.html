@@ -3,14 +3,14 @@ DESCRIPTION:
   This shortcode allows you to create a simulation of an OS interface window.
 
 SYNTAX:
-  {{<window title="TEXT" icon="ICON" type="[primary|secondary|success|danger|warning|info|light|dark]">}}
+  {{< window title="TEXT" icon="ICON" type="[primary|secondary|success|danger|warning|info|light|dark]" >}}
   <TEXT>
-  {{</window>}}
+  {{< /window >}}
 
 EXAMPLE:
-  {{<window title="Hello World!" icon="fas fa-computer">}}
+  {{< window title="Hello World!" icon="fas fa-computer" >}}
   Application failed to start because no Qt platform plugin could be initialized.
-  {{</window>}}
+  {{< /window >}}
 */ -}}
 
 {{ $title := ((.Get "title") | default (i18n "sc.window.title")) }}

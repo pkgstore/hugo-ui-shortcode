@@ -3,10 +3,10 @@ DESCRIPTION:
   GitLab file content.
 
 SYNTAX:
-  {{<gl-file project="PROJECT_ID" file="FILE_PATH" ref="BRANCH / TAG / COMMIT" lang="LANG">}}
+  {{< gl-file project="PROJECT_ID" file="FILE_PATH" ref="BRANCH / TAG / COMMIT" lang="LANG" >}}
 
 EXAMPLE:
-  {{<gl-file project="278964" file="README.md" ref="master" lang="md">}}
+  {{< gl-file project="278964" file="README.md" ref="master" lang="md" >}}
 */ -}}
 
 {{- if (.IsNamedParams) -}}

@@ -3,14 +3,14 @@ DESCRIPTION:
   Notes in article.
 
 SYNTAX:
-  {{<alert "[tip|important|warning|info]">}}
+  {{< alert "[tip|important|warning|info]" >}}
     ALERT_TEXT
-  {{</alert>}}
+  {{< /alert >}}
 
 EXAMPLE:
-  {{<alert "tip">}}
+  {{< alert "tip" >}}
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in egestas lacus, sed faucibus augue.
-  {{</alert>}}
+  {{< /alert >}}
 */ -}}
 
 {{ $type := (.Get 0) }}
