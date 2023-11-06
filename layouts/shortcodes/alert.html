@@ -18,22 +18,22 @@ EXAMPLE:
 {{ $icon := "fas fa-sticky-note" }}
 {{ $class := "primary" }}
 
-{{ if (eq ($type) ("tip")) }}
+{{ if (eq ($type) "tip") }}
     {{ $icon = "fas fa-lightbulb" }}
     {{ $class = "success" }}
 {{ end }}
 
-{{ if (eq ($type) ("important")) }}
+{{ if (eq ($type) "important") }}
     {{ $icon = "fas fa-exclamation-triangle" }}
     {{ $class = "warning" }}
 {{ end }}
 
-{{ if (eq ($type) ("warning")) }}
+{{ if (eq ($type) "warning") }}
     {{ $icon = "fas fa-circle-radiation" }}
     {{ $class = "danger" }}
 {{ end }}
 
-{{ if (eq ($type) ("info")) }}
+{{ if (eq ($type) "info") }}
     {{ $icon = "fas fa-info" }}
     {{ $class = "info" }}
 {{ end }}

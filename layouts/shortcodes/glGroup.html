@@ -27,7 +27,7 @@ EXAMPLE:
 
               {{ $group := (getJSON ($api.gitlab.url) "/groups/" . "?with_projects=0&ts=" ($ts) ($headers)) }}
 
-              {{ if (eq ($group.visibility) ("public")) }}
+              {{ if (eq ($group.visibility) "public") }}
 
                 <div class="col">
                   <div class="card">
