@@ -1,13 +1,14 @@
 {{- /*
-DESCRIPTION:
-  This shortcode allows you to create a simulation of an OS interface window.
+This shortcode allows you to create a simulation of an OS interface window.
 
-SYNTAX:
-  {{< window title="TEXT" icon="ICON" type="[primary|secondary|success|danger|warning|info|light|dark]" >}}
-  <TEXT>
-  {{< /window >}}
+@param {string} title Window title.
+@param {string} icon Window icon.
+@param {string} type [primary|secondary|success|danger|warning|info|light|dark] Window type.
 
-EXAMPLE:
+@returns {template.HTML}
+
+@examples
+
   {{< window title="Hello World!" icon="fas fa-computer" >}}
   Application failed to start because no Qt platform plugin could be initialized.
   {{< /window >}}
@@ -16,8 +17,15 @@ EXAMPLE:
 {{ $title := ((.Get "title") | default (i18n "sc.window.title")) }}
 {{ $icon := ((.Get "icon") | default "fas fa-computer") }}
 {{ $type := (.Get "type") }}
+{{ $types := (slice "primary" "secondary" "success" "danger" "warning" "info" "light" "dark") }}
 
-{{ with $type }}{{ $type = printf "text-bg-%s" . }}{{ end }}
+{{ with ($type) }}
+    {{ if (not (in ($types) .)) }}
+        {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
+    {{ end }}
+{{ end }}
+
+{{ with ($type) }}{{ $type = (printf "text-bg-%s" .) }}{{ end }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
   <div class="card {{ ($type) }} mb-3 overflow-hidden">

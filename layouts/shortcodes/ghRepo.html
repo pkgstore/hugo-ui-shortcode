@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitHub repository.
+GitHub repository.
 
-SYNTAX:
-  {{< gh-repo "REPO_PATH_01|REPO_PATH_02|REPO_PATH_03" >}}
+@param {string} (positional parameter 0) Repository name on GitHub.
 
-EXAMPLE:
-  {{< gh-repo "github/docs" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< ghRepo "github/docs" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

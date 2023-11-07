@@ -1,9 +1,27 @@
+{{- /*
+@param {string} (positional parameter 0) Button title.
+@param {string} (positional parameter 1) Button CSS class.
+
+@returns {template.HTML}
+
+@examples
+
+{{< btn "Example Button" "danger" >}}
+*/ -}}
+
 {{- if (.Get 0) -}}
 
     {{- $text := (.Get 0) -}}
-    {{- $color := ((.Get 1) | default "primary") -}}
+    {{- $type := ((.Get 1) | default "primary") -}}
+    {{- $types := (slice "primary" "secondary" "success" "danger" "warning" "info" "light" "dark") -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }} d-inline-block"><kbd class="bg-{{ ($color) }}">{{ ($text) }}</kbd></span>
+    {{- with ($type) -}}
+        {{- if (not (in ($types) .)) -}}
+            {{- (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) -}}
+        {{- end -}}
+    {{- end -}}
+
+    <span class="shortcode shortcode-{{ ($.Name) }} d-inline-block"><kbd class="bg-{{ ($type) }}">{{ ($text) }}</kbd></span>
 
 {{- else -}}
 

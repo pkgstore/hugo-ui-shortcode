@@ -1,12 +1,16 @@
 {{- /*
-DESCRIPTION:
-  GitLab file content.
+GitLab file content.
 
-SYNTAX:
-  {{< gl-file project="PROJECT_ID" file="FILE_PATH" ref="BRANCH / TAG / COMMIT" lang="LANG" >}}
+@param {string} project Project ID on GitLab.
+@param {string} file Path to file on GitLab.
+@param {string} ref Branch, tag or commit.
+@param {string} lang Syntax highlighting. If not specified, the syntax is determined by the file extension.
 
-EXAMPLE:
-  {{< gl-file project="278964" file="README.md" ref="master" lang="md" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< glFile project="278964" file="README.md" ref="master" lang="md" >}}
 */ -}}
 
 {{- if (.IsNamedParams) -}}

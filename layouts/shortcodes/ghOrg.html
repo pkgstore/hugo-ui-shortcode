@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitHub organization.
+GitHub organization.
 
-SYNTAX:
-  {{< gh-org "ORG_NAME_01|ORG_NAME_02|ORG_NAME_03" >}}
+@param {string} (positional parameter 0) Organization name on GitHub.
 
-EXAMPLE:
-  {{< gh-org "github" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< ghOrg "github" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

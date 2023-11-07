@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitHub user organizations.
+GitHub user organizations.
 
-SYNTAX:
-  {{< gh-user-org "USER_NAME_01|USER_NAME_02|USER_NAME_03" >}}
+@param {string} (positional parameter 0) User organizations on GitHub.
 
-EXAMPLE:
-  {{< gh-user-org "octocat" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< ghUserOrg "octocat" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

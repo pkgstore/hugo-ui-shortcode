@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitLab user.
+GitLab user.
 
-SYNTAX:
-  {{< gl-user "USER_ID_01|USER_ID_02|USER_ID_03" >}}
+@param {string} (positional parameter 0) User name on GitLab.
 
-EXAMPLE:
-  {{< gl-user "2363093" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< glUser "2363093" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

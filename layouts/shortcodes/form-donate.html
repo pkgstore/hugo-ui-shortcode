@@ -1,24 +1,23 @@
 {{- /*
-DESCRIPTION:
-  Donation form.
+Donation form.
 
-SYNTAX:
-  {{< form-donate
-  wallet="WALLET_YOOMONEY"
-  paypal="PAYPAL_USERNAME"
-  patreon="PATREON_USERNAME"
-  liberapay="LIBERAPAY_USERNAME"
-  ko-fi="KO-FI_USERNAME"
-  buymeacoffee="BUYMEACOFFEE_USERNAME"
-  usd="BANK_CARD_USD"
-  eur="BANK_CARD_EUR"
-  rub="BANK_CARD_RUB"
-  btc="WALLET_BTC"
-  eth="WALLET_ETC"
-  xmr="WALLET_XMR" >}}
+@param {string} wallet YooMoney wallet.
+@param {string} paypal PayPal user name.
+@param {string} patreon Patreon user name.
+@param {string} liberapay Liberapay user name.
+@param {string} ko-fi KO-FI user name.
+@param {string} buymeacoffee Buy Me a Coffee user name.
+@param {string} usd USD bank card.
+@param {string} eur EUR bank card.
+@param {string} rub RUB bank card.
+@param {string} btc BTC wallet.
+@param {string} eth ETH wallet.
+@param {string} xmr XMR wallet.
 
+@returns {template.HTML}
 
-EXAMPLE:
+@examples
+
   {{< form-donate
   wallet="0000000000000000"
   paypal="pp_username"
@@ -32,7 +31,6 @@ EXAMPLE:
   btc="bc1q855dt7p8mtd74yw96vvu93wy59j0fl8gaqh62h"
   eth="0x7252D91B61E18eDE4c8ec43a0EE7F1dFD17542ab"
   xmr="48Q1zEztoECNyijSoQVhHC12LaxzNLPrhBgwGdM2847QY8ayusQ6XBjCD9hgeQk2LLUKbBvC5yKxDDmzkGvGyMGE9o95YkR" >}}
-
 */ -}}
 
 {{- if (.IsNamedParams) -}}

@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitLab repository.
+GitLab repository.
 
-SYNTAX:
-  {{< gl-repo "PROJECT_ID_01|PROJECT_ID_02|PROJECT_ID_03" >}}
+@param {string} (positional parameter 0) Repository name on GitLab.
 
-EXAMPLE:
-  {{< gl-repo "278964" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< glRepo "278964" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

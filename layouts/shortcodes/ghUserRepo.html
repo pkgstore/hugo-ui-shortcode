@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitHub user repositories.
+GitHub user repositories.
 
-SYNTAX:
-  {{< gh-user-repo "USER_NAME_01|USER_NAME_02|USER_NAME_03" >}}
+@param {string} (positional parameter 0) User repositories on GitHub.
 
-EXAMPLE:
-  {{< gh-user-repo "octocat" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< ghUserRepo "octocat" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

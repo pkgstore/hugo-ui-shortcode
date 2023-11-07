@@ -1,12 +1,13 @@
 {{- /*
-DESCRIPTION:
-  GitHub user.
+GitHub user.
 
-SYNTAX:
-  {{< gh-user "USER_NAME_01|USER_NAME_02|USER_NAME_03" >}}
+@param {string} (positional parameter 0) User name on GitHub.
 
-EXAMPLE:
-  {{< gh-user "octocat" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< ghUser "octocat" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

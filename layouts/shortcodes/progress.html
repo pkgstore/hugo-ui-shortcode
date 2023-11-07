@@ -1,7 +1,18 @@
+{{- /*
+
+*/ -}}
+
 {{ $size := ((.Get 0) | default "10") }}
 {{ $type := ((.Get 1) | default "primary") }}
+{{ $types := (slice "success" "info" "warning" "danger") }}
 
 {{ if (gt ($size) 100) }}{{ $size = "100" }}{{ end }}
+
+{{ with ($type) }}
+    {{ if (not (in ($types) .)) }}
+        {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
+    {{ end }}
+{{ end }}
 
 <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
   <div class="progress" role="progressbar" aria-valuenow="{{ ($size) }}" aria-valuemin="0" aria-valuemax="100">

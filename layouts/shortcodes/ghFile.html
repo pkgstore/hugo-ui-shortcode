@@ -1,12 +1,15 @@
 {{- /*
-DESCRIPTION:
-  GitHub file content.
+GitHub file content.
 
-SYNTAX:
-  {{< gh-file file="FILE_PATH" ref="[BRANCH|TAG|COMMIT]" lang="LANG" >}}
+@param {string} file Path to file on GitHub.
+@param {string} ref Branch, tag or commit.
+@param {string} lang Syntax highlighting. If not specified, the syntax is determined by the file extension.
 
-EXAMPLE:
-  {{< gh-file file="github/docs/README.md" lang="md" >}}
+@returns {template.HTML}
+
+@examples
+
+  {{< ghFile file="github/docs/README.md" lang="md" >}}
 */ -}}
 
 {{- if (.IsNamedParams) -}}

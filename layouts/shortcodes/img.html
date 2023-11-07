@@ -1,35 +1,24 @@
 {{- /*
-Inserting image from Imgur.
+Inserting image from URL.
 
-@param {string} name Image name on Imgur.
-@param {string} size [t|m|l|h] Image size on Imgur.
+@param {string} src The path to the image which must be a remote, page, or global resource.
 @param {string} align [left|right|center] Image align.
 
 @returns {template.HTML}
 
 @examples
 
-  {{< imgur name="Yhim15t.jpeg" />}}
+  {{< img src="https://example.com/image.png" />}}
 
-  {{< imgur name="Yhim15t.jpeg" >}}Image caption.{{< /imgur >}}
-
-  {{< imgur name="Yhim15t.jpeg" size="m" align="right" >}}Image caption.{{< /imgur >}}
+  {{< img src="https://example.com/image.png" >}}Image caption.{{< /img >}}
 */ -}}
 
-{{- if (.IsNamedParams) -}}
+{{- if (.Get 0) -}}
 
-    {{ $file := (.Get "name") }}
-    {{ $size := (.Get "size") }}
-    {{ $sizes := (slice "t" "m" "l" "h") }}
+    {{ $file := (.Get "src") }}
     {{ $align := (.Get "align") }}
     {{ $aligner := (slice "left" "right" "center") }}
     {{ $caption := ((.Inner) | markdownify) }}
-
-    {{ with ($size) }}
-        {{ if (not (in ($sizes) .)) }}
-            {{ (errorf "The size passed to the %q shortcode is invalid. The size must be one of %s. See %s." ($.Name) (delimit ($sizes) ", " ", or ") ($.Position)) }}
-        {{ end }}
-    {{ end }}
 
     {{ with ($align) }}
         {{ if (not (in ($aligner) .)) }}
@@ -37,20 +26,15 @@ Inserting image from Imgur.
         {{ end }}
     {{ end }}
 
-    {{ $img := (replace ($file) (path.Ext ($file)) (print $size (path.Ext ($file)))) }}
-
     {{ if (eq ($align) "right") }}{{ $align = "float-end ms-3" }}{{ end }}
     {{ if (eq ($align) "left") }}{{ $align = "float-start me-3" }}{{ end }}
     {{ if (eq ($align) "center") }}{{ $align = "d-flex justify-content-center" }}{{ end }}
 
-    {{ $class := "img-fluid rounded" }}
-    {{ with $size }}{{ $class = "img-fluid img-thumbnail" }}{{ end }}
-
     <div class="shortcode shortcode-{{ ($.Name) }} {{ ($align) }}">
       <figure class="figure">
-        <a title="{{ ($caption) }}" class="d-block" href="https://i.imgur.com/{{ ($file) }}"
+        <a title="{{ ($caption) }}" class="d-block" href="{{ ($file) }}"
            rel="noopener nofollow" data-fancybox="gallery" data-caption="{{ ($caption) }}">
-          <img class="figure-img {{ ($class) }}" src="https://i.imgur.com/{{ ($img) }}" alt="{{ ($img) }}" loading="lazy"/>
+          <img class="figure-img img-fluid rounded" src="{{ ($file) }}" alt="{{ ($file) }}" loading="lazy"/>
         </a>
           {{ with ($caption) }}
             <figcaption class="figure-caption">{{ . }}</figcaption>

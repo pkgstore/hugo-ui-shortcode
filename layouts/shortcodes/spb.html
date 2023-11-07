@@ -1,5 +1,16 @@
+{{- /*
+
+*/ -}}
+
 {{ $title := ((.Get 0) | default (printf "Spoiler #%d" (.Ordinal))) }}
 {{ $type := ((.Get 1) | default "primary") }}
+{{ $types := (slice "primary" "secondary" "success" "danger" "warning" "info" "light" "dark") }}
+
+{{ with ($type) }}
+    {{ if (not (in ($types) .)) }}
+        {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
+    {{ end }}
+{{ end }}
 
 {{ $id := (printf "sc-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 

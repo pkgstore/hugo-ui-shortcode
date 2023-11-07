@@ -1,13 +1,14 @@
 {{- /*
-DESCRIPTION:
-  Including file contents in article.
-  If no syntax highlighting language is specified,
-  the syntax highlighting language from the file extension will be automatically selected.
+Including file contents in article. If no syntax highlighting language is specified,
+the syntax highlighting language from the file extension will be automatically selected.
 
-SYNTAX:
-  {{< file "FILE_PATH" "LANG" >}}
+@param {string} (positional parameter 0) File path.
+@param {string} (positional parameter 1) Syntax highlighting. If not specified, the syntax is determined by the file extension.
 
-EXAMPLE:
+@returns {template.HTML}
+
+@examples
+
   {{< file "README.md" "md" >}}
 */ -}}
 

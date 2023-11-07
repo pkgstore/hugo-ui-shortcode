@@ -1,45 +1,51 @@
 {{- /*
-DESCRIPTION:
-  Notes in article.
+Notes in article.
 
-SYNTAX:
-  {{< alert "[tip|important|warning|info]" >}}
-    ALERT_TEXT
-  {{< /alert >}}
+@param {string} (positional parameter 0) [tip|important|warning|info]
 
-EXAMPLE:
+@returns {template.HTML}
+
+@examples
+
   {{< alert "tip" >}}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in egestas lacus, sed faucibus augue.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in egestas lacus, sed faucibus augue.
   {{< /alert >}}
 */ -}}
 
 {{ $type := (.Get 0) }}
+{{ $types := (slice "tip" "important" "warning" "info") }}
+
+{{ with ($type) }}
+    {{ if (not (in ($types) .)) }}
+        {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
+    {{ end }}
+{{ end }}
 
 {{ $icon := "fas fa-sticky-note" }}
-{{ $class := "primary" }}
+{{ $css := "primary" }}
 
 {{ if (eq ($type) "tip") }}
     {{ $icon = "fas fa-lightbulb" }}
-    {{ $class = "success" }}
+    {{ $css = "success" }}
 {{ end }}
 
 {{ if (eq ($type) "important") }}
     {{ $icon = "fas fa-exclamation-triangle" }}
-    {{ $class = "warning" }}
+    {{ $css = "warning" }}
 {{ end }}
 
 {{ if (eq ($type) "warning") }}
     {{ $icon = "fas fa-circle-radiation" }}
-    {{ $class = "danger" }}
+    {{ $css = "danger" }}
 {{ end }}
 
 {{ if (eq ($type) "info") }}
     {{ $icon = "fas fa-info" }}
-    {{ $class = "info" }}
+    {{ $css = "info" }}
 {{ end }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
-  <div class="alert alert-{{ ($class) }} d-flex overflow-hidden" role="alert">
+  <div class="alert alert-{{ ($css) }} d-flex overflow-hidden" role="alert">
     <div class="flex-shrink-0 align-self-center">
       <i class="{{ ($icon) }} fa-fw fa-2x"></i>
     </div>
