@@ -1,13 +1,27 @@
 {{- /*
+@param {string} (positional parameter 0) Style name in Font Awesome.
+@param {string} (positional parameter 1) Icon name in Font Awesome.
 
+@returns {template.HTML}
+
+@examples
+
+  {{< icon "fas" "fa-check" >}}
 */ -}}
 
 {{- if (and (.Get 0) (.Get 1)) -}}
 
-    {{- $pack := (.Get 0) -}}
+    {{- $style := (.Get 0) -}}
+    {{- $styles := (slice "fab" "far" "fas") -}}
     {{- $icon := (.Get 1) -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }}"><i class="{{ ($pack) }} fa-{{ ($icon) }} fa-fw me-1"></i></span>
+    {{- with ($style) -}}
+        {{- if (not (in ($styles) .)) -}}
+            {{- (errorf "The style passed to the %q shortcode is invalid. The style must be one of %s. See %s." ($.Name) (delimit ($styles) ", " ", or ") ($.Position)) -}}
+        {{- end -}}
+    {{- end -}}
+
+    <span class="shortcode shortcode-{{ ($.Name) }}"><i class="{{ ($style) }} fa-{{ ($icon) }} fa-fw"></i></span>
 
 {{- else -}}
 

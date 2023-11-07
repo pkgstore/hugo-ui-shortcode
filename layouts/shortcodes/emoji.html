@@ -1,5 +1,11 @@
 {{- /*
+@param {string} (positional parameter 0) Emoji ID.
 
+@returns {template.HTML}
+
+@examples
+
+  {{< emoji "smile" >}}
 */ -}}
 
 {{- $id := ((.Get 0) | default "smile") -}}

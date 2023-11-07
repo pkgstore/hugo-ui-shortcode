@@ -1,3 +1,14 @@
+{{- /*
+@param {string} (positional parameter 0) Abbreviation.
+@param {string} (positional parameter 1) Expanded version of abbreviation.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< abbr "HTML" "HyperText Markup Language" >}}
+*/ -}}
+
 {{- if (and (.Get 0) (.Get 1)) -}}
 
     {{- $abbr := (.Get 0) -}}

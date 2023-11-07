@@ -1,5 +1,15 @@
 {{- /*
+@param {string} (positional parameter 0) Spoiler title.
+@param {string} (positional parameter 1) Spoiler type.
 
+@returns {template.HTML}
+
+@examples
+
+  {{< spb "Spoiler" "danger" >}}
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vehicula vel neque id vestibulum.
+  Nulla cursus, nisl sed fermentum iaculis, urna arcu mollis mi, non fringilla turpis nisl vitae eros.
+  {{< /spb >}}
 */ -}}
 
 {{ $title := ((.Get 0) | default (printf "Spoiler #%d" (.Ordinal))) }}

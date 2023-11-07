@@ -1,3 +1,7 @@
+{{- /*
+
+*/ -}}
+
 {{ $id := (printf "sc-%s" ((printf "%s-%d" (.Name) (.Ordinal)) | md5)) }}
 
 <div class="accordion mb-3" id="{{ ($id) }}">

@@ -1,5 +1,12 @@
 {{- /*
+@param {string} (positional parameter 0) Title of the Wikipedia article.
+@param {string} (positional parameter 1) Language of the Wikipedia article.
 
+@returns {template.HTML}
+
+@examples
+
+  {{< wiki "Gravitational singularity" "en" >}}
 */ -}}
 
 {{- if (.Get 0) -}}

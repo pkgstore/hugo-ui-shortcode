@@ -1,21 +1,38 @@
 {{- /*
+Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
 
+@param {string} (positional parameter 0) Specifies how much of the task that has been completed.
+@param {string} (positional parameter 1) Type of progress indicator.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< progress "42" "warning" >}}
 */ -}}
 
-{{ $size := ((.Get 0) | default "10") }}
-{{ $type := ((.Get 1) | default "primary") }}
-{{ $types := (slice "success" "info" "warning" "danger") }}
+{{ if (and (.Get 0) (.Get 1)) }}
 
-{{ if (gt ($size) 100) }}{{ $size = "100" }}{{ end }}
+    {{ $size := ((.Get 0) | default "10") }}
+    {{ $type := ((.Get 1) | default "primary") }}
+    {{ $types := (slice "success" "info" "warning" "danger") }}
 
-{{ with ($type) }}
-    {{ if (not (in ($types) .)) }}
-        {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
+    {{ if (gt ($size) 100) }}{{ $size = "100" }}{{ end }}
+
+    {{ with ($type) }}
+        {{ if (not (in ($types) .)) }}
+            {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
+        {{ end }}
     {{ end }}
-{{ end }}
 
-<div class="shortcode shortcode-{{ ($.Name) }} mb-3">
-  <div class="progress" role="progressbar" aria-valuenow="{{ ($size) }}" aria-valuemin="0" aria-valuemax="100">
-    <div class="progress-bar bg-{{ ($type) }}" style="width: {{ ($size) }}%;">{{ ($size) }}%</div>
-  </div>
-</div>
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <div class="progress" role="progressbar" aria-valuenow="{{ ($size) }}" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar bg-{{ ($type) }}" style="width: {{ ($size) }}%;">{{ ($size) }}%</div>
+      </div>
+    </div>
+
+{{ else }}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{ end }}

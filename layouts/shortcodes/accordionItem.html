@@ -1,3 +1,7 @@
+{{- /*
+
+*/ -}}
+
 {{ $title := ((.Get 0) | default (printf "Accordion Item #%d" (.Ordinal))) }}
 {{ $id := (printf "sc-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 

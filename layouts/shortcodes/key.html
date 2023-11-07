@@ -1,5 +1,11 @@
 {{- /*
+@param {string} (positional parameter 0) Key name.
 
+@returns {template.HTML}
+
+@examples
+
+  {{< key "CTRL|ALT|DEL" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
