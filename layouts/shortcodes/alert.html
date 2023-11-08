@@ -12,8 +12,8 @@ Notes in article.
   {{< /alert >}}
 */ -}}
 
-{{ $type := (.Get 0) }}
-{{ $types := (slice "tip" "important" "warning" "info") }}
+{{ $type := ((.Get 0) | default "default") }}
+{{ $types := (slice "default" "important" "info" "tip" "warning") }}
 
 {{ with ($type) }}
     {{ if (not (in ($types) .)) }}
