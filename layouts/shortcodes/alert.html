@@ -24,9 +24,9 @@ Notes in article.
 {{ $icon := "fas fa-sticky-note" }}
 {{ $css := "primary" }}
 
-{{ if (eq ($type) "tip") }}
-    {{ $icon = "fas fa-lightbulb" }}
-    {{ $css = "success" }}
+{{ if (eq ($type) "info") }}
+    {{ $icon = "fas fa-info" }}
+    {{ $css = "info" }}
 {{ end }}
 
 {{ if (eq ($type) "important") }}
@@ -34,14 +34,14 @@ Notes in article.
     {{ $css = "warning" }}
 {{ end }}
 
+{{ if (eq ($type) "tip") }}
+    {{ $icon = "fas fa-lightbulb" }}
+    {{ $css = "success" }}
+{{ end }}
+
 {{ if (eq ($type) "warning") }}
     {{ $icon = "fas fa-circle-radiation" }}
     {{ $css = "danger" }}
-{{ end }}
-
-{{ if (eq ($type) "info") }}
-    {{ $icon = "fas fa-info" }}
-    {{ $css = "info" }}
 {{ end }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
