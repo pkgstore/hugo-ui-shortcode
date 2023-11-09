@@ -13,7 +13,6 @@
     {{- $user := (.Get 0) -}}
     {{- $url := (($user) | urlize) -}}
     {{- $taxonomy := "authors" -}}
-
     {{- $page := (site.GetPage (printf "/%s/%s" ($taxonomy) ($url))) -}}
     {{- $name := ($page.Title | default (($user) | markdownify)) -}}
 

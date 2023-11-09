@@ -13,7 +13,6 @@
 
     {{ $title := (.Get 0) }}
     {{ $lang := ((.Get 1) | default "ru") }}
-
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
     "User-Agent" (site.Params.api.user_agent)
@@ -24,7 +23,6 @@
     {{ $data := (getJSON "https://" ($lang) ".wikipedia.org/w/api.php?" ($api) "&" ($extracts) "&redirects=1&titles=" (($title) | urlquery) "&ts=" ($ts) ($headers)) }}
 
     {{ range ($data.query.pages) }}
-
       <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
         <div class="card">
           <div class="card-header">
@@ -54,7 +52,6 @@
           </div>
         </div>
       </div>
-
     {{ end }}
 
 {{- else -}}

@@ -12,8 +12,7 @@ GitHub user repositories.
 
 {{- if (.Get 0) -}}
 
-    {{ $users_repos := (split (.Get 0) "|") }}
-
+    {{ $usersRepos := (split (.Get 0) "|") }}
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
@@ -23,15 +22,10 @@ GitHub user repositories.
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
-
-          {{ range ($users_repos) }}
-
+          {{ range ($usersRepos) }}
               {{ $repos := (getJSON ($api.github.url) "/users/" . "/repos" "?ts=" ($ts) ($headers)) }}
-
               {{ range ($repos) }}
-
                   {{ $owner := (getJSON (.owner.url) "?ts=" ($ts) ($headers)) }}
-
                   <div class="col">
                     <div class="card">
                       <div class="row g-0">
@@ -97,11 +91,8 @@ GitHub user repositories.
                       </div>
                     </div>
                   </div>
-
               {{ end }}
-
           {{ end }}
-
       </div>
     </div>
 

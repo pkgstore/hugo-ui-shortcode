@@ -17,7 +17,6 @@ GitHub file content.
     {{ $file := (.Get "file") }}
     {{ $ref := ((.Get "ref") | default "main") }}
     {{ $lang := (.Get "lang") }}
-
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict

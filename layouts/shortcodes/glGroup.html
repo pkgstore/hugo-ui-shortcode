@@ -13,7 +13,6 @@ GitLab group.
 {{- if (.Get 0) -}}
 
     {{ $groups := (split (.Get 0) "|") }}
-
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
@@ -23,13 +22,9 @@ GitLab group.
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
-
           {{ range ($groups) }}
-
               {{ $group := (getJSON ($api.gitlab.url) "/groups/" . "?with_projects=0&ts=" ($ts) ($headers)) }}
-
               {{ if (eq ($group.visibility) "public") }}
-
                 <div class="col">
                   <div class="card">
                     <div class="row g-0">
@@ -59,11 +54,8 @@ GitLab group.
                     </div>
                   </div>
                 </div>
-
               {{ end }}
-
           {{ end }}
-
       </div>
     </div>
 

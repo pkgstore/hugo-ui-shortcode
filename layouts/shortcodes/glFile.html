@@ -19,7 +19,6 @@ GitLab file content.
     {{ $file := (.Get "file") }}
     {{ $ref := ((.Get "ref") | default "main") }}
     {{ $lang := ((.Get "lang") | default "plaintext") }}
-
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict

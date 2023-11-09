@@ -13,7 +13,6 @@ GitLab user.
 {{- if (.Get 0) -}}
 
     {{ $users := (split (.Get 0) "|") }}
-
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
@@ -23,15 +22,12 @@ GitLab user.
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
-
           {{ range ($users) }}
-
               {{ $user := (getJSON ($api.gitlab.url) "/users/" . "?ts=" ($ts) ($headers)) }}
-
               <div class="col">
                 <div class="card">
                   <div class="row g-0">
-                    <!--
+                      {{- /*
                       {{ if ($user.avatar_url) }}
                         <div class="col-md-4 p-1">
                           <a class="d-inline-block" href="{{ ($user.web_url) }}" target="_blank" rel="noopener nofollow">
@@ -41,7 +37,7 @@ GitLab user.
                           </a>
                         </div>
                       {{ end }}
-                      -->
+                      */ -}}
                     <div class="col">
                       <div class="card-body h-100">
                         <div class="d-flex flex-column h-100">
@@ -110,9 +106,7 @@ GitLab user.
                   </div>
                 </div>
               </div>
-
           {{ end }}
-
       </div>
     </div>
 

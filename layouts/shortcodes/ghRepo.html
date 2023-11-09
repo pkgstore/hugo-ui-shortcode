@@ -13,7 +13,6 @@ GitHub repository.
 {{- if (.Get 0) -}}
 
     {{ $repos := (split (.Get 0) "|") }}
-
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
@@ -23,12 +22,9 @@ GitHub repository.
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
-
           {{ range ($repos) }}
-
               {{ $repo := (getJSON ($api.github.url) "/repos/" . "?ts=" ($ts) ($headers)) }}
               {{ $owner := (getJSON ($repo.owner.url) "?ts=" ($ts) ($headers)) }}
-
               <div class="col">
                 <div class="card">
                   <div class="row g-0">
@@ -102,9 +98,7 @@ GitHub repository.
                   </div>
                 </div>
               </div>
-
           {{ end }}
-
       </div>
     </div>
 

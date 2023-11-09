@@ -1,0 +1,79 @@
+{{- /*
+@param {string} (positional parameter 0) Resource UUID.
+@param {string} (positional parameter 1) File name.
+@param {string} (positional parameter 2) Syntax highlighting. If not specified, the syntax is determined by the file extension.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< resource "57a61c3d-b2ef-51c9-9fe0-cced0cf0e53c" "bash.openssl.ca.sh" >}}
+
+  {{< resource "57a61c3d-b2ef-51c9-9fe0-cced0cf0e53c" "bash.openssl.ca.sh" "sh" >}}
+*/ -}}
+
+{{- if (and (.Get 0) (.Get 1)) -}}
+
+    {{ $uuid := (.Get 0) }}
+    {{ $file := (.Get 1) }}
+    {{ $lang := (.Get 2) }}
+
+    {{ range (site.Pages.ByParam "uuid") }}
+        {{ if (eq (.Param "uuid") $uuid) }}
+            {{ $resURL := (.RelPermalink) }}
+            {{ with (.Resources.Match ($file)) }}
+                {{ range . }}
+                    {{ $cp := (printf "clipboard-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
+                    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+                      <div class="card overflow-hidden">
+                        <div class="card-header">
+                          <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                              <i class="far fa-file-code fa-fw"></i>
+                            </div>
+                            <div class="flex-grow-1 mx-2">
+                              <code>{{ (.Name) }}</code>
+                            </div>
+                            <div class="flex-shrink-0">
+                              <ul class="list-inline mb-0">
+                                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.copy") }}'>
+                                  <a class="text-body" href="#"
+                                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
+                                     role="button" aria-label='{{ (i18n "sc.file.copy") }}'>
+                                    <i class="fas fa-copy fa-fw"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.download") }}'>
+                                  <a class="text-body" href="{{ (.RelPermalink) }}" download
+                                     role="button" aria-label='{{ (i18n "sc.file.download") }}'>
+                                    <i class="fas fa-download fa-fw"></i>
+                                  </a>
+                                </li>
+                                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.link") }}'>
+                                  <a class="text-body" href="{{ ($resURL) }}" target="_blank"
+                                     role="button" aria-label='{{ (i18n "sc.file.link") }}'>
+                                    <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body" id="{{ ($cp) }}">
+                            {{ if (eq (($lang) | len) 0) }}
+                                {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
+                            {{ end }}
+                            {{ (highlight ((.Content) | chomp) ($lang)) }}
+                        </div>
+                      </div>
+                    </div>
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

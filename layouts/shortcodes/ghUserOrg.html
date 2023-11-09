@@ -12,8 +12,7 @@ GitHub user organizations.
 
 {{- if (.Get 0) -}}
 
-    {{ $users_orgs := (split (.Get 0) "|") }}
-
+    {{ $usersOrgs := (split (.Get 0) "|") }}
     {{ $api := (site.Params.api) }}
     {{ $ts := (now.Unix) }}
     {{ $headers := (dict
@@ -23,15 +22,10 @@ GitHub user organizations.
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
-
-          {{ range ($users_orgs) }}
-
+          {{ range ($usersOrgs) }}
               {{ $orgs := (getJSON ($api.github.url) "/users/" . "/orgs" "?ts=" ($ts) ($headers)) }}
-
               {{ range ($orgs) }}
-
                   {{ $org := (getJSON ($api.github.url) "/orgs/" (.login) "?ts=" ($ts) ($headers)) }}
-
                   <div class="col">
                     <div class="card">
                       <div class="row g-0">
@@ -104,11 +98,8 @@ GitHub user organizations.
                       </div>
                     </div>
                   </div>
-
               {{ end }}
-
           {{ end }}
-
       </div>
     </div>
 
