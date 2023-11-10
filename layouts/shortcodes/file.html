@@ -19,7 +19,7 @@ the syntax highlighting language from the file extension will be automatically s
 
     {{ with ($.Page.Resources.Match ($file)) }}
         {{ range . }}
-            {{ $cp := (printf "clipboard-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
+            {{ $cp := ((printf "clipboard-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) }}
             <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
               <div class="card overflow-hidden">
                 <div class="card-header">
@@ -34,7 +34,7 @@ the syntax highlighting language from the file extension will be automatically s
                       <ul class="list-inline mb-0">
                         <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.copy") }}'>
                           <a class="text-body" href="#"
-                             data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
+                             data-fn="clipboard preventDefault" data-clipboard-target="#cp-{{ ($cp) }}"
                              role="button" aria-label='{{ (i18n "sc.file.copy") }}'>
                             <i class="fas fa-copy fa-fw"></i>
                           </a>
@@ -55,7 +55,7 @@ the syntax highlighting language from the file extension will be automatically s
                     </div>
                   </div>
                 </div>
-                <div class="card-body" id="{{ ($cp) }}">
+                <div class="card-body" id="cp-{{ ($cp) }}">
                     {{ if (eq (($lang) | len) 0) }}
                         {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
                     {{ end }}

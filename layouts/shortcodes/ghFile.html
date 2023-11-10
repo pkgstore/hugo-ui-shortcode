@@ -28,7 +28,7 @@ GitHub file content.
     {{ range ((split $file "/") | first 2) }}{{ ($data.Add "repo" (slice .)) }}{{ end }}
     {{ range ((split $file "/") | after 2) }}{{ ($data.Add "path" (slice .)) }}{{ end }}
     {{ $file = (getJSON ($api.github.url) "/repos/" (delimit ($data.Get "repo") "/") "/contents/" (delimit ($data.Get "path") "/") "?ref=" ($ref) "&ts=" ($ts) ($headers)) }}
-    {{ $cp := (printf "clipboard-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
+    {{ $cp := ((printf "clipboard-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="card overflow-hidden">
@@ -49,7 +49,7 @@ GitHub file content.
                   {{ end }}
                 <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
                   <a class="text-body" href="#"
-                     data-fn="clipboard preventDefault" data-clipboard-target="#{{ ($cp) }}"
+                     data-fn="clipboard preventDefault" data-clipboard-target="#cp-{{ ($cp) }}"
                      role="button" aria-label='{{ (i18n "sc.github.file.copy") }}'>
                     <i class="fas fa-copy fa-fw"></i>
                   </a>
@@ -76,7 +76,7 @@ GitHub file content.
             </div>
           </div>
         </div>
-        <div class="card-body" id="{{ ($cp) }}">
+        <div class="card-body" id="cp-{{ ($cp) }}">
             {{ if (eq (($lang) | len) 0) }}
                 {{ $lang = ((replace (path.Ext (delimit ($data.Get "path") "/")) "." "") | default "plaintext") }}
             {{ end }}
