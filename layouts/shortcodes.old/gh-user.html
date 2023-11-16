@@ -7,7 +7,7 @@ GitHub user.
 
 @examples
 
-  {{< ghUser "octocat" >}}
+  {{< gh-user "octocat" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -29,7 +29,7 @@ GitHub user.
                   <div class="row g-0">
                       {{ if ($user.avatar_url) }}
                         <div class="col-md-4 p-1">
-                          <a class="d-inline-block" href="{{ ($user.html_url) }}" target="_blank" rel="noopener nofollow">
+                          <a class="d-block" href="{{ ($user.html_url) }}" target="_blank" rel="noopener nofollow">
                             <img class="card-img"
                                  src="{{ ($user.avatar_url) }}"
                                  alt="{{ (($user.name) | default ($user.login)) }}" loading="lazy"/>

@@ -7,7 +7,7 @@ GitHub repository.
 
 @examples
 
-  {{< ghRepo "github/docs" >}}
+  {{< gh-repo "github/docs" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -30,7 +30,7 @@ GitHub repository.
                   <div class="row g-0">
                       {{ if ($repo.owner.avatar_url) }}
                         <div class="col-md-4 p-1">
-                          <a class="d-inline-block" href="{{ ($repo.html_url) }}" target="_blank" rel="noopener nofollow">
+                          <a class="d-block" href="{{ ($repo.html_url) }}" target="_blank" rel="noopener nofollow">
                             <img class="card-img"
                                  src="{{ ($repo.owner.avatar_url) }}"
                                  alt="{{ ($repo.name) }}" loading="lazy"/>

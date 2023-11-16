@@ -7,7 +7,7 @@ GitLab group.
 
 @examples
 
-  {{< glGroup "9970" >}}
+  {{< gl-group "9970" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -30,7 +30,7 @@ GitLab group.
                     <div class="row g-0">
                         {{ if ($group.avatar_url) }}
                           <div class="col-md-4 p-1">
-                            <a class="d-inline-block" href="{{ ($group.web_url) }}" target="_blank" rel="noopener nofollow">
+                            <a class="d-block" href="{{ ($group.web_url) }}" target="_blank" rel="noopener nofollow">
                               <img class="card-img"
                                    src="{{ ($group.avatar_url) }}"
                                    alt="{{ (($group.name) | default ($group.path)) }}" loading="lazy"/>

@@ -7,7 +7,7 @@ GitLab repository.
 
 @examples
 
-  {{< glRepo "278964" >}}
+  {{< gl-repo "278964" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -29,7 +29,7 @@ GitLab repository.
                   <div class="row g-0">
                       {{ if (or ($project.avatar_url) ($project.namespace.avatar_url)) }}
                         <div class="col-md-4 p-1">
-                          <a class="d-inline-block" href="{{ ($project.web_url) }}" target="_blank" rel="noopener nofollow">
+                          <a class="d-block" href="{{ ($project.web_url) }}" target="_blank" rel="noopener nofollow">
                             <img class="card-img"
                                  src="{{ (($project.avatar_url) | default (printf "https://gitlab.com%s" ($project.namespace.avatar_url))) }}"
                                  alt="{{ (($project.name) | default ($project.path)) }}" loading="lazy"/>

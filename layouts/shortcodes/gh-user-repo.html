@@ -7,7 +7,7 @@ GitHub user repositories.
 
 @examples
 
-  {{< ghUserRepo "octocat" >}}
+  {{< gh-user-repo "octocat" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -31,7 +31,7 @@ GitHub user repositories.
                       <div class="row g-0">
                           {{ if (.owner.avatar_url) }}
                             <div class="col-md-4 p-1">
-                              <a class="d-inline-block" href="{{ (.html_url) }}" target="_blank" rel="noopener nofollow">
+                              <a class="d-block" href="{{ (.html_url) }}" target="_blank" rel="noopener nofollow">
                                 <img class="card-img"
                                      src="{{ (.owner.avatar_url) }}"
                                      alt="{{ (.name) }}" loading="lazy"/>

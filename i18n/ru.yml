@@ -165,6 +165,7 @@ sc:
       twitter: { other: 'Twitter' }
     repo:
       forks: { other: 'Вилки' }
+      language: { other: 'Язык разработки' }
       license: { other: 'Лицензия' }
       stargazers: { other: 'Звёзды' }
       subscribers: { other: 'Подписки' }
@@ -179,6 +180,7 @@ sc:
         twitter: { other: 'Twitter' }
       repo:
         forks: { other: 'Вилки' }
+        language: { other: 'Язык разработки' }
         license: { other: 'Лицензия' }
         stargazers: { other: 'Подписки' }
   gitlab:

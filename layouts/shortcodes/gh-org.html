@@ -7,7 +7,7 @@ GitHub organization.
 
 @examples
 
-  {{< ghOrg "github" >}}
+  {{< gh-org "github" >}}
 */ -}}
 
 {{- if (.Get 0) -}}
@@ -29,7 +29,7 @@ GitHub organization.
                   <div class="row g-0">
                       {{ if ($org.avatar_url) }}
                         <div class="col-md-4 p-1">
-                          <a class="d-inline-block" href="{{ ($org.html_url) }}" target="_blank" rel="noopener nofollow">
+                          <a class="d-block" href="{{ ($org.html_url) }}" target="_blank" rel="noopener nofollow">
                             <img class="card-img"
                                  src="{{ ($org.avatar_url) }}"
                                  alt="{{ (($org.name) | default ($org.login)) }}" loading="lazy"/>
