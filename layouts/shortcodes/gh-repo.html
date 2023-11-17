@@ -12,8 +12,12 @@
               <div class="card">
                 <div class="row g-0">
                   <div class="col-md-4 p-1">
-                    <a class="d-block gh-repo-avatar" href="#" target="_blank" rel="noopener noreferrer nofollow">
-                      <img class="card-img gh-repo-avatar" src="" alt="" loading="lazy"/>
+                    <a class="d-block gh-repo-avatar"
+                       href="https://github.com/{{ . }}" target="_blank"
+                       rel="noopener noreferrer nofollow">
+                      <img class="card-img gh-repo-avatar"
+                           src="https://github.com/identicons/{{ index (split . "/") 0 }}.png"
+                           alt="{{ . }}" loading="lazy"/>
                     </a>
                   </div>
                   <div class="col">
@@ -21,7 +25,9 @@
                       <div class="d-flex flex-column h-100">
                         <div class="flex-shrink-0">
                           <h5 class="card-title">
-                            <a class="gh-repo-name" href="#" target="_blank" rel="noopener noreferrer nofollow"></a>
+                            <a class="gh-repo-name"
+                               href="https://github.com/{{ . }}" target="_blank"
+                               rel="noopener noreferrer nofollow">{{ . }}</a>
                           </h5>
                           <h6 class="card-subtitle mb-2 text-body-secondary gh-repo-owner"></h6>
                           <p class="card-text gh-repo-description"></p>
@@ -32,28 +38,28 @@
                               <div class="btn btn-light btn-sm text-body-secondary"
                                    data-bs-tooltip data-bs-title='{{ (i18n "sc.github.repo.language") }}'>
                                 <i class="fas fa-code fa-fw me-1"></i>
-                                <span class="gh-repo-language"></span>
+                                <span class="gh-repo-language">#</span>
                               </div>
                             </div>
                             <div class="col">
                               <div class="btn btn-light btn-sm text-body-secondary"
                                    data-bs-tooltip data-bs-title='{{ (i18n "sc.github.repo.subscribers") }}'>
                                 <i class="fas fa-eye fa-fw me-1"></i>
-                                <span class="gh-repo-subscribers"></span>
+                                <span class="gh-repo-subscribers">#</span>
                               </div>
                             </div>
                             <div class="col">
                               <div class="btn btn-light btn-sm text-body-secondary"
                                    data-bs-tooltip data-bs-title='{{ (i18n "sc.github.repo.stargazers") }}'>
                                 <i class="fas fa-star fa-fw me-1"></i>
-                                <span class="gh-repo-stars"></span>
+                                <span class="gh-repo-stars">#</span>
                               </div>
                             </div>
                             <div class="col">
                               <div class="btn btn-light btn-sm text-body-secondary"
                                    data-bs-tooltip data-bs-title='{{ (i18n "sc.github.repo.forks") }}'>
                                 <i class="fas fa-code-branch fa-fw me-1"></i>
-                                <span class="gh-repo-forks"></span>
+                                <span class="gh-repo-forks">#</span>
                               </div>
                             </div>
                           </div>
