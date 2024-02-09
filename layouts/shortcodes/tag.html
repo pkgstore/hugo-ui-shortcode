@@ -15,11 +15,11 @@
     {{- $cat := (site.GetPage (printf "categories/%s" ($text))) -}}
 
     {{- if ($tag) -}}
-      <a href="{{ ($tag.RelPermalink) }}" target="_blank">#{{ ($text) }}</a>
+      <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ ($tag.RelPermalink) }}" target="_blank">#{{ ($text) }}</a></span>
     {{- else if ($cat) -}}
-      <a href="{{ ($cat.RelPermalink) }}" target="_blank">#{{ ($text) }}</a>
+      <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ ($cat.RelPermalink) }}" target="_blank">#{{ ($text) }}</a></span>
     {{- else -}}
-        {{- ($text) -}}
+      <span class="shortcode shortcode-{{ ($.Name) }}">{{- ($text) -}}</span>
     {{- end -}}
 
 {{- else -}}
