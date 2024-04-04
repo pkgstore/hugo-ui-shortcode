@@ -54,7 +54,7 @@ GitLab user.
                           <div class="mt-auto">
                             <div class="row row-cols-auto g-2 mt-3">
                               <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.followers") }}'>
-                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.web_url) }}/followers"
+                                <a class="btn btn-light btn-sm" href="{{ ($user.web_url) }}/followers"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.gitlab.user.followers") }}'>
                                   <i class="fas fa-user-friends fa-fw me-1"></i>
@@ -62,7 +62,7 @@ GitLab user.
                                 </a>
                               </div>
                               <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.following") }}'>
-                                <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.web_url) }}/following"
+                                <a class="btn btn-light btn-sm" href="{{ ($user.web_url) }}/following"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.gitlab.user.following") }}'>
                                   <i class="fas fa-user-check fa-fw me-1"></i>
@@ -71,7 +71,7 @@ GitLab user.
                               </div>
                                 {{ if ($user.linkedin) }}
                                   <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.linkedin") }}'>
-                                    <a class="btn btn-light btn-sm text-body-secondary" href="https://linkedin.com/in/{{ ($user.linkedin) }}"
+                                    <a class="btn btn-light btn-sm" href="https://linkedin.com/in/{{ ($user.linkedin) }}"
                                        target="_blank" rel="noopener nofollow"
                                        role="button" aria-label='{{ (i18n "sc.gitlab.user.linkedin") }}'>
                                       <i class="fab fa-linkedin-in fa-fw"></i>
@@ -80,7 +80,7 @@ GitLab user.
                                 {{ end }}
                                 {{ if ($user.twitter) }}
                                   <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.twitter") }}'>
-                                    <a class="btn btn-light btn-sm text-body-secondary" href="https://twitter.com/{{ ($user.twitter) }}"
+                                    <a class="btn btn-light btn-sm" href="https://twitter.com/{{ ($user.twitter) }}"
                                        target="_blank" rel="noopener nofollow"
                                        role="button" aria-label='{{ (i18n "sc.gitlab.user.twitter") }}'>
                                       <i class="fab fa-twitter fa-fw"></i>
@@ -91,7 +91,7 @@ GitLab user.
                                   <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.user.site") }}'>
                                       {{ $url := (urls.Parse ($user.website_url)) }}{{ $scheme := "http://" }}
                                       {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
-                                    <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($user.website_url) }}"
+                                    <a class="btn btn-light btn-sm" href="{{ ($scheme) }}{{ ($user.website_url) }}"
                                        target="_blank" rel="noopener nofollow"
                                        role="button" aria-label='{{ (i18n "sc.gitlab.user.site") }}'>
                                       <i class="fas fa-globe fa-fw"></i>
