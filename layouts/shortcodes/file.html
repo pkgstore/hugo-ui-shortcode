@@ -59,7 +59,7 @@ the syntax highlighting language from the file extension will be automatically s
                     {{ if (eq (($lang) | len) 0) }}
                         {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
                     {{ end }}
-                    <pre><code>{{ ((.Content) | chomp) }}</code></pre>
+                    <pre><code class="language-{{ ($lang) }}">{{ ((.Content) | chomp) }}</code></pre>
                 </div>
               </div>
             </div>
