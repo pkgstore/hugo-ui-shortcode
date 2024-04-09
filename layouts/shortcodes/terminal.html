@@ -1,0 +1,62 @@
+{{- /*
+This shortcode allows you to create a simulation of an OS terminal window.
+
+@param {string} os [linux|windows]
+@param {string} mode [root]
+
+@returns {template.HTML}
+
+@examples
+
+  {{< terminal os="windows" >}}
+  cd D:\Documents
+  {{< /terminal >}}
+
+  {{< terminal os="windows" mode="root" >}}
+  Dism /Get-ImageInfo /ImageFile:"C:\BuildFarm\WIM\install.wim"
+  {{< /terminal >}}
+
+  {{< terminal os="linux" >}}
+  bash favicon.sh png
+  {{< /terminal >}}
+
+  {{< terminal os="linux" mode="root" >}}
+  dd if=image.iso of=/dev/sdc bs=4M oflag=direct status=progress; sync
+  {{< /terminal >}}
+*/ -}}
+
+{{ $os := (.Get "os") | default "linux" }}
+{{ $mode := (.Get "mode") | default "user" }}
+{{ $lang := ((.Get "lang") | default "plaintext") }}
+
+{{ $cp := ((printf "clipboard-%s" (delimit (shuffle (seq 11 99)) "")) | md5) }}
+
+<div class="shortcode mb-3 shortcode-codeblock shortcode-codeblock-{{ (.Ordinal) }} shortcode-codeblock-{{ ($.Name) }}
+shortcode-codeblock-{{ ($.Name) }}-{{ ($os) }} shortcode-codeblock-{{ ($.Name) }}-{{ ($os) }}-{{ ($mode) }}">
+  <div class="card overflow-hidden" data-bs-theme="dark">
+    <div class="card-header">
+      <div class="d-flex align-items-center">
+        <div class="flex-shrink-0 {{ if (eq ($mode) "root") }}text-danger{{ end }}">
+          <i class="fas fa-terminal fa-fw"></i>
+        </div>
+        <div class="flex-grow-1 mx-2">
+          <h5 class="mb-0">{{ (i18n "terminal") }}</h5>
+        </div>
+        <div class="flex-shrink-0">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "copy") }}'>
+              <a class="text-body" href="#"
+                 data-fn="clipboard preventDefault" data-clipboard-target="#cp-{{ ($cp) }}"
+                 role="button" aria-label='{{ (i18n "copy") }}'>
+                <i class="fas fa-copy fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-body p-0" id="cp-{{ ($cp) }}">
+      <pre><code class="language-{{ ($lang) }}">{{ (trim (.Inner) "\n\r") }}</code></pre>
+    </div>
+  </div>
+</div>
