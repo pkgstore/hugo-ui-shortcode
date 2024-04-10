@@ -22,7 +22,7 @@ Code block with syntax highlighting.
 <div class="shortcode mb-3 shortcode-codeblock shortcode-codeblock-{{ (.Ordinal) }} {{ with ($lang) }}shortcode-codeblock-{{ . }}{{ end }}">
   <div class="d-flex overflow-hidden">
     <div class="flex-grow-1 rounded overflow-hidden" id="cp-{{ ($cp) }}">
-      {{ if ($lang) }}{{ $lang = (printf "class='language-%s'" ($lang)) }}{{ end }}
+        {{ if ($lang) }}{{ $lang = (printf "class='language-%s'" ($lang)) }}{{ end }}
       <pre><code {{ (($lang) | safeHTMLAttr) }}>{{ (trim (.Inner) "\n\r") }}</code></pre>
     </div>
     <div class="flex-shrink-0">
