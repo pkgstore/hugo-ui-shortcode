@@ -21,7 +21,7 @@ the syntax highlighting language from the file extension will be automatically s
         {{ range . }}
             {{ $cp := ((printf "clipboard-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) }}
             <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
-              <div class="card overflow-hidden">
+              <div class="card overflow-hidden" data-bs-theme="dark">
                 <div class="card-header">
                   <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">
@@ -55,7 +55,7 @@ the syntax highlighting language from the file extension will be automatically s
                     </div>
                   </div>
                 </div>
-                <div class="card-body" id="cp-{{ ($cp) }}">
+                <div class="card-body p-0" id="cp-{{ ($cp) }}">
                     {{ if (eq (($lang) | len) 0) }}
                         {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
                     {{ end }}
