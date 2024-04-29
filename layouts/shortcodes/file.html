@@ -34,7 +34,7 @@ the syntax highlighting language from the file extension will be automatically s
                       <ul class="list-inline mb-0">
                         <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.file.copy") }}'>
                           <a class="text-body" href="#"
-                             data-fn="clipboard preventDefault" data-clipboard-target="#cp-{{ ($cp) }}"
+                             data-fn="clipboard" data-clipboard-target="#cp-{{ ($cp) }}"
                              role="button" aria-label='{{ (i18n "sc.file.copy") }}'>
                             <i class="fas fa-copy fa-fw"></i>
                           </a>
@@ -59,7 +59,7 @@ the syntax highlighting language from the file extension will be automatically s
                     {{ if (eq (($lang) | len) 0) }}
                         {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
                     {{ end }}
-                  <pre><code class="language-{{ ($lang) }}">{{ (trim (.Content) "\n\r") }}</code></pre>
+                    {{ (highlight ((.Content) | chomp) ($lang)) }}
                 </div>
               </div>
             </div>
