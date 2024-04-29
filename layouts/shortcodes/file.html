@@ -55,7 +55,7 @@ the syntax highlighting language from the file extension will be automatically s
                     </div>
                   </div>
                 </div>
-                <div class="card-body p-0" id="cp-{{ ($cp) }}">
+                <div class="card-body p-0 overflow-auto" id="cp-{{ ($cp) }}">
                     {{ if (eq (($lang) | len) 0) }}
                         {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
                     {{ end }}
