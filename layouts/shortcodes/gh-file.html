@@ -47,7 +47,7 @@ GitHub file content.
                       <code>{{ (div . 1000) }} {{ (i18n "sc.github.file.kB") }}</code>
                     </li>
                   {{ end }}
-                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.copy") }}'>
+                <li class="list-inline-item" title='{{ (i18n "sc.github.file.copy") }}'>
                   <a class="text-body" href="#"
                      data-fn="clipboard preventDefault" data-clipboard-target="#cp-{{ ($cp) }}"
                      role="button" aria-label='{{ (i18n "sc.github.file.copy") }}'>
@@ -55,7 +55,7 @@ GitHub file content.
                   </a>
                 </li>
                   {{ with ($file.download_url) }}
-                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.download") }}'>
+                    <li class="list-inline-item" title='{{ (i18n "sc.github.file.download") }}'>
                       <a class="text-body" href="{{ . }}"
                          target="_blank" rel="noopener nofollow"
                          role="button" aria-label='{{ (i18n "sc.github.file.download") }}'>
@@ -64,7 +64,7 @@ GitHub file content.
                     </li>
                   {{ end }}
                   {{ with ($file.html_url) }}
-                    <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.file.link") }}'>
+                    <li class="list-inline-item" title='{{ (i18n "sc.github.file.link") }}'>
                       <a class="text-body" href="{{ . }}"
                          target="_blank" rel="noopener nofollow"
                          role="button" aria-label='{{ (i18n "sc.github.file.link") }}'>

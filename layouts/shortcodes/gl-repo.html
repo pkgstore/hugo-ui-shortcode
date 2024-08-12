@@ -56,7 +56,7 @@ GitLab repository.
                           </div>
                           <div class="mt-auto">
                             <div class="row row-cols-auto g-2 mt-3">
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.repo.issues") }}'>
+                              <div class="col" title='{{ (i18n "sc.gitlab.repo.issues") }}'>
                                 <a class="btn btn-light btn-sm" href="{{ ($project.web_url) }}/-/issues"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.gitlab.repo.issues") }}'>
@@ -64,7 +64,7 @@ GitLab repository.
                                     {{ ($project.open_issues_count) }}
                                 </a>
                               </div>
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.repo.starrers") }}'>
+                              <div class="col" title='{{ (i18n "sc.gitlab.repo.starrers") }}'>
                                 <a class="btn btn-light btn-sm" href="{{ ($project.web_url) }}/-/starrers"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.gitlab.repo.starrers") }}'>
@@ -72,7 +72,7 @@ GitLab repository.
                                     {{ ($project.star_count) }}
                                 </a>
                               </div>
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.repo.forks") }}'>
+                              <div class="col" title='{{ (i18n "sc.gitlab.repo.forks") }}'>
                                 <a class="btn btn-light btn-sm" href="{{ ($project.web_url) }}/-/forks"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.gitlab.repo.forks") }}'>
@@ -81,7 +81,7 @@ GitLab repository.
                                 </a>
                               </div>
                                 {{ if ($project.license_url) }}
-                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.repo.license") }}'>
+                                  <div class="col" title='{{ (i18n "sc.gitlab.repo.license") }}'>
                                     <a class="btn btn-light btn-sm" href="{{ $project.license.html_url }}"
                                        target="_blank" rel="noopener nofollow"
                                        role="button" aria-label='{{ (i18n "sc.gitlab.repo.license") }}'>

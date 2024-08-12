@@ -67,7 +67,8 @@ Donation form.
                           <div class="col">
                             <div class="input-group">
                               <span class="input-group-text"><i class="fas fa-coffee fa-fw"></i></span>
-                              <input class="form-control" type="text" name="targets" placeholder='{{ (i18n "sc.form.donate.targets") }}' required/>
+                              <input class="form-control" type="text" name="targets"
+                                     placeholder='{{ (i18n "sc.form.donate.targets") }}' required/>
                             </div>
                             <small class="form-text text-body-secondary">{{ (i18n "sc.form.donate.targets_help") }}</small>
                           </div>
@@ -101,28 +102,32 @@ Donation form.
                           <div class="col">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" name="need-fio" id="ya-need-fio"/>
-                              <label class="form-check-label" for="ya-need-fio">{{ (i18n "sc.form.donate.name") }}</label>
+                              <label class="form-check-label"
+                                     for="ya-need-fio">{{ (i18n "sc.form.donate.name") }}</label>
                               <div class="form-text">{{ (i18n "sc.form.donate.name_help") }}</div>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" name="need-email" id="ya-need-email"/>
-                              <label class="form-check-label" for="ya-need-email">{{ (i18n "sc.form.donate.email") }}</label>
+                              <label class="form-check-label"
+                                     for="ya-need-email">{{ (i18n "sc.form.donate.email") }}</label>
                               <div class="form-text">{{ (i18n "sc.form.donate.email_help") }}</div>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" name="need-phone" id="ya-need-phone"/>
-                              <label class="form-check-label" for="ya-need-phone">{{ (i18n "sc.form.donate.phone") }}</label>
+                              <label class="form-check-label"
+                                     for="ya-need-phone">{{ (i18n "sc.form.donate.phone") }}</label>
                               <div class="form-text">{{ (i18n "sc.form.donate.phone_help") }}</div>
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-check">
                               <input class="form-check-input" type="checkbox" name="need-address" id="ya-need-address"/>
-                              <label class="form-check-label" for="ya-need-address">{{ (i18n "sc.form.donate.address") }}</label>
+                              <label class="form-check-label"
+                                     for="ya-need-address">{{ (i18n "sc.form.donate.address") }}</label>
                               <div class="form-text">{{ (i18n "sc.form.donate.address_help") }}</div>
                             </div>
                           </div>
@@ -196,7 +201,7 @@ Donation form.
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.paypal") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
                              href="https://paypal.me/{{ ($paypal) }}" target="_blank"
-                             data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.paypal") }}'
+                             title='{{ (i18n "sc.form.donate.paypal") }}'
                              rel="noopener nofollow" role="button"><i class="fab fa-paypal fa-fw"></i></a>
                         </div>
                       {{ end }}
@@ -205,7 +210,7 @@ Donation form.
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.patreon") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
                              href="https://patreon.com/{{ ($patreon) }}" target="_blank"
-                             data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.patreon") }}'
+                             title='{{ (i18n "sc.form.donate.patreon") }}'
                              rel="noopener nofollow" role="button"><i class="fab fa-patreon fa-fw"></i></a>
                         </div>
                       {{ end }}
@@ -214,7 +219,7 @@ Donation form.
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.liberapay") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
                              href="https://liberapay.com/{{ ($liberapay) }}" target="_blank"
-                             data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.liberapay") }}'
+                             title='{{ (i18n "sc.form.donate.liberapay") }}'
                              rel="noopener nofollow" role="button"><i class="fas fa-gift fa-fw"></i></a>
                         </div>
                       {{ end }}
@@ -223,7 +228,7 @@ Donation form.
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.kofi") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
                              href="https://ko-fi.com/{{ ($kofi) }}" target="_blank"
-                             data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.kofi") }}'
+                             title='{{ (i18n "sc.form.donate.kofi") }}'
                              rel="noopener nofollow" role="button"><i class="fas fa-coffee fa-fw"></i></a>
                         </div>
                       {{ end }}
@@ -232,7 +237,7 @@ Donation form.
                           <h5 class="text-uppercase">{{ (i18n "sc.form.donate.buymeacoffee") }}</h5>
                           <a class="btn btn-secondary btn-lg btn-social d-block"
                              href="https://buymeacoffee.com/{{ ($buymeacoffee) }}" target="_blank"
-                             data-bs-tooltip data-bs-title='{{ (i18n "sc.form.donate.buymeacoffee") }}'
+                             title='{{ (i18n "sc.form.donate.buymeacoffee") }}'
                              rel="noopener nofollow" role="button"><i class="fas fa-coffee fa-fw"></i></a>
                         </div>
                       {{ end }}

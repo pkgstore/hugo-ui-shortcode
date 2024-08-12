@@ -46,7 +46,7 @@ GitLab file content.
                       <code>{{ (div . 1000) }} KB</code>
                     </li>
                   {{ end }}
-                <li class="list-inline-item" data-bs-tooltip data-bs-title='{{ (i18n "sc.gitlab.file.copy") }}'>
+                <li class="list-inline-item" title='{{ (i18n "sc.gitlab.file.copy") }}'>
                   <a class="text-body" href="#"
                      data-fn="clipboard preventDefault" data-clipboard-target="#cp-{{ ($cp) }}"
                      role="button" aria-label='{{ (i18n "sc.gitlab.file.copy") }}'>

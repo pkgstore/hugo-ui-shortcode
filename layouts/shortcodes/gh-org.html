@@ -51,7 +51,7 @@ GitHub organization.
                           </div>
                           <div class="mt-auto">
                             <div class="row row-cols-auto g-2 mt-3">
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.repos") }}'>
+                              <div class="col" title='{{ (i18n "sc.github.org.repos") }}'>
                                 <a class="btn btn-light btn-sm" href="{{ ($org.html_url) }}"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.github.org.repos") }}'>
@@ -60,7 +60,7 @@ GitHub organization.
                                 </a>
                               </div>
                                 {{ if ($org.blog) }}
-                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.blog") }}'>
+                                  <div class="col" title='{{ (i18n "sc.github.org.blog") }}'>
                                       {{ $url := (urls.Parse ($org.blog)) }}{{ $scheme := "http://" }}
                                       {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
                                     <a class="btn btn-light btn-sm" href="{{ ($scheme) }}{{ ($org.blog) }}"
@@ -71,7 +71,7 @@ GitHub organization.
                                   </div>
                                 {{ end }}
                                 {{ if ($org.twitter_username) }}
-                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.twitter") }}'>
+                                  <div class="col" title='{{ (i18n "sc.github.org.twitter") }}'>
                                     <a class="btn btn-light btn-sm" href="https://twitter.com/{{ ($org.twitter_username) }}"
                                        target="_blank" rel="noopener nofollow"
                                        role="button" aria-label='{{ (i18n "sc.github.org.twitter") }}'>
@@ -80,7 +80,7 @@ GitHub organization.
                                   </div>
                                 {{ end }}
                                 {{ if ($org.email) }}
-                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.email") }}'>
+                                  <div class="col" title='{{ (i18n "sc.github.org.email") }}'>
                                     <a class="btn btn-light btn-sm" href="mailto:{{ ($org.email) }}"
                                        target="_blank" rel="noopener nofollow"
                                        role="button" aria-label='{{ (i18n "sc.github.org.email") }}'>

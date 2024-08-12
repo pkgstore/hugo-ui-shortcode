@@ -51,7 +51,7 @@ GitHub user.
                           </div>
                           <div class="mt-auto">
                             <div class="row row-cols-auto g-2 mt-3">
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.repos") }}'>
+                              <div class="col" title='{{ (i18n "sc.github.user.repos") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=repositories"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.github.user.repos") }}'>
@@ -59,7 +59,7 @@ GitHub user.
                                     {{ ($user.public_repos) }}
                                 </a>
                               </div>
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.followers") }}'>
+                              <div class="col" title='{{ (i18n "sc.github.user.followers") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=followers"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.github.user.followers") }}'>
@@ -67,7 +67,7 @@ GitHub user.
                                     {{ ($user.followers) }}
                                 </a>
                               </div>
-                              <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.user.following") }}'>
+                              <div class="col" title='{{ (i18n "sc.github.user.following") }}'>
                                 <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($user.html_url) }}?tab=following"
                                    target="_blank" rel="noopener nofollow"
                                    role="button" aria-label='{{ (i18n "sc.github.user.following") }}'>
@@ -76,7 +76,7 @@ GitHub user.
                                 </a>
                               </div>
                                 {{ if ($user.blog) }}
-                                  <div class="col" data-bs-tooltip data-bs-title='{{ (i18n "sc.github.org.blog") }}'>
+                                  <div class="col" title='{{ (i18n "sc.github.org.blog") }}'>
                                       {{ $url := (urls.Parse ($user.blog)) }}{{ $scheme := "http://" }}
                                       {{ if ($url.Scheme) }}{{ $scheme = "" }}{{ end }}
                                     <a class="btn btn-light btn-sm text-body-secondary" href="{{ ($scheme) }}{{ ($user.blog) }}"
