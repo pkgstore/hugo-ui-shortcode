@@ -2,9 +2,9 @@
 
 */ -}}
 
-{{ $htmlTable := ((.Inner) | markdownify) }}
-{{ $class := (.Get 0) }}
+{{ $table := ((.Inner) | markdownify) }}
+{{ $class := (.Get 0) | default "" }}
 {{ $old := "<table>" }}
 {{ $new := (printf "<table class='table %s'>" ($class)) }}
-{{ $htmlTable := (replace ($htmlTable) ($old) ($new)) }}
-{{ (($htmlTable) | safeHTML) }}
+{{ $html := (replace ($table) ($old) ($new)) }}
+{{ (($html) | safeHTML) }}
