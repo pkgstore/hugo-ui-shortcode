@@ -207,4 +207,5 @@ sc:
   file:
     copy: { other: 'Копировать' }
     download: { other: 'Скачать' }
+    expand: { other: 'Развернуть' }
     link: { other: 'Открыть' }

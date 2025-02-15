@@ -19,7 +19,7 @@ the syntax highlighting language from the file extension will be automatically s
 
     {{ with ($.Page.Resources.Match ($file)) }}
         {{ range . }}
-            {{ $cp := ((printf "clipboard-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) }}
+            {{ $uid := ((printf "uid-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) }}
             <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
               <div class="card overflow-hidden" data-bs-theme="dark">
                 <div class="card-header">
@@ -32,9 +32,16 @@ the syntax highlighting language from the file extension will be automatically s
                     </div>
                     <div class="flex-shrink-0">
                       <ul class="list-inline mb-0">
+                        <li class="list-inline-item" title='{{ (i18n "sc.file.expand") }}'>
+                          <a class="text-body" href="#" role="button"
+                             data-bs-toggle="collapse" data-bs-target="#collapse-{{ ($uid) }}"
+                             aria-expanded="false" aria-controls="collapse-{{ ($uid) }}">
+                            <i class="fas fa-expand fa-fw"></i>
+                          </a>
+                        </li>
                         <li class="list-inline-item" title='{{ (i18n "sc.file.copy") }}'>
                           <a class="text-body" href="#"
-                             data-fn="clipboard" data-clipboard-target="#cp-{{ ($cp) }}"
+                             data-fn="clipboard" data-clipboard-target="#cp-{{ ($uid) }}"
                              role="button" aria-label='{{ (i18n "sc.file.copy") }}'>
                             <i class="fas fa-copy fa-fw"></i>
                           </a>
@@ -55,11 +62,13 @@ the syntax highlighting language from the file extension will be automatically s
                     </div>
                   </div>
                 </div>
-                <div class="card-body p-0 overflow-auto" id="cp-{{ ($cp) }}">
-                    {{ if (eq (($lang) | len) 0) }}
-                        {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
-                    {{ end }}
-                    {{ (highlight ((.Content) | chomp) ($lang)) }}
+                <div class="collapse" id="collapse-{{ ($uid) }}">
+                  <div class="card-body p-0 overflow-auto" id="cp-{{ ($uid) }}">
+                      {{ if (eq (($lang) | len) 0) }}
+                          {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
+                      {{ end }}
+                      {{ (highlight ((.Content) | chomp) ($lang)) }}
+                  </div>
                 </div>
               </div>
             </div>
