@@ -15,7 +15,8 @@ the syntax highlighting language from the file extension will be automatically s
 {{- if (.Get 0) -}}
 
     {{ $file := (.Get 0) }}
-    {{ $lang := (.Get 1) }}
+    {{ $lang := ((.Get 1) | default "text") }}
+    {{ $opts := (.Get 2) }}
 
     {{ with ($.Page.Resources.Match ($file)) }}
         {{ range . }}
@@ -64,10 +65,7 @@ the syntax highlighting language from the file extension will be automatically s
                 </div>
                 <div class="collapse" id="collapse-{{ ($uid) }}">
                   <div class="card-body p-0 overflow-auto" id="cp-{{ ($uid) }}">
-                      {{ if (eq (($lang) | len) 0) }}
-                          {{ $lang = ((replace (path.Ext (.Name)) "." "") | default "plaintext") }}
-                      {{ end }}
-                      {{ (highlight ((.Content) | chomp) ($lang)) }}
+                      {{ (highlight ((.Content) | chomp) ($lang) ($opts)) }}
                   </div>
                 </div>
               </div>
