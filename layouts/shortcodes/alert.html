@@ -46,10 +46,10 @@ Notes in article.
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
   <div class="alert alert-{{ ($css) }} d-flex overflow-hidden" role="alert">
-    <div class="flex-shrink-0 align-self-center">
+    <div class="flex-shrink-0 align-self-center me-3 d-none d-md-block">
       <i class="{{ ($icon) }} fa-fw fa-2x"></i>
     </div>
-    <div class="flex-grow-1 ms-3 overflow-hidden">
+    <div class="flex-grow-1 overflow-hidden">
         {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>
   </div>
