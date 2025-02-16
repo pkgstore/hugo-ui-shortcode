@@ -33,30 +33,36 @@ the syntax highlighting language from the file extension will be automatically s
                     </div>
                     <div class="flex-shrink-0">
                       <ul class="list-inline mb-0">
-                        <li class="list-inline-item" title='{{ (i18n "sc.file.expand") }}'>
-                          <a class="text-body collapsed" href="#" role="button"
+                        <li class="list-inline-item">
+                          <a class="d-block text-body collapsed" href="#"
                              data-bs-toggle="collapse" data-bs-target="#collapse-{{ ($uid) }}"
-                             aria-expanded="false" aria-controls="collapse-{{ ($uid) }}">
-                            <i class="fas fa-expand fa-fw"></i>
+                             aria-expanded="false" aria-controls="collapse-{{ ($uid) }}" role="button">
+                            <i class="fas fa-expand fa-fw d-block"
+                               title='{{ (i18n "sc.file.expand") }}'></i>
+                            <i class="fas fa-compress fa-fw d-block"
+                               title='{{ (i18n "sc.file.collapse") }}'></i>
                           </a>
                         </li>
-                        <li class="list-inline-item" title='{{ (i18n "sc.file.copy") }}'>
-                          <a class="text-body" href="#"
+                        <li class="list-inline-item">
+                          <a class="d-block text-body" href="#"
                              data-fn="clipboard" data-clipboard-target="#cp-{{ ($uid) }}"
-                             role="button" aria-label='{{ (i18n "sc.file.copy") }}'>
-                            <i class="fas fa-copy fa-fw"></i>
+                             aria-label='{{ (i18n "sc.file.copy") }}' role="button">
+                            <i class="fas fa-copy fa-fw d-block"
+                               title='{{ (i18n "sc.file.copy") }}'></i>
                           </a>
                         </li>
-                        <li class="list-inline-item" title='{{ (i18n "sc.file.download") }}'>
-                          <a class="text-body" href="{{ (.RelPermalink) }}" download
-                             role="button" aria-label='{{ (i18n "sc.file.download") }}'>
-                            <i class="fas fa-download fa-fw"></i>
+                        <li class="list-inline-item">
+                          <a class="d-block text-body" href="{{ (.RelPermalink) }}"
+                             aria-label='{{ (i18n "sc.file.download") }}' role="button" download>
+                            <i class="fas fa-download fa-fw d-block"
+                               title='{{ (i18n "sc.file.download") }}'></i>
                           </a>
                         </li>
-                        <li class="list-inline-item" title='{{ (i18n "sc.file.link") }}'>
-                          <a class="text-body" href="{{ (.RelPermalink) }}" target="_blank"
-                             role="button" aria-label='{{ (i18n "sc.file.link") }}'>
-                            <i class="fas fa-arrow-up-right-from-square fa-fw"></i>
+                        <li class="list-inline-item">
+                          <a class="d-block text-body" href="{{ (.RelPermalink) }}"
+                             aria-label='{{ (i18n "sc.file.link") }}' target="_blank" role="button">
+                            <i class="fas fa-arrow-up-right-from-square fa-fw d-block"
+                               title='{{ (i18n "sc.file.link") }}'></i>
                           </a>
                         </li>
                       </ul>

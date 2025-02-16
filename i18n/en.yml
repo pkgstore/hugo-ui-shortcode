@@ -205,6 +205,7 @@ sc:
   # ------------------------------------------------------------------------------------------------------------------ #
 
   file:
+    collapse: { other: 'Collapse' }
     copy: { other: 'Copy' }
     download: { other: 'Download' }
     expand: { other: 'Expand' }
