@@ -15,7 +15,7 @@ in the enclosing context.
 
     {{- $text := (.Get 0) -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }}"><mark>{{ ($text) }}</mark></span>
+    <mark class="shortcode shortcode-{{ ($.Name) }}">{{ ($text) }}</mark>
 
 {{- else -}}
 

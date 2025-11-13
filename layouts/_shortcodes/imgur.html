@@ -16,7 +16,7 @@ Inserting image from Imgur.
   {{< imgur name="Yhim15t.jpeg" size="m" align="right" >}}Image caption.{{< /imgur >}}
 */ -}}
 
-{{- if (.IsNamedParams) -}}
+{{ if (.IsNamedParams) }}
 
     {{ $file := (.Get "name") }}
     {{ $size := (.Get "size") }}
@@ -59,8 +59,8 @@ Inserting image from Imgur.
       </figure>
     </div>
 
-{{- else -}}
+{{ else }}
 
     {{ (partial "alerts/no_params" .) }}
 
-{{- end -}}
+{{ end }}

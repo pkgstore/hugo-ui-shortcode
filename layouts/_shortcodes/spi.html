@@ -8,8 +8,9 @@
 
 {{- $id := ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) -}}
 
-<span id="sc-{{ ($id) }}" class="shortcode shortcode-{{ ($.Name) }}"><span class="d-inline"><i class="fas fa-question-circle fa-fw"></i></span><span class="d-none">{{ ((.Inner) | markdownify) }}</span></span>
-
+<span id="sc-{{ ($id) }}" class="shortcode shortcode-{{ ($.Name) }}"><span class="d-inline"><i
+            class="fas fa-question-circle fa-fw"></i></span><span
+          class="d-none">{{ ((.Inner) | markdownify) }}</span></span>
 <script>
   (() => {
     const $id = document.getElementById('sc-{{ ($id) }}');
@@ -29,5 +30,4 @@
     });
   })();
 </script>
-
 {{- /* This comment removes trailing newlines. */ -}}

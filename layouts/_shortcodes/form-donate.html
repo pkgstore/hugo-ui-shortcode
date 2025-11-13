@@ -33,7 +33,7 @@ Donation form.
   xmr="48Q1zEztoECNyijSoQVhHC12LaxzNLPrhBgwGdM2847QY8ayusQ6XBjCD9hgeQk2LLUKbBvC5yKxDDmzkGvGyMGE9o95YkR" >}}
 */ -}}
 
-{{- if (.IsNamedParams) -}}
+{{ if (.IsNamedParams) }}
 
     {{ $wallet := (.Get "wallet") }}
     {{ $paypal := (.Get "paypal") }}
@@ -301,8 +301,8 @@ Donation form.
       </div>
     </div>
 
-{{- else -}}
+{{ else }}
 
     {{ (partial "alerts/no_params" .) }}
 
-{{- end -}}
+{{ end }}

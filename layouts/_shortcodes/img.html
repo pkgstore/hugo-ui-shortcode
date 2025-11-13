@@ -15,7 +15,7 @@ Inserting image from URL.
   {{< img src="https://example.com/image.png" align="left" >}}Image caption.{{< /img >}}
 */ -}}
 
-{{- if (.Get 0) -}}
+{{ if (.Get 0) }}
 
     {{ $file := (.Get "src") }}
     {{ $align := (.Get "align") }}
@@ -44,8 +44,8 @@ Inserting image from URL.
       </figure>
     </div>
 
-{{- else -}}
+{{ else }}
 
     {{ (partial "alerts/no_params" .) }}
 
-{{- end -}}
+{{ end }}

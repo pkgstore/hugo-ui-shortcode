@@ -17,11 +17,11 @@
 
     {{- with ($type) -}}
         {{- if (not (in ($types) .)) -}}
-            {{- (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) -}}
+            {{ (errorf "The type passed to the %q shortcode is invalid. The type must be one of %s. See %s." ($.Name) (delimit ($types) ", " ", or ") ($.Position)) }}
         {{- end -}}
     {{- end -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }} d-inline-block"><kbd class="bg-{{ ($type) }}">{{ ($text) }}</kbd></span>
+    <kbd class="shortcode shortcode-{{ ($.Name) }} d-inline-block bg-{{ ($type) }}">{{ ($text) }}</kbd>
 
 {{- else -}}
 

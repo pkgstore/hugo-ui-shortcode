@@ -14,7 +14,7 @@
     {{- $abbr := (.Get 0) -}}
     {{- $title := (.Get 1) -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }}"><abbr title="{{ ($title) }}">{{ ($abbr) }}</abbr></span>
+    <abbr title="{{ ($title) }}" class="shortcode shortcode-{{ ($.Name) }}">{{ ($abbr) }}</abbr>
 
 {{- else -}}
 

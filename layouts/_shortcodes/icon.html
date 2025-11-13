@@ -17,11 +17,11 @@
 
     {{- with ($style) -}}
         {{- if (not (in ($styles) .)) -}}
-            {{- (errorf "The style passed to the %q shortcode is invalid. The style must be one of %s. See %s." ($.Name) (delimit ($styles) ", " ", or ") ($.Position)) -}}
+            {{ (errorf "The style passed to the %q shortcode is invalid. The style must be one of %s. See %s." ($.Name) (delimit ($styles) ", " ", or ") ($.Position)) }}
         {{- end -}}
     {{- end -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }}"><i class="{{ ($style) }} fa-{{ ($icon) }} fa-fw"></i></span>
+    <i class="shortcode shortcode-{{ ($.Name) }} {{ ($style) }} fa-{{ ($icon) }} fa-fw"></i>
 
 {{- else -}}
 

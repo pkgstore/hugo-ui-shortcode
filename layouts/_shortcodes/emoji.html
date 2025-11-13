@@ -12,7 +12,7 @@
 
 {{- if (strings.Contains ($id) ":") -}}
     {{- $id = ((printf "%s" ($id)) | emojify) -}}
-{{- else -}}
+{{- else }}
     {{- $id = ((printf ":%s:" ($id)) | emojify) -}}
 {{- end -}}
 

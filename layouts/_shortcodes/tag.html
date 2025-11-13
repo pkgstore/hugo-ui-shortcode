@@ -1,0 +1,31 @@
+{{- /*
+@param {string} (positional parameter 0) Tag name.
+
+@returns {template.HTML}
+
+@examples
+
+  {{< tag "linux" >}}
+*/ -}}
+
+{{- if (.Get 0) -}}
+
+    {{- $text := (.Get 0) }}
+    {{- $tag := (site.GetPage (printf "tags/%s" ($text))) }}
+    {{- $cat := (site.GetPage (printf "categories/%s" ($text))) }}
+
+    {{- if ($tag) -}}
+      <a class="shortcode shortcode-{{ ($.Name) }}"
+         href="{{ ($tag.RelPermalink) }}" target="_blank">#{{ ($text) }}</a>
+    {{- else if ($cat) -}}
+      <a class="shortcode shortcode-{{ ($.Name) }}"
+         href="{{ ($cat.RelPermalink) }}" target="_blank">#{{ ($text) }}</a>
+    {{- else -}}
+      <span class="shortcode shortcode-{{ ($.Name) }}">{{ ($text) }}</span>
+    {{- end -}}
+
+{{- else -}}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{- end -}}

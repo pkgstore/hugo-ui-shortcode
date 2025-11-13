@@ -13,7 +13,7 @@ Indicates that the enclosed text is an extended quotation.
   {{< /quote >}}
 */ -}}
 
-{{- if (.IsNamedParams) -}}
+{{ if (.IsNamedParams) }}
 
     {{ $author := (.Get "author") }}
     {{ $url := (.Get "url") }}
@@ -27,7 +27,8 @@ Indicates that the enclosed text is an extended quotation.
             <figcaption class="blockquote-footer">
               <cite>
                   {{ with ($url) }}
-                    <a href="{{ ($url) }}" target="_blank" rel="noopener nofollow">{{ (($author) | $.Page.RenderString) }}</a>
+                    <a href="{{ ($url) }}" target="_blank"
+                       rel="noopener nofollow">{{ (($author) | $.Page.RenderString) }}</a>
                   {{ else }}
                       {{ (($author) | $.Page.RenderString) }}
                   {{ end }}
@@ -37,8 +38,8 @@ Indicates that the enclosed text is an extended quotation.
       </figure>
     </div>
 
-{{- else -}}
+{{ else }}
 
     {{ (partial "alerts/no_params" .) }}
 
-{{- end -}}
+{{ end }}

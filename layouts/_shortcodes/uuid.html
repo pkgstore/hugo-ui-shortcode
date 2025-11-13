@@ -9,7 +9,8 @@
 
     {{- range (site.Pages.ByParam "uuid") -}}
         {{- if (eq (.Param "uuid") $uuid) -}}
-          <span class="shortcode shortcode-{{ ($.Name) }}"><a href="{{ (.RelPermalink) }}">{{ (($text) | default (.Title)) }}</a></span>
+          <a class="shortcode shortcode-{{ ($.Name) }}"
+             href="{{ (.RelPermalink) }}">{{ (($text) | default (.Title)) }}</a>
         {{- end -}}
     {{- end -}}
 

@@ -12,7 +12,7 @@
 
     {{- $text := (delimit ((split (.Get 0) "|")) " + ") -}}
 
-    <span class="shortcode shortcode-{{ ($.Name) }} d-inline-block"><kbd>{{ ($text) }}</kbd></span>
+    <kbd class="shortcode shortcode-{{ ($.Name) }} d-inline-block">{{ ($text) }}</kbd>
 
 {{- else -}}
 
