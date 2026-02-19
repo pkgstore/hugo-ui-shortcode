@@ -1,0 +1,17 @@
+{{ $domain := (.Get 0) }}
+{{ $lang := (.Get 1) }}
+{{ $path := (.Get 2) }}
+{{ $data := (resources.GetRemote (urls.JoinPath "https://" ($domain) ($lang) ($path) "/index.json")) }}
+{{ $data = (($data) | transform.Unmarshal) }}
+
+<div class="card">
+  <h5 class="card-header">{{ ($data.site.title) }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">
+      <a href="{{ ($data.page.url) }}" target="_blank">{{ ($data.page.title) }}</a>
+    </h5>
+    <p class="card-text">
+        {{ (($data.page.description) | base64Decode) }}
+    </p>
+  </div>
+</div>
