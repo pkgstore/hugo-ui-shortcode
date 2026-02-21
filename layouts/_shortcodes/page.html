@@ -4,14 +4,43 @@
 {{ $data := (resources.GetRemote (urls.JoinPath "https://" ($domain) ($lang) ($path) "/index.json")) }}
 {{ $data = (($data) | transform.Unmarshal) }}
 
-<div class="card">
-  <h5 class="card-header">{{ ($data.site.title) }}</h5>
-  <div class="card-body">
-    <h5 class="card-title">
-      <a href="{{ ($data.page.url) }}" target="_blank">{{ ($data.page.title) }}</a>
-    </h5>
-    <p class="card-text">
-        {{ (($data.page.description) | base64Decode) }}
-    </p>
+<div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">
+        <a href="{{ ($data.page.url) }}" target="_blank">{{ ($data.page.title) }}</a>
+      </h5>
+      <p class="card-text">
+          {{ (($data.page.description) | base64Decode) }}
+      </p>
+    </div>
+    <div class="card-footer">
+      <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col text-center text-lg-start">
+          <ul class="list-inline small text-body-secondary m-0">
+              {{ range $k, $v := ($data.page.authors) }}
+                  {{ if ($k) }}
+                    <li class="list-inline-item">&bull;</li>
+                  {{ end }}
+                  <li class="list-inline-item">
+                    <a class="link-secondary" href="{{ (.url) }}" target="_blank">{{ (.name) }}</a>
+                  </li>
+              {{ end }}
+          </ul>
+        </div>
+        <div class="col text-center text-lg-end">
+          <ul class="list-inline small text-body-secondary m-0">
+            <li class="list-inline-item">
+              <time datetime="{{ ($data.page.date.published) }}"
+                    data-fn="date-local">{{ ($data.page.date.published) }}</time>
+            </li>
+            <li class="list-inline-item">&bull;</li>
+            <li class="list-inline-item">
+              <a class="link-secondary" href="{{ ($data.site.url) }}" target="_blank">{{ ($data.site.title) }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
