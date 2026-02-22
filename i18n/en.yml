@@ -107,7 +107,7 @@ sc:
           correspondent_bank: { other: 'Correspondent Bank' }
           correspondent_swift: { other: 'Correspondent SWIFT' }
           target: { other: 'Purpose of Payment' }
-          title: { other: 'Bank details' }
+          title: { other: 'Account details' }
         usd:
           beneficiary_account: { other: 'Beneficiary Account' }
           beneficiary_bank: { other: 'Beneficiary Bank' }
@@ -116,7 +116,7 @@ sc:
           correspondent_bank: { other: 'Correspondent Bank' }
           correspondent_swift: { other: 'Correspondent SWIFT' }
           target: { other: 'Purpose of Payment' }
-          title: { other: 'Bank details' }
+          title: { other: 'Account details' }
         rub:
           beneficiary_account: { other: 'Beneficiary Account' }
           beneficiary_bank: { other: 'Beneficiary Bank' }
@@ -126,7 +126,7 @@ sc:
           inn: { other: 'ITN' }
           kpp: { other: 'IEC' }
           target: { other: 'Purpose of Payment' }
-          title: { other: 'Bank details' }
+          title: { other: 'Account details' }
     card: { other: 'Bank cards' }
     crypto: { other: 'Crypto' }
 

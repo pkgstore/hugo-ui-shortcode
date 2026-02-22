@@ -2,14 +2,14 @@
 
     {{ $currency := (.Get 0) }}
     {{ $address := (.Get 1) }}
-
     {{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5)) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
       <div class="input-group">
-        <span class="input-group-text">{{ (($currency) | upper) }}</span>
+        <span class="input-group-text"><i class="fas fa-wallet fa-fw"></i></span>
         <input class="form-control" type="text" value="{{ ($address) }}"
                data-fn="select-all" aria-label="{{ ($currency) }}" readonly/>
+        <span class="input-group-text">{{ (($currency) | upper) }}</span>
         <button class="btn btn-primary" type="button"
                 data-bs-toggle="modal" data-bs-target="#modal-{{ ($id) }}"><i class="fas fa-qrcode fa-fw"></i></button>
       </div>
