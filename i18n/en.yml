@@ -67,6 +67,7 @@ sc:
   # ------------------------------------------------------------------------------------------------------------------ #
 
   requisites:
+    title: 'Requisites'
     organization:
       account_correspondent: { other: 'Correspondent Account' }
       account_current: { other: 'Current Account' }
@@ -98,34 +99,36 @@ sc:
       title_general: { other: 'General Requisites' }
     bank:
       account:
-        usd:
-          beneficiary_account: { other: 'Beneficiary Account' }
-          beneficiary_bank: { other: 'Beneficiary Bank' }
-          beneficiary_name: { other: 'Beneficiary Name' }
-          correspondent_bank: { other: 'Correspondent Bank' }
-          correspondent_swift: { other: 'Correspondent SWIFT' }
-          currency: { other: 'USD' }
-          swift: { other: 'SWIFT' }
-          target: { other: 'Purpose of Payment' }
         eur:
           beneficiary_account: { other: 'Beneficiary Account' }
           beneficiary_bank: { other: 'Beneficiary Bank' }
           beneficiary_name: { other: 'Beneficiary Name' }
+          beneficiary_swift: { other: 'Beneficiary SWIFT' }
           correspondent_bank: { other: 'Correspondent Bank' }
           correspondent_swift: { other: 'Correspondent SWIFT' }
-          currency: { other: 'EUR' }
-          swift: { other: 'SWIFT' }
           target: { other: 'Purpose of Payment' }
+          title: { other: 'Bank details' }
+        usd:
+          beneficiary_account: { other: 'Beneficiary Account' }
+          beneficiary_bank: { other: 'Beneficiary Bank' }
+          beneficiary_name: { other: 'Beneficiary Name' }
+          beneficiary_swift: { other: 'Beneficiary SWIFT' }
+          correspondent_bank: { other: 'Correspondent Bank' }
+          correspondent_swift: { other: 'Correspondent SWIFT' }
+          target: { other: 'Purpose of Payment' }
+          title: { other: 'Bank details' }
         rub:
           beneficiary_account: { other: 'Beneficiary Account' }
           beneficiary_bank: { other: 'Beneficiary Bank' }
           beneficiary_name: { other: 'Beneficiary Name' }
           bic: { other: 'BIC' }
           correspondent_account: { other: 'Correspondent Account' }
-          currency: { other: 'RUB' }
           inn: { other: 'ITN' }
           kpp: { other: 'IEC' }
           target: { other: 'Purpose of Payment' }
+          title: { other: 'Bank details' }
+    card: { other: 'Bank cards' }
+    crypto: { other: 'Crypto' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.

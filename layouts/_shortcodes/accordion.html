@@ -2,8 +2,8 @@
 
 */ -}}
 
-{{ $id := ((printf "sc-%s-%d" ($.Name) (.Ordinal)) | md5) }}
+{{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%d" ($.Name) (.Ordinal)) | md5)) }}
 
-<div class="accordion mb-3 shortcode shortcode-{{ ($.Name) }}" id="sc-{{ ($id) }}">
+<div class="accordion mb-3 shortcode shortcode-{{ ($.Name) }}" id="{{ ($id) }}">
     {{ with (.Inner) }}{{ . }}{{ end }}
 </div>

@@ -22,17 +22,17 @@
     {{ end }}
 {{ end }}
 
-{{ $id := ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5) }}
+{{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5)) }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
   <p>
     <a class="btn btn-{{ ($type) }}" href="#" role="button" tabindex="0"
-       data-bs-toggle="collapse" data-bs-target="#sc-{{ ($id) }}"
+       data-bs-toggle="collapse" data-bs-target="#{{ ($id) }}"
        aria-label="{{ ($title) }}">
       <span>{{ ($title) }}</span>
     </a>
   </p>
-  <div class="collapse" id="sc-{{ ($id) }}">
+  <div class="collapse" id="{{ ($id) }}">
     <div class="card card-body mb-3">
         {{ with (.Inner) }}{{ (. | $.Page.RenderString (dict "display" "block")) }}{{ end }}
     </div>

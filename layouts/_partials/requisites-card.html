@@ -1,0 +1,11 @@
+{{ $bank := (.bank) }}
+{{ $number := (.number) }}
+{{ $currency := (.currency) }}
+
+<div class="col">
+  <div class="input-group">
+    <span class="input-group-text">{{ (($currency) | upper) }}</span>
+    <input class="form-control" type="text" value="{{ ($number) }}"
+           data-fn="select-all" aria-label="{{ ($currency) }}" readonly/>
+  </div>
+</div>

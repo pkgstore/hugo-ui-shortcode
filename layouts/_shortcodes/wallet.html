@@ -1,0 +1,41 @@
+{{ if (and (.Get 0) (.Get 1)) }}
+
+    {{ $currency := (.Get 0) }}
+    {{ $address := (.Get 1) }}
+
+    {{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5)) }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <div class="input-group">
+        <span class="input-group-text">{{ (($currency) | upper) }}</span>
+        <input class="form-control" type="text" value="{{ ($address) }}"
+               data-fn="select-all" aria-label="{{ ($currency) }}" readonly/>
+        <button class="btn btn-primary" type="button"
+                data-bs-toggle="modal" data-bs-target="#modal-{{ ($id) }}"><i class="fas fa-qrcode fa-fw"></i></button>
+      </div>
+      <div class="modal fade" id="modal-{{ ($id) }}" tabindex="-1" role="dialog"
+           aria-labelledby="modal-{{ ($id) }}-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content shadow">
+            <div class="modal-header">
+              <div class="modal-title h2 fs-5 text-truncate" id="modal-{{ ($id) }}-label">
+                  {{ (($currency) | upper) }}
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                      aria-label='{{ (i18n "close") }}'></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-center">
+                <div data-fn="qrcode" data-qr-text="{{ ($address) }}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{{ else }}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{ end }}

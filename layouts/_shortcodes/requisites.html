@@ -1,0 +1,35 @@
+{{ if (.IsNamedParams) }}
+
+    {{ $title := ((.Get "title") | default (i18n "sc.requisites.title")) }}
+    {{ $icon := ((.Get "icon") | default "fas fa-briefcase") }}
+    {{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5)) }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+      <button type="button" class="btn btn-primary btn-icon"
+              data-bs-toggle="modal" data-bs-target="#modal-{{ ($id) }}"><span class="icon"><i
+                  class="{{ ($icon) }} fa-fw"></i></span><span>{{ ($title) }}</span></button>
+
+      <div class="modal fade" id="modal-{{ ($id) }}" tabindex="-1" role="dialog"
+           aria-labelledby="modal-{{ ($id) }}-label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
+          <div class="modal-content shadow">
+            <div class="modal-header">
+              <div class="modal-title h2 fs-5 text-truncate" id="modal-{{ ($id) }}-label">
+                  {{ ($title) }}
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                      aria-label='{{ (i18n "close") }}'></button>
+            </div>
+            <div class="modal-body">
+                {{ (partial "requisites" .) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{{ else }}
+
+    {{ (partial "alerts/no_params" .) }}
+
+{{ end }}
