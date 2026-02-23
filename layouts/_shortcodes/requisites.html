@@ -20,40 +20,95 @@
                               <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                                   {{ with (.beneficiary) }}
                                       {{ with (.name) }}
-                                          {{ (partial "requisites-bank" (dict "icon" "user" "value" . "i18n" (printf "%s.beneficiary_name" ($key)))) }}
+                                        <div class="col">
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_name" ($key))) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict "p" "fas fa-user" "v" .)) }}
+                                        </div>
                                       {{ end }}
                                       {{ with (.account) }}
-                                          {{ (partial "requisites-bank" (dict "icon" "wallet" "value" . "i18n" (printf "%s.beneficiary_account" ($key)))) }}
+                                        <div class="col">
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_account" ($key))) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict "p" "fas fa-wallet" "v" .)) }}
+                                        </div>
                                       {{ end }}
                                       {{ with (.bank) }}
-                                          {{ (partial "requisites-bank" (dict "icon" "university" "value" . "i18n" (printf "%s.beneficiary_bank" ($key)))) }}
+                                        <div class="col">
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_bank" ($key))) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict "p" "fas fa-university" "v" .)) }}
+                                        </div>
                                       {{ end }}
                                       {{ with (.swift) }}
-                                          {{ (partial "requisites-bank" (dict "icon" "hashtag" "value" . "i18n" (printf "%s.beneficiary_swift" ($key)))) }}
+                                        <div class="col">
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_swift" ($key))) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict "p" "fas fa-hashtag" "v" .)) }}
+                                        </div>
                                       {{ end }}
                                   {{ end }}
                                   {{ with (.correspondent) }}
                                       {{ with (.bank) }}
-                                          {{ (partial "requisites-bank" (dict "icon" "university" "value" . "i18n" (printf "%s.correspondent_bank" ($key)))) }}
+                                        <div class="col">
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent_bank" ($key))) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict "p" "fas fa-university" "v" .)) }}
+                                        </div>
                                       {{ end }}
                                       {{ with (.swift) }}
-                                          {{ (partial "requisites-bank" (dict "icon" "hashtag" "value" . "i18n" (printf "%s.correspondent_swift" ($key)))) }}
+                                        <div class="col">
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent_swift" ($key))) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict "p" "fas fa-hashtag" "v" .)) }}
+                                        </div>
                                       {{ end }}
                                   {{ end }}
                                   {{ with (.bic) }}
-                                      {{ (partial "requisites-bank" (dict "icon" "hashtag" "value" . "i18n" (printf "%s.bic" ($key)))) }}
+                                    <div class="col">
+                                        {{ (i18n (printf "sc.requisites.bank.account.%s.bic" ($key))) }}
+                                    </div>
+                                    <div class="col">
+                                        {{ (partial "component/input-group" (dict "p" "fas fa-hashtag" "v" .)) }}
+                                    </div>
                                   {{ end }}
                                   {{ with (.inn) }}
-                                      {{ (partial "requisites-bank" (dict "icon" "hashtag" "value" . "i18n" (printf "%s.inn" ($key)))) }}
+                                    <div class="col">
+                                        {{ (i18n (printf "sc.requisites.bank.account.%s.inn" ($key))) }}
+                                    </div>
+                                    <div class="col">
+                                        {{ (partial "component/input-group" (dict "p" "fas fa-hashtag" "v" .)) }}
+                                    </div>
                                   {{ end }}
                                   {{ with (.kpp) }}
-                                      {{ (partial "requisites-bank" (dict "icon" "hashtag" "value" . "i18n" (printf "%s.kpp" ($key)))) }}
+                                    <div class="col">
+                                        {{ (i18n (printf "sc.requisites.bank.account.%s.kpp" ($key))) }}
+                                    </div>
+                                    <div class="col">
+                                        {{ (partial "component/input-group" (dict "p" "fas fa-hashtag" "v" .)) }}
+                                    </div>
                                   {{ end }}
                                   {{ with (.correspondent.account) }}
-                                      {{ (partial "requisites-bank" (dict "icon" "wallet" "value" . "i18n" (printf "%s.correspondent_account" ($key)))) }}
+                                    <div class="col">
+                                        {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent_account" ($key))) }}
+                                    </div>
+                                    <div class="col">
+                                        {{ (partial "component/input-group" (dict "p" "fas fa-wallet" "v" .)) }}
+                                    </div>
                                   {{ end }}
                                   {{ with (.target) }}
-                                      {{ (partial "requisites-bank" (dict "icon" "paper-plane" "value" . "i18n" (printf "%s.target" ($key)))) }}
+                                    <div class="col">
+                                        {{ (i18n (printf "sc.requisites.bank.account.%s.target" ($key))) }}
+                                    </div>
+                                    <div class="col">
+                                        {{ (partial "component/input-group" (dict "p" "fas fa-paper-plane" "v" .)) }}
+                                    </div>
                                   {{ end }}
                               </div>
                             </div>
@@ -68,7 +123,9 @@
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
                       {{ range (.card) }}
-                          {{ (partial "requisites-card" (dict "bank" (.bank) "number" (.number) "currency" (.currency))) }}
+                        <div class="col">
+                            {{ (partial "component/input-group" (dict "p" "fas fa-credit-card" "v" (.number) "s" (.currency))) }}
+                        </div>
                       {{ end }}
                   </div>
                 </div>
@@ -80,7 +137,9 @@
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
                       {{ range (.crypto) }}
-                          {{ (partial "requisites-crypto" (dict "network" (.network) "address" (.address) "currency" (.currency))) }}
+                        <div class="col">
+                            {{ (partial "requisites-crypto" (dict "network" (.network) "address" (.address) "currency" (.currency))) }}
+                        </div>
                       {{ end }}
                   </div>
                 </div>
@@ -91,6 +150,6 @@
 
 {{ else }}
 
-    {{ (partial "alerts/no_params" .) }}
+    {{ (partial "alert/no_params" .) }}
 
 {{ end }}

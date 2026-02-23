@@ -1,0 +1,10 @@
+{{ $p := (.p) }}
+{{ $v := (.v) }}
+{{ $s := ((.s) | upper) }}
+
+<div class="input-group">
+    {{ with ($p) }}<span class="input-group-text"><i class="{{ ($p) }} fa-fw"></i></span>{{ end }}
+  <input class="form-control" type="text" value="{{ ($v) }}"
+         data-fn="select-all" aria-label="{{ ($v) }}" readonly/>
+    {{ with ($s) }}<span class="input-group-text">{{ ($s) }}</span>{{ end }}
+</div>
