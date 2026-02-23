@@ -22,7 +22,7 @@
     {{ end }}
 {{ end }}
 
-{{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5)) }}
+{{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
 <div class="shortcode shortcode-{{ ($.Name) }}">
   <p>

@@ -3,10 +3,10 @@
 */ -}}
 
 {{ $title := ((.Get 0) | default (printf "Accordion Item #%d" (.Ordinal))) }}
-{{ $id := (printf "%s-%s" ($.Name) ((printf "sc-%s-%s" ($.Name) (delimit (shuffle (seq 11 99)) "")) | md5)) }}
+{{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
 {{ if (and (ne (.Parent) nil) (eq (.Parent.Name) "accordion")) }}
-    {{ $pid := (printf "%s-%s" (.Parent.Name) ((printf "sc-%s-%d" (.Parent.Name) (.Parent.Ordinal)) | md5)) }}
+    {{ $pid := (printf "id-%s" ((printf "%s-%d" (.Parent.Name) (.Parent.Ordinal)) | md5)) }}
     <div class="accordion-item">
       <div class="accordion-header">
         <a class="accordion-button collapsed" href="#" role="button" tabindex="0"

@@ -1,10 +1,37 @@
 {{ $p := (.p) }}
 {{ $v := (.v) }}
-{{ $s := ((.s) | upper) }}
+{{ $s := (.s) }}
+{{ $q := (.q) }}
+{{ $t := ((.t) | default ($v)) }}
+{{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
 <div class="input-group">
     {{ with ($p) }}<span class="input-group-text"><i class="{{ ($p) }} fa-fw"></i></span>{{ end }}
   <input class="form-control" type="text" value="{{ ($v) }}"
          data-fn="select-all" aria-label="{{ ($v) }}" readonly/>
     {{ with ($s) }}<span class="input-group-text">{{ ($s) }}</span>{{ end }}
+    {{ with ($q) }}
+      <button class="btn btn-primary" type="button"
+              data-bs-toggle="modal" data-bs-target="#{{ ($id) }}"><i class="fas fa-qrcode fa-fw"></i></button>
+    {{ end }}
 </div>
+
+{{ with ($q) }}
+  <div class="modal fade" id="{{ ($id) }}" tabindex="-1" role="dialog"
+       aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow">
+        <div class="modal-header">
+          <div class="modal-title h5 fs-5 text-truncate" id="{{ ($id) }}-label">{{ ($t) }}</div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label='{{ (i18n "close") }}'></button>
+        </div>
+        <div class="modal-body">
+          <div class="d-flex justify-content-center">
+            <div data-fn="qrcode" data-qr-text="{{ ($q) }}"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
