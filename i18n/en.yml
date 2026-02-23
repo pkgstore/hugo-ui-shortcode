@@ -69,34 +69,37 @@ sc:
   requisites:
     title: 'Requisites'
     organization:
-      account_correspondent: { other: 'Correspondent Account' }
-      account_current: { other: 'Current Account' }
-      accountant: { other: 'Accountant' }
-      accountant_deputy: { other: 'Deputy Accountant' }
-      address_legal: { other: 'Legal Address' }
-      address_location: { other: 'Location' }
-      address_mailing: { other: 'Mailing Address' }
-      bank: { other: 'Bank' }
-      bic: { other: 'BIC' }
-      director: { other: 'Director' }
+      address:
+        legal: { other: 'Legal Address' }
+        location: { other: 'Location' }
+        mailing: { other: 'Mailing Address' }
+      bank:
+        name: { other: 'Bank' }
+        bic: { other: 'BIC' }
+        account:
+          correspondent: { other: 'Correspondent Account' }
+          current: { other: 'Current Account' }
       email: { other: 'E-mail' }
-      inn: { other: 'INN' }
-      kpp: { other: 'KPP' }
-      name_full: { other: 'Full Name' }
-      name_short: { other: 'Short Name' }
-      ogrn: { other: 'OGRN' }
-      okato: { other: 'OKATO' }
-      okfs: { other: 'OKFS' }
-      okogu: { other: 'OKOGU' }
-      okopf: { other: 'OKOPF' }
-      okpo: { other: 'OKPO' }
-      oktmo: { other: 'OKTMO' }
-      okved: { other: 'OKVED' }
+      name:
+        full: { other: 'Full Name' }
+        short: { other: 'Short Name' }
+      codes:
+        inn: { other: 'INN' }
+        kpp: { other: 'KPP' }
+        ogrn: { other: 'OGRN' }
+        okato: { other: 'OKATO' }
+        okfs: { other: 'OKFS' }
+        okogu: { other: 'OKOGU' }
+        okopf: { other: 'OKOPF' }
+        okpo: { other: 'OKPO' }
+        oktmo: { other: 'OKTMO' }
+        okved: { other: 'OKVED' }
       phone: { other: 'Phone' }
       site: { other: 'Site' }
-      title_bank: { other: 'Organization Bank' }
-      title_codes: { other: 'Organization Codes' }
-      title_general: { other: 'General Requisites' }
+      title:
+        bank: { other: 'Organization Bank' }
+        codes: { other: 'Organization Codes' }
+        general: { other: 'General Requisites' }
     bank:
       account:
         eur:

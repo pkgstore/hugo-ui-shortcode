@@ -1,12 +1,249 @@
 {{ if (and (.Get 0) (.Get 1)) }}
 
     {{ $url := (.Get 0) }}
-    {{ $requisites := (split (.Get 1) ",") }}
+    {{ $requisites := (split (.Get 1) ";") }}
     {{ $data := (resources.GetRemote ($url)) }}
     {{ $data = (($data) | transform.Unmarshal) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
         {{ with ($data) }}
+
+            {{ if (in ($requisites) "organization") }}
+                {{ with (.organization) }}
+                    {{ with (.names) }}
+                      <div class="card mb-3">
+                        <div class="card-header h5 fs-5"></div>
+                        <div class="card-body">
+                          <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                              {{ range . }}
+                                <div class="col">
+                                    {{ (.type) }}
+                                </div>
+                                <div class="col">
+                                    {{ (partial "component/input-group" (dict
+                                    "p" "fas fa-user"
+                                    "v" (.name)
+                                    )) }}
+                                </div>
+                              {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                    {{ with (.addresses) }}
+                      <div class="card mb-3">
+                        <div class="card-header h5 fs-5">
+                            {{ (i18n "sc.requisites.organization.title.addresses") }}
+                        </div>
+                        <div class="card-body">
+                          <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                              {{ range . }}
+                                <div class="col">
+                                    {{ (.type) }}
+                                </div>
+                                <div class="col">
+                                    {{ (partial "component/input-group" (dict
+                                    "p" "fas fa-user"
+                                    "v" (.address)
+                                    )) }}
+                                </div>
+                              {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                    {{ with (.codes) }}
+                      <div class="card mb-3">
+                        <div class="card-header h5 fs-5">
+                            {{ (i18n "sc.requisites.organization.title.codes") }}
+                        </div>
+                        <div class="card-body">
+                          <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                              {{ range . }}
+                                <div class="col">
+                                    {{ (.name) }}
+                                </div>
+                                <div class="col">
+                                    {{ (partial "component/input-group" (dict
+                                    "p" "fas fa-user"
+                                    "v" (.code)
+                                    )) }}
+                                </div>
+                              {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                    {{ with (.banks) }}
+                      <div class="card mb-3">
+                        <div class="card-header h5 fs-5">
+                            {{ (i18n "sc.requisites.organization.title.banks") }}
+                        </div>
+                        <div class="card-body">
+                          <div class="row row-cols-1 g-3 align-items-center">
+                              {{ range . }}
+                                <div class="col">
+                                  <div class="card">
+                                    <div class="card-header h5 fs-5">{{ (.name) }}</div>
+                                    <div class="card-body">
+                                      <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                                        <div class="col">
+                                            {{ (i18n "sc.requisites.organization.bank.name") }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict
+                                            "p" "fas fa-user"
+                                            "v" (.name)
+                                            )) }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (i18n "sc.requisites.organization.bank.bic") }}
+                                        </div>
+                                        <div class="col">
+                                            {{ (partial "component/input-group" (dict
+                                            "p" "fas fa-user"
+                                            "v" (.bic)
+                                            )) }}
+                                        </div>
+                                          {{ with .account }}
+                                            <div class="col">
+                                                {{ (i18n "sc.requisites.organization.bank.account.current") }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (partial "component/input-group" (dict
+                                                "p" "fas fa-user"
+                                                "v" (.current)
+                                                )) }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (i18n "sc.requisites.organization.bank.account.correspondent") }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (partial "component/input-group" (dict
+                                                "p" "fas fa-user"
+                                                "v" (.correspondent)
+                                                )) }}
+                                            </div>
+                                          {{ end }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                    {{ with (.contacts) }}
+                      <div class="card mb-3">
+                        <div class="card-header h5 fs-5">
+                            {{ (i18n "sc.requisites.organization.title.contacts") }}
+                        </div>
+                        <div class="card-body">
+                          <div class="row row-cols-1 g-3 align-items-center">
+                              {{ with (.emails) }}
+                                <div class="col">
+                                  <div class="card">
+                                    <div class="card-header h5 fs-5">
+                                        {{ (i18n "sc.requisites.organization.title.email") }}
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                                          {{ range . }}
+                                            <div class="col">
+                                                {{ .name }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (partial "component/input-group" (dict
+                                                "p" "fas fa-user"
+                                                "v" (.address)
+                                                )) }}
+                                            </div>
+                                          {{ end }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              {{ end }}
+                              {{ with (.phones) }}
+                                <div class="col">
+                                  <div class="card">
+                                    <div class="card-header h5 fs-5">
+                                        {{ (i18n "sc.requisites.organization.title.phones") }}
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                                          {{ range . }}
+                                            <div class="col">
+                                                {{ .name }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (partial "component/input-group" (dict
+                                                "p" "fas fa-user"
+                                                "v" (.number)
+                                                )) }}
+                                            </div>
+                                          {{ end }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              {{ end }}
+                              {{ with (.sites) }}
+                                <div class="col">
+                                  <div class="card">
+                                    <div class="card-header h5 fs-5">
+                                        {{ (i18n "sc.requisites.organization.title.sites") }}
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                                          {{ range . }}
+                                            <div class="col">
+                                                {{ .name }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (partial "component/input-group" (dict
+                                                "p" "fas fa-user"
+                                                "v" (.url)
+                                                )) }}
+                                            </div>
+                                          {{ end }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              {{ end }}
+                              {{ with (.staff) }}
+                                <div class="col">
+                                  <div class="card">
+                                    <div class="card-header h5 fs-5">
+                                        {{ (i18n "sc.requisites.organization.title.staff") }}
+                                    </div>
+                                    <div class="card-body">
+                                      <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                                          {{ range . }}
+                                            <div class="col">
+                                                {{ .position }}
+                                            </div>
+                                            <div class="col">
+                                                {{ (partial "component/input-group" (dict
+                                                "p" "fas fa-user"
+                                                "v" (.name)
+                                                )) }}
+                                            </div>
+                                          {{ end }}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              {{ end }}
+                          </div>
+                        </div>
+                      </div>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+
             {{ if (in ($requisites) "bank") }}
                 {{ with (.bank) }}
                     {{ range (.account) }}
@@ -21,7 +258,7 @@
                                   {{ with (.beneficiary) }}
                                       {{ with (.name) }}
                                         <div class="col">
-                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_name" ($key))) }}
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.name" ($key))) }}
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
@@ -32,7 +269,7 @@
                                       {{ end }}
                                       {{ with (.account) }}
                                         <div class="col">
-                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_account" ($key))) }}
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.account" ($key))) }}
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
@@ -45,7 +282,7 @@
                                       {{ end }}
                                       {{ with (.bank) }}
                                         <div class="col">
-                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_bank" ($key))) }}
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.bank" ($key))) }}
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
@@ -56,7 +293,7 @@
                                       {{ end }}
                                       {{ with (.swift) }}
                                         <div class="col">
-                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary_swift" ($key))) }}
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.swift" ($key))) }}
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
@@ -69,7 +306,7 @@
                                   {{ with (.correspondent) }}
                                       {{ with (.bank) }}
                                         <div class="col">
-                                            {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent_bank" ($key))) }}
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent.bank" ($key))) }}
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
@@ -80,7 +317,7 @@
                                       {{ end }}
                                       {{ with (.swift) }}
                                         <div class="col">
-                                            {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent_swift" ($key))) }}
+                                            {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent.swift" ($key))) }}
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
@@ -125,7 +362,7 @@
                                   {{ end }}
                                   {{ with (.correspondent.account) }}
                                     <div class="col">
-                                        {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent_account" ($key))) }}
+                                        {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent.account" ($key))) }}
                                     </div>
                                     <div class="col">
                                         {{ (partial "component/input-group" (dict
@@ -154,12 +391,13 @@
                     {{ end }}
                 {{ end }}
             {{ end }}
+
             {{ if (in ($requisites) "card") }}
               <div class="card mb-3">
                 <div class="card-header h5 fs-5">{{ (i18n "sc.requisites.card") }}</div>
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
-                      {{ range (.card) }}
+                      {{ range (.cards) }}
                         <div class="col">
                             {{ (partial "component/input-group" (dict
                             "p" "fas fa-credit-card"
@@ -173,6 +411,7 @@
                 </div>
               </div>
             {{ end }}
+
             {{ if (in ($requisites) "crypto") }}
               <div class="card mb-3">
                 <div class="card-header h5 fs-5">{{ (i18n "sc.requisites.crypto") }}</div>
@@ -193,6 +432,7 @@
                 </div>
               </div>
             {{ end }}
+
         {{ end }}
     </div>
 

@@ -69,60 +69,55 @@ sc:
   requisites:
     title: 'Реквизиты'
     organization:
-      account_correspondent: { other: 'Корреспондентский счёт' }
-      account_current: { other: 'Расчётный счёт' }
-      accountant: { other: 'Главный бухгалтер' }
-      accountant_deputy: { other: 'Заместители главного бухгалтера' }
-      address_legal: { other: 'Юридический адрес' }
-      address_location: { other: 'Адрес местонахождения' }
-      address_mailing: { other: 'Почтовый адрес' }
-      bank: { other: 'Банк' }
-      bic: { other: 'БИК' }
-      director: { other: 'Руководитель' }
-      email: { other: 'E-mail' }
-      inn: { other: 'ИНН' }
-      kpp: { other: 'КПП' }
-      name_full: { other: 'Полное наименование' }
-      name_short: { other: 'Сокращённое наименование' }
-      ogrn: { other: 'ОГРН' }
-      okato: { other: 'ОКАТО' }
-      okfs: { other: 'ОКФС' }
-      okogu: { other: 'ОКОГУ' }
-      okopf: { other: 'ОКОПФ' }
-      okpo: { other: 'ОКПО' }
-      oktmo: { other: 'ОКТМО' }
-      okved: { other: 'ОКВЭД' }
-      phone: { other: 'Телефон' }
-      site: { other: 'Сайт' }
-      title_bank: { other: 'Банк организации' }
-      title_codes: { other: 'Коды организации' }
-      title_general: { other: 'Основные реквизиты' }
+      bank:
+        account:
+          correspondent: { other: 'Корреспондентский счёт' }
+          current: { other: 'Расчётный счёт' }
+        bic: { other: 'БИК' }
+        name: { other: 'Банк' }
+      title:
+        addresses: { other: 'Адреса' }
+        banks: { other: 'Банки' }
+        codes: { other: 'Коды' }
+        email: { other: 'E-mail' }
+        general: { other: 'Основные реквизиты' }
+        organization: { other: 'Организация' }
+        phones: { other: 'Телефоны' }
+        sites: { other: 'Сайты' }
+        staff: { other: 'Персонал' }
+        contacts: { other: 'Контакты' }
     bank:
       account:
         eur:
-          beneficiary_account: { other: 'Beneficiary Account' }
-          beneficiary_bank: { other: 'Beneficiary Bank' }
-          beneficiary_name: { other: 'Beneficiary Name' }
-          beneficiary_swift: { other: 'Beneficiary SWIFT' }
-          correspondent_bank: { other: 'Correspondent Bank' }
-          correspondent_swift: { other: 'Correspondent SWIFT' }
+          beneficiary:
+            account: { other: 'Beneficiary Account' }
+            bank: { other: 'Beneficiary Bank' }
+            name: { other: 'Beneficiary Name' }
+            swift: { other: 'Beneficiary SWIFT' }
+          correspondent:
+            bank: { other: 'Correspondent Bank' }
+            swift: { other: 'Correspondent SWIFT' }
           target: { other: 'Purpose of Payment' }
           title: { other: 'Account details' }
         usd:
-          beneficiary_account: { other: 'Beneficiary Account' }
-          beneficiary_bank: { other: 'Beneficiary Bank' }
-          beneficiary_name: { other: 'Beneficiary Name' }
-          beneficiary_swift: { other: 'Beneficiary SWIFT' }
-          correspondent_bank: { other: 'Correspondent Bank' }
-          correspondent_swift: { other: 'Correspondent SWIFT' }
+          beneficiary:
+            account: { other: 'Beneficiary Account' }
+            bank: { other: 'Beneficiary Bank' }
+            name: { other: 'Beneficiary Name' }
+            swift: { other: 'Beneficiary SWIFT' }
+          correspondent:
+            bank: { other: 'Correspondent Bank' }
+            swift: { other: 'Correspondent SWIFT' }
           target: { other: 'Purpose of Payment' }
           title: { other: 'Account details' }
         rub:
-          beneficiary_account: { other: 'Счёт получателя' }
-          beneficiary_bank: { other: 'Банк получателя' }
-          beneficiary_name: { other: 'Получатель' }
+          beneficiary:
+            account: { other: 'Счёт получателя' }
+            bank: { other: 'Банк получателя' }
+            name: { other: 'Получатель' }
           bic: { other: 'БИК' }
-          correspondent_account: { other: 'Корреспондентский счёт' }
+          correspondent:
+            account: { other: 'Корреспондентский счёт' }
           inn: { other: 'ИНН' }
           kpp: { other: 'КПП' }
           target: { other: 'Назначение платежа' }
