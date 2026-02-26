@@ -186,7 +186,7 @@
                                             <div class="col">
                                                 {{ (partial "input-group" (dict
                                                 "p" (.icon)
-                                                "v" (partial "phone" (dict "phone" .number))
+                                                "v" (partial "phone" (dict "v" .number))
                                                 "q" (.number)
                                                 )) }}
                                             </div>
@@ -414,7 +414,7 @@
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" "fas fa-credit-card"
-                            "v" (partial "card" (dict "number" .number))
+                            "v" (partial "card" (dict "v" .number))
                             "s" ((.currency) | upper)
                             "q" (.number)
                             ))}}

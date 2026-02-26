@@ -11,15 +11,19 @@
          data-fn="select-all" aria-label="{{ ($v) }}" readonly/>
     {{ with ($s) }}<span class="input-group-text">{{ ($s) }}</span>{{ end }}
     {{ with ($q) }}
-    {{ if strings.Contains . "http" }}
-    <a class="btn btn-primary" href="{{ . }}" target="_blank"><i class="fas fa-arrow-up-right-from-square fa-fw"></i></a>
-    {{ else if (findRE `^(([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))$` .) }}
-    <a class="btn btn-primary" href="mailto:{{ . }}"><i class="fas fa-envelope-open-text fa-fw"></i></a>
-    {{ else if (findRE `^((\+\d{1,3})(\d{6,14}))$` .) }}
-    <a class="btn btn-primary" href="tel:{{ . }}"><i class="fas fa-phone-volume fa-fw"></i></a>
-      {{ else }}
-      <button class="btn btn-primary" type="button"
-              data-bs-toggle="modal" data-bs-target="#{{ ($id) }}"><i class="fas fa-qrcode fa-fw"></i></button>
+        {{ if strings.Contains . "http" }}
+          <a class="btn btn-primary" href="{{ . }}" target="_blank"><i
+                    class="fas fa-arrow-up-right-from-square fa-fw"></i></a>
+        {{ else if (findRE `^(([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))$` .) }}
+          <a class="btn btn-primary" href="mailto:{{ . }}"><i
+                    class="fas fa-envelope-open-text fa-fw"></i></a>
+        {{ else if (findRE `^((\+\d{1,3})(\d{6,14}))$` .) }}
+          <a class="btn btn-primary" href="tel:{{ . }}"><i
+                    class="fas fa-phone-volume fa-fw"></i></a>
+        {{ else }}
+          <button class="btn btn-primary" type="button"
+                  data-bs-toggle="modal" data-bs-target="#{{ ($id) }}"><i
+                    class="fas fa-qrcode fa-fw"></i></button>
         {{ end }}
     {{ end }}
 </div>
@@ -35,7 +39,7 @@
                   aria-label='{{ (i18n "close") }}'></button>
         </div>
         <div class="modal-body">
-          {{ (partial "qrcode" (dict "t" ($q))) }}
+            {{ (partial "qrcode" (dict "v" ($q))) }}
         </div>
       </div>
     </div>
