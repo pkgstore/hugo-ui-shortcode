@@ -27,9 +27,7 @@
                   aria-label='{{ (i18n "close") }}'></button>
         </div>
         <div class="modal-body">
-          <div class="d-flex justify-content-center">
-            <div data-fn="qrcode" data-qr-text="{{ ($q) }}"></div>
-          </div>
+          {{ (partial "qrcode" (dict "t" ($q))) }}
         </div>
       </div>
     </div>

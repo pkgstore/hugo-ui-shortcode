@@ -20,7 +20,7 @@
                                     {{ (.type) }}
                                 </div>
                                 <div class="col">
-                                    {{ (partial "component/input-group" (dict
+                                    {{ (partial "input-group" (dict
                                     "p" (.icon)
                                     "v" (.name)
                                     )) }}
@@ -42,7 +42,7 @@
                                     {{ (.type) }}
                                 </div>
                                 <div class="col">
-                                    {{ (partial "component/input-group" (dict
+                                    {{ (partial "input-group" (dict
                                     "p" (.icon)
                                     "v" (.address)
                                     "q" (.address)
@@ -65,7 +65,7 @@
                                     {{ (.name) }}
                                 </div>
                                 <div class="col">
-                                    {{ (partial "component/input-group" (dict
+                                    {{ (partial "input-group" (dict
                                     "p" (.icon)
                                     "v" (.code)
                                     "q" (.code)
@@ -93,7 +93,7 @@
                                             {{ (i18n "sc.requisites.organization.bank.name") }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" (.icon)
                                             "v" (.name)
                                             )) }}
@@ -102,7 +102,7 @@
                                             {{ (i18n "sc.requisites.organization.bank.bic") }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" (.icon)
                                             "v" (.bic)
                                             "q" (.bic)
@@ -113,7 +113,7 @@
                                                 {{ (i18n "sc.requisites.organization.bank.account.current") }}
                                             </div>
                                             <div class="col">
-                                                {{ (partial "component/input-group" (dict
+                                                {{ (partial "input-group" (dict
                                                 "p" (.icon)
                                                 "v" (.current)
                                                 "q" (.current)
@@ -123,7 +123,7 @@
                                                 {{ (i18n "sc.requisites.organization.bank.account.correspondent") }}
                                             </div>
                                             <div class="col">
-                                                {{ (partial "component/input-group" (dict
+                                                {{ (partial "input-group" (dict
                                                 "p" (.icon)
                                                 "v" (.correspondent)
                                                 "q" (.current)
@@ -159,7 +159,7 @@
                                                 {{ .name }}
                                             </div>
                                             <div class="col">
-                                                {{ (partial "component/input-group" (dict
+                                                {{ (partial "input-group" (dict
                                                 "p" (.icon)
                                                 "v" (.address)
                                                 "q" (.address)
@@ -184,7 +184,7 @@
                                                 {{ .name }}
                                             </div>
                                             <div class="col">
-                                                {{ (partial "component/input-group" (dict
+                                                {{ (partial "input-group" (dict
                                                 "p" (.icon)
                                                 "v" (.number)
                                                 "q" (.number)
@@ -209,7 +209,7 @@
                                                 {{ .name }}
                                             </div>
                                             <div class="col">
-                                                {{ (partial "component/input-group" (dict
+                                                {{ (partial "input-group" (dict
                                                 "p" (.icon)
                                                 "v" (.url)
                                                 "q" (.url)
@@ -234,7 +234,7 @@
                                                 {{ .position }}
                                             </div>
                                             <div class="col">
-                                                {{ (partial "component/input-group" (dict
+                                                {{ (partial "input-group" (dict
                                                 "p" (.icon)
                                                 "v" (.name)
                                                 )) }}
@@ -269,7 +269,7 @@
                                             {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.name" ($key))) }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" "fas fa-user"
                                             "v" .
                                             )) }}
@@ -280,7 +280,7 @@
                                             {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.account" ($key))) }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" "fas fa-wallet"
                                             "v" .
                                             "q" .
@@ -293,7 +293,7 @@
                                             {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.bank" ($key))) }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" "fas fa-university"
                                             "v" .
                                             "q" .
@@ -305,7 +305,7 @@
                                             {{ (i18n (printf "sc.requisites.bank.account.%s.beneficiary.swift" ($key))) }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" "fas fa-hashtag"
                                             "v" .
                                             "q" .
@@ -319,7 +319,7 @@
                                             {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent.bank" ($key))) }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" "fas fa-university"
                                             "v" .
                                             "q" .
@@ -331,7 +331,7 @@
                                             {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent.swift" ($key))) }}
                                         </div>
                                         <div class="col">
-                                            {{ (partial "component/input-group" (dict
+                                            {{ (partial "input-group" (dict
                                             "p" "fas fa-hashtag"
                                             "v" .
                                             "q" .
@@ -344,7 +344,7 @@
                                         {{ (i18n (printf "sc.requisites.bank.account.%s.bic" ($key))) }}
                                     </div>
                                     <div class="col">
-                                        {{ (partial "component/input-group" (dict
+                                        {{ (partial "input-group" (dict
                                         "p" "fas fa-hashtag"
                                         "v" .
                                         "q" .
@@ -356,7 +356,7 @@
                                         {{ (i18n (printf "sc.requisites.bank.account.%s.inn" ($key))) }}
                                     </div>
                                     <div class="col">
-                                        {{ (partial "component/input-group" (dict
+                                        {{ (partial "input-group" (dict
                                         "p" "fas fa-hashtag"
                                         "v" .
                                         "q" .
@@ -368,7 +368,7 @@
                                         {{ (i18n (printf "sc.requisites.bank.account.%s.kpp" ($key))) }}
                                     </div>
                                     <div class="col">
-                                        {{ (partial "component/input-group" (dict
+                                        {{ (partial "input-group" (dict
                                         "p" "fas fa-hashtag"
                                         "v" .
                                         "q" .
@@ -380,7 +380,7 @@
                                         {{ (i18n (printf "sc.requisites.bank.account.%s.correspondent.account" ($key))) }}
                                     </div>
                                     <div class="col">
-                                        {{ (partial "component/input-group" (dict
+                                        {{ (partial "input-group" (dict
                                         "p" "fas fa-wallet"
                                         "v" .
                                         "q" .
@@ -393,7 +393,7 @@
                                         {{ (i18n (printf "sc.requisites.bank.account.%s.target" ($key))) }}
                                     </div>
                                     <div class="col">
-                                        {{ (partial "component/input-group" (dict
+                                        {{ (partial "input-group" (dict
                                         "p" "fas fa-paper-plane"
                                         "v" .
                                         ))}}
@@ -414,9 +414,9 @@
                   <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
                       {{ range (.cards) }}
                         <div class="col">
-                            {{ (partial "component/input-group" (dict
+                            {{ (partial "input-group" (dict
                             "p" "fas fa-credit-card"
-                            "v" (.number)
+                            "v" (partial "card" (dict "number" .number))
                             "s" ((.currency) | upper)
                             "q" (.number)
                             ))}}
@@ -434,7 +434,7 @@
                   <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
                       {{ range (.crypto) }}
                         <div class="col">
-                            {{ (partial "component/input-group" (dict
+                            {{ (partial "input-group" (dict
                             "p" "fas fa-wallet"
                             "v" (.address)
                             "s" ((.currency) | upper)
@@ -453,6 +453,6 @@
 
 {{ else }}
 
-    {{ (partial "alert/no_params" .) }}
+    {{ (partial "alert-params" .) }}
 
 {{ end }}

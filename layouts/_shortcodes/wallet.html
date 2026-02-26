@@ -5,7 +5,7 @@
     {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
     <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
-        {{ (partial "component/input-group" (dict
+        {{ (partial "input-group" (dict
         "p" "fas fa-wallet"
         "v" ($address)
         "s" (($currency) | upper)
@@ -16,6 +16,6 @@
 
 {{ else }}
 
-    {{ (partial "alert/no_params" .) }}
+    {{ (partial "alert-params" .) }}
 
 {{ end }}
