@@ -11,7 +11,7 @@
          data-fn="select-all" aria-label="{{ ($vol) }}" readonly/>
     {{ with ($sfx) }}<span class="input-group-text">{{ ($sfx) }}</span>{{ end }}
     {{ with ($qr) }}
-        {{ if strings.Contains . "http" }}
+        {{ if findRE `^((http://)|(https://))` . }}
           <a class="btn btn-primary" href="{{ . }}" target="_blank"><i
                     class="fas fa-arrow-up-right-from-square fa-fw"></i></a>
         {{ else if (findRE `^(([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))$` .) }}
