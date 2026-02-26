@@ -1,7 +1,7 @@
 {{ if (and (.Get 0) (.Get 1)) }}
 
     {{ $url := (.Get 0) }}
-    {{ $requisites := (split (.Get 1) ";") }}
+    {{ $requisites := (split (.Get 1) ",") }}
     {{ $data := (resources.GetRemote ($url)) }}
     {{ $data = (($data) | transform.Unmarshal) }}
 
@@ -12,7 +12,7 @@
                 {{ with (.organization) }}
                     {{ with (.names) }}
                       <div class="card mb-3">
-                        <div class="card-header h5 fs-5"></div>
+                        <div class="card-header h5 fs-5">{{ (i18n "sc.requisites.organization.title.organization") }}</div>
                         <div class="card-body">
                           <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                               {{ range . }}
@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col">
                                     {{ (partial "component/input-group" (dict
-                                    "p" "fas fa-user"
+                                    "p" (.icon)
                                     "v" (.name)
                                     )) }}
                                 </div>
@@ -43,8 +43,9 @@
                                 </div>
                                 <div class="col">
                                     {{ (partial "component/input-group" (dict
-                                    "p" "fas fa-user"
+                                    "p" (.icon)
                                     "v" (.address)
+                                    "q" (.address)
                                     )) }}
                                 </div>
                               {{ end }}
@@ -65,8 +66,9 @@
                                 </div>
                                 <div class="col">
                                     {{ (partial "component/input-group" (dict
-                                    "p" "fas fa-user"
+                                    "p" (.icon)
                                     "v" (.code)
+                                    "q" (.code)
                                     )) }}
                                 </div>
                               {{ end }}
@@ -92,7 +94,7 @@
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
-                                            "p" "fas fa-user"
+                                            "p" (.icon)
                                             "v" (.name)
                                             )) }}
                                         </div>
@@ -101,8 +103,9 @@
                                         </div>
                                         <div class="col">
                                             {{ (partial "component/input-group" (dict
-                                            "p" "fas fa-user"
+                                            "p" (.icon)
                                             "v" (.bic)
+                                            "q" (.bic)
                                             )) }}
                                         </div>
                                           {{ with .account }}
@@ -111,8 +114,9 @@
                                             </div>
                                             <div class="col">
                                                 {{ (partial "component/input-group" (dict
-                                                "p" "fas fa-user"
+                                                "p" (.icon)
                                                 "v" (.current)
+                                                "q" (.current)
                                                 )) }}
                                             </div>
                                             <div class="col">
@@ -120,8 +124,9 @@
                                             </div>
                                             <div class="col">
                                                 {{ (partial "component/input-group" (dict
-                                                "p" "fas fa-user"
+                                                "p" (.icon)
                                                 "v" (.correspondent)
+                                                "q" (.current)
                                                 )) }}
                                             </div>
                                           {{ end }}
@@ -155,8 +160,9 @@
                                             </div>
                                             <div class="col">
                                                 {{ (partial "component/input-group" (dict
-                                                "p" "fas fa-user"
+                                                "p" (.icon)
                                                 "v" (.address)
+                                                "q" (.address)
                                                 )) }}
                                             </div>
                                           {{ end }}
@@ -179,8 +185,9 @@
                                             </div>
                                             <div class="col">
                                                 {{ (partial "component/input-group" (dict
-                                                "p" "fas fa-user"
+                                                "p" (.icon)
                                                 "v" (.number)
+                                                "q" (.number)
                                                 )) }}
                                             </div>
                                           {{ end }}
@@ -203,8 +210,9 @@
                                             </div>
                                             <div class="col">
                                                 {{ (partial "component/input-group" (dict
-                                                "p" "fas fa-user"
+                                                "p" (.icon)
                                                 "v" (.url)
+                                                "q" (.url)
                                                 )) }}
                                             </div>
                                           {{ end }}
@@ -227,7 +235,7 @@
                                             </div>
                                             <div class="col">
                                                 {{ (partial "component/input-group" (dict
-                                                "p" "fas fa-user"
+                                                "p" (.icon)
                                                 "v" (.name)
                                                 )) }}
                                             </div>
@@ -246,7 +254,7 @@
 
             {{ if (in ($requisites) "bank") }}
                 {{ with (.bank) }}
-                    {{ range (.account) }}
+                    {{ range (.accounts) }}
                         {{ range $key, $value := . }}
                           <div class="card mb-3">
                             <div class="card-header h5 fs-5">
@@ -288,6 +296,7 @@
                                             {{ (partial "component/input-group" (dict
                                             "p" "fas fa-university"
                                             "v" .
+                                            "q" .
                                             )) }}
                                         </div>
                                       {{ end }}
@@ -299,6 +308,7 @@
                                             {{ (partial "component/input-group" (dict
                                             "p" "fas fa-hashtag"
                                             "v" .
+                                            "q" .
                                             )) }}
                                         </div>
                                       {{ end }}
@@ -312,6 +322,7 @@
                                             {{ (partial "component/input-group" (dict
                                             "p" "fas fa-university"
                                             "v" .
+                                            "q" .
                                             )) }}
                                         </div>
                                       {{ end }}
@@ -323,6 +334,7 @@
                                             {{ (partial "component/input-group" (dict
                                             "p" "fas fa-hashtag"
                                             "v" .
+                                            "q" .
                                             )) }}
                                         </div>
                                       {{ end }}
@@ -335,6 +347,7 @@
                                         {{ (partial "component/input-group" (dict
                                         "p" "fas fa-hashtag"
                                         "v" .
+                                        "q" .
                                         )) }}
                                     </div>
                                   {{ end }}
@@ -346,6 +359,7 @@
                                         {{ (partial "component/input-group" (dict
                                         "p" "fas fa-hashtag"
                                         "v" .
+                                        "q" .
                                         )) }}
                                     </div>
                                   {{ end }}
@@ -357,6 +371,7 @@
                                         {{ (partial "component/input-group" (dict
                                         "p" "fas fa-hashtag"
                                         "v" .
+                                        "q" .
                                         )) }}
                                     </div>
                                   {{ end }}
@@ -392,7 +407,7 @@
                 {{ end }}
             {{ end }}
 
-            {{ if (in ($requisites) "card") }}
+            {{ if (in ($requisites) "cards") }}
               <div class="card mb-3">
                 <div class="card-header h5 fs-5">{{ (i18n "sc.requisites.card") }}</div>
                 <div class="card-body">

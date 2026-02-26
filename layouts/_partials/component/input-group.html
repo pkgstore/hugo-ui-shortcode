@@ -7,7 +7,7 @@
 
 <div class="input-group">
     {{ with ($p) }}<span class="input-group-text"><i class="{{ ($p) }} fa-fw"></i></span>{{ end }}
-  <input class="form-control" type="text" value="{{ ($v) }}"
+  <input type="text" id="input-{{ ($id) }}" class="form-control" name="input-{{ ($id) }}" value="{{ ($v) }}"
          data-fn="select-all" aria-label="{{ ($v) }}" readonly/>
     {{ with ($s) }}<span class="input-group-text">{{ ($s) }}</span>{{ end }}
     {{ with ($q) }}
