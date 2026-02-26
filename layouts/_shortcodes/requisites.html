@@ -186,7 +186,7 @@
                                             <div class="col">
                                                 {{ (partial "input-group" (dict
                                                 "p" (.icon)
-                                                "v" (.number)
+                                                "v" (partial "phone" (dict "phone" .number))
                                                 "q" (.number)
                                                 )) }}
                                             </div>
@@ -294,7 +294,7 @@
                                         </div>
                                         <div class="col">
                                             {{ (partial "input-group" (dict
-                                            "p" "fas fa-university"
+                                            "p" "fas fa-building-columns"
                                             "v" .
                                             "q" .
                                             )) }}
@@ -306,7 +306,7 @@
                                         </div>
                                         <div class="col">
                                             {{ (partial "input-group" (dict
-                                            "p" "fas fa-hashtag"
+                                            "p" "fas fa-arrow-right-arrow-left"
                                             "v" .
                                             "q" .
                                             )) }}
@@ -320,7 +320,7 @@
                                         </div>
                                         <div class="col">
                                             {{ (partial "input-group" (dict
-                                            "p" "fas fa-university"
+                                            "p" "fas fa-building-columns"
                                             "v" .
                                             "q" .
                                             )) }}
@@ -332,7 +332,7 @@
                                         </div>
                                         <div class="col">
                                             {{ (partial "input-group" (dict
-                                            "p" "fas fa-hashtag"
+                                            "p" "fas fa-arrow-right-arrow-left"
                                             "v" .
                                             "q" .
                                             )) }}
@@ -345,7 +345,7 @@
                                     </div>
                                     <div class="col">
                                         {{ (partial "input-group" (dict
-                                        "p" "fas fa-hashtag"
+                                        "p" "fas fa-building-columns"
                                         "v" .
                                         "q" .
                                         )) }}
@@ -357,7 +357,6 @@
                                     </div>
                                     <div class="col">
                                         {{ (partial "input-group" (dict
-                                        "p" "fas fa-hashtag"
                                         "v" .
                                         "q" .
                                         )) }}
@@ -369,7 +368,6 @@
                                     </div>
                                     <div class="col">
                                         {{ (partial "input-group" (dict
-                                        "p" "fas fa-hashtag"
                                         "v" .
                                         "q" .
                                         )) }}
