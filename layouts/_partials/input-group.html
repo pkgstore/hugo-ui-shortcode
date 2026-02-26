@@ -1,16 +1,16 @@
-{{ $p := ((.p) | default "fas fa-hashtag") }}
-{{ $v := (.v) }}
-{{ $s := (.s) }}
-{{ $q := (.q) }}
-{{ $t := ((.t) | default ($v)) }}
+{{ $pfx := ((.p) | default "fas fa-hashtag") }}
+{{ $vol := (.v) }}
+{{ $sfx := (.s) }}
+{{ $qr := (.q) }}
+{{ $title := ((.t) | default ($vol)) }}
 {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
 
 <div class="input-group">
-    {{ with ($p) }}<span class="input-group-text"><i class="{{ ($p) }} fa-fw"></i></span>{{ end }}
-  <input type="text" id="input-{{ ($id) }}" class="form-control" name="input-{{ ($id) }}" value="{{ ($v) }}"
-         data-fn="select-all" aria-label="{{ ($v) }}" readonly/>
-    {{ with ($s) }}<span class="input-group-text">{{ ($s) }}</span>{{ end }}
-    {{ with ($q) }}
+    {{ with ($pfx) }}<span class="input-group-text"><i class="{{ ($pfx) }} fa-fw"></i></span>{{ end }}
+  <input type="text" id="input-{{ ($id) }}" class="form-control" name="input-{{ ($id) }}" value="{{ ($vol) }}"
+         data-fn="select-all" aria-label="{{ ($vol) }}" readonly/>
+    {{ with ($sfx) }}<span class="input-group-text">{{ ($sfx) }}</span>{{ end }}
+    {{ with ($qr) }}
         {{ if strings.Contains . "http" }}
           <a class="btn btn-primary" href="{{ . }}" target="_blank"><i
                     class="fas fa-arrow-up-right-from-square fa-fw"></i></a>
@@ -28,18 +28,18 @@
     {{ end }}
 </div>
 
-{{ with ($q) }}
+{{ with ($qr) }}
   <div class="modal fade" id="{{ ($id) }}" tabindex="-1" role="dialog"
        aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content shadow">
         <div class="modal-header">
-          <div class="modal-title h5 fs-5 text-truncate" id="{{ ($id) }}-label">{{ ($t) }}</div>
+          <div class="modal-title h5 fs-5 text-truncate" id="{{ ($id) }}-label">{{ ($title) }}</div>
           <button type="button" class="btn-close" data-bs-dismiss="modal"
                   aria-label='{{ (i18n "close") }}'></button>
         </div>
         <div class="modal-body">
-            {{ (partial "qrcode" (dict "v" ($q))) }}
+            {{ (partial "qrcode" (dict "v" ($qr))) }}
         </div>
       </div>
     </div>
