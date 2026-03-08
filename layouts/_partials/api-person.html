@@ -1,0 +1,172 @@
+<div class="card mb-3">
+  <div class="card-header h5 fs-5">
+      {{ (i18n "sc.api.person.title.general") }}
+  </div>
+  <div class="card-body">
+    <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+        {{ range (.names) }}
+          <div class="col">{{ (.type) }}</div>
+          <div class="col">
+              {{ (partial "input-group" (dict
+              "p" (.icon)
+              "v" (.name)
+              )) }}
+          </div>
+        {{ end }}
+        {{ range (.nicknames) }}
+          <div class="col">{{ (.type) }}</div>
+          <div class="col">
+              {{ (partial "input-group" (dict
+              "p" (.icon)
+              "v" (.name)
+              )) }}
+          </div>
+        {{ end }}
+        {{ range (.dates) }}
+          <div class="col">{{ (.name) }}</div>
+          <div class="col">
+              {{ (partial "input-group" (dict
+              "p" (.icon)
+              "v" (.date)
+              )) }}
+          </div>
+        {{ end }}
+        {{ range (.addresses) }}
+          <div class="col">{{ (.name) }}</div>
+          <div class="col">
+              {{ (partial "input-group" (dict
+              "p" (.icon)
+              "v" (.address)
+              "q" (.address)
+              )) }}
+          </div>
+        {{ end }}
+    </div>
+  </div>
+</div>
+
+{{ with (.contacts) }}
+  <div class="card mb-3">
+    <div class="card-header h5 fs-5">
+        {{ (i18n "sc.api.person.title.contacts") }}
+    </div>
+    <div class="card-body">
+      <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+          {{ range (.emails) }}
+            <div class="col">{{ (.name) }}</div>
+            <div class="col">
+                {{ (partial "input-group" (dict
+                "p" (.icon)
+                "v" (.address)
+                "q" (.address)
+                )) }}
+            </div>
+          {{ end }}
+          {{ range (.phones) }}
+            <div class="col">{{ (.name) }}</div>
+            <div class="col">
+                {{ (partial "input-group" (dict
+                "p" (.icon)
+                "v" (.number)
+                "q" (.number)
+                )) }}
+            </div>
+          {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ with (.organizations) }}
+  <div class="card mb-3">
+    <div class="card-header h5 fs-5">
+        {{ (i18n "sc.api.person.title.organizations") }}
+    </div>
+    <div class="card-body">
+      <div class="row row-cols-1 row-cols-lg-2 g-3">
+          {{ range . }}
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="card-title h5 fs-5">
+                    <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
+                  </div>
+                    {{ with (.position) }}
+                      <div class="card-subtitle mb-2 text-body-secondary card-title h6 fs-6">{{ . }}</div>
+                    {{ end }}
+                    {{ with (.description) }}
+                      <p class="card-text">{{ . }}</p>
+                    {{ end }}
+                </div>
+              </div>
+            </div>
+          {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ with (.links) }}
+  <div class="card mb-3">
+    <div class="card-header h5 fs-5">
+        {{ (i18n "sc.api.person.title.links") }}
+    </div>
+    <div class="card-body">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+          {{ range . }}
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="card-title h5 fs-5">
+                    <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
+                  </div>
+                    {{ with (.description) }}
+                      <p class="card-text">{{ . }}</p>
+                    {{ end }}
+                </div>
+              </div>
+            </div>
+          {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ with (.signatures) }}
+  <div class="card mb-3">
+    <div class="card-header h5 fs-5">
+        {{ (i18n "sc.api.person.title.signatures") }}
+    </div>
+    <div class="card-body">
+        {{ range . }}
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                  {{ with (.email) }}
+                    <div class="col">{{ (.name) }}</div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" (.icon)
+                        "v" (.address)
+                        "q" (.address)
+                        )) }}
+                    </div>
+                  {{ end }}
+                  {{ with (.fingerprint) }}
+                    <div class="col">{{ (.name) }}</div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" (.icon)
+                        "v" (.hash)
+                        "q" (.hash)
+                        "t" (.name)
+                        )) }}
+                    </div>
+                  {{ end }}
+              </div>
+            </div>
+          </div>
+        {{ end }}
+    </div>
+  </div>
+{{ end }}

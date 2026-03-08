@@ -63,75 +63,71 @@ sc:
       yoomoney: { other: 'YooMoney' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
-  # Requisites.
+  # API.
   # ------------------------------------------------------------------------------------------------------------------ #
 
-  requisites:
-    title: 'Requisites'
+  api:
     organization:
-      address:
-        legal: { other: 'Legal Address' }
-        location: { other: 'Location' }
-        mailing: { other: 'Mailing Address' }
       bank:
-        name: { other: 'Bank' }
-        bic: { other: 'BIC' }
         account:
           correspondent: { other: 'Correspondent Account' }
           current: { other: 'Current Account' }
-      email: { other: 'E-mail' }
-      name:
-        full: { other: 'Full Name' }
-        short: { other: 'Short Name' }
-      codes:
-        inn: { other: 'INN' }
-        kpp: { other: 'KPP' }
-        ogrn: { other: 'OGRN' }
-        okato: { other: 'OKATO' }
-        okfs: { other: 'OKFS' }
-        okogu: { other: 'OKOGU' }
-        okopf: { other: 'OKOPF' }
-        okpo: { other: 'OKPO' }
-        oktmo: { other: 'OKTMO' }
-        okved: { other: 'OKVED' }
-      phone: { other: 'Phone' }
-      site: { other: 'Site' }
+        bic: { other: 'BIC' }
+        name: { other: 'Bank' }
       title:
-        bank: { other: 'Organization Bank' }
-        codes: { other: 'Organization Codes' }
-        general: { other: 'General Requisites' }
+        addresses: { other: 'Addresses' }
+        banks: { other: 'Banks' }
+        codes: { other: 'Codes' }
+        email: { other: 'E-mail' }
+        general: { other: 'General' }
+        organization: { other: 'Organization' }
+        phones: { other: 'Phones' }
+        sites: { other: 'Sites' }
+        staff: { other: 'Staff' }
+        contacts: { other: 'Contacts' }
     bank:
       account:
         eur:
-          beneficiary_account: { other: 'Beneficiary Account' }
-          beneficiary_bank: { other: 'Beneficiary Bank' }
-          beneficiary_name: { other: 'Beneficiary Name' }
-          beneficiary_swift: { other: 'Beneficiary SWIFT' }
-          correspondent_bank: { other: 'Correspondent Bank' }
-          correspondent_swift: { other: 'Correspondent SWIFT' }
+          beneficiary:
+            account: { other: 'Beneficiary Account' }
+            bank: { other: 'Beneficiary Bank' }
+            name: { other: 'Beneficiary Name' }
+            swift: { other: 'Beneficiary SWIFT' }
+          correspondent:
+            bank: { other: 'Correspondent Bank' }
+            swift: { other: 'Correspondent SWIFT' }
           target: { other: 'Purpose of Payment' }
           title: { other: 'Account details' }
         usd:
-          beneficiary_account: { other: 'Beneficiary Account' }
-          beneficiary_bank: { other: 'Beneficiary Bank' }
-          beneficiary_name: { other: 'Beneficiary Name' }
-          beneficiary_swift: { other: 'Beneficiary SWIFT' }
-          correspondent_bank: { other: 'Correspondent Bank' }
-          correspondent_swift: { other: 'Correspondent SWIFT' }
+          beneficiary:
+            account: { other: 'Beneficiary Account' }
+            bank: { other: 'Beneficiary Bank' }
+            name: { other: 'Beneficiary Name' }
+            swift: { other: 'Beneficiary SWIFT' }
+          correspondent:
+            bank: { other: 'Correspondent Bank' }
+            swift: { other: 'Correspondent SWIFT' }
           target: { other: 'Purpose of Payment' }
           title: { other: 'Account details' }
         rub:
-          beneficiary_account: { other: 'Beneficiary Account' }
-          beneficiary_bank: { other: 'Beneficiary Bank' }
-          beneficiary_name: { other: 'Beneficiary Name' }
+          beneficiary:
+            account: { other: 'Beneficiary Account' }
+            bank: { other: 'Beneficiary Bank' }
+            name: { other: 'Beneficiary Name' }
           bic: { other: 'BIC' }
-          correspondent_account: { other: 'Correspondent Account' }
+          correspondent:
+            account: { other: 'Correspondent Account' }
           inn: { other: 'ITN' }
           kpp: { other: 'IEC' }
           target: { other: 'Purpose of Payment' }
           title: { other: 'Account details' }
-    card: { other: 'Bank cards' }
-    crypto: { other: 'Crypto' }
+    person:
+      title:
+        contacts: { other: 'Contacts' }
+        links: { other: 'Links' }
+        general: { other: 'General' }
+        organizations: { other: 'Organizations' }
+        signatures: { other: 'Signatures' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.

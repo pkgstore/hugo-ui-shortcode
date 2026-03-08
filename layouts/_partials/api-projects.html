@@ -1,0 +1,10 @@
+<ul>
+    {{ range . }}
+      <li>
+          {{ if (and (.url) (.name)) }}
+            <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
+          {{ end }}
+          {{ with (.description) }}<br/>{{ . }}{{ end }}
+      </li>
+    {{ end }}
+</ul>

@@ -1,0 +1,41 @@
+{{ if (.Get 0) }}
+
+    {{ $url := (.Get 0) }}
+    {{ $data := (resources.GetRemote ($url)) }}
+    {{ $data = (($data) | transform.Unmarshal) }}
+
+    <div class="shortcode shortcode-{{ ($.Name) }} mb-3">
+        {{ with ($data) }}
+
+            {{ with ($data.organization) }}
+                {{ (partial "api-organization" .) }}
+            {{ end }}
+
+            {{ with ($data.bank) }}
+                {{ (partial "api-bank" .) }}
+            {{ end }}
+
+            {{ with ($data.cards) }}
+                {{ (partial "api-cards" .) }}
+            {{ end }}
+
+            {{ with ($data.crypto) }}
+                {{ (partial "api-crypto" .) }}
+            {{ end }}
+
+            {{ with ($data.projects) }}
+                {{ (partial "api-projects" .) }}
+            {{ end }}
+
+            {{ with ($data.person) }}
+                {{ (partial "api-person" .) }}
+            {{ end }}
+
+        {{ end }}
+    </div>
+
+{{ else }}
+
+    {{ (partial "alert-params" .) }}
+
+{{ end }}

@@ -1,0 +1,149 @@
+{{ range (.accounts) }}
+    {{ range $key, $value := . }}
+      <div class="card mb-3">
+        <div class="card-header h5 fs-5">
+            {{ (i18n (printf "sc.api.bank.account.%s.title" ($key))) }}
+          ({{ (($key) | upper) }})
+        </div>
+        <div class="card-body">
+          <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+              {{ with (.beneficiary) }}
+                  {{ with (.name) }}
+                    <div class="col">
+                        {{ (i18n (printf "sc.api.bank.account.%s.beneficiary.name" ($key))) }}
+                    </div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" "fas fa-user"
+                        "v" .
+                        )) }}
+                    </div>
+                  {{ end }}
+                  {{ with (.account) }}
+                    <div class="col">
+                        {{ (i18n (printf "sc.api.bank.account.%s.beneficiary.account" ($key))) }}
+                    </div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" "fas fa-wallet"
+                        "v" .
+                        "q" .
+                        "t" .
+                        )) }}
+                    </div>
+                  {{ end }}
+                  {{ with (.bank) }}
+                    <div class="col">
+                        {{ (i18n (printf "sc.api.bank.account.%s.beneficiary.bank" ($key))) }}
+                    </div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" "fas fa-building-columns"
+                        "v" .
+                        "q" .
+                        )) }}
+                    </div>
+                  {{ end }}
+                  {{ with (.swift) }}
+                    <div class="col">
+                        {{ (i18n (printf "sc.api.bank.account.%s.beneficiary.swift" ($key))) }}
+                    </div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" "fas fa-arrow-right-arrow-left"
+                        "v" .
+                        "q" .
+                        )) }}
+                    </div>
+                  {{ end }}
+              {{ end }}
+              {{ with (.correspondent) }}
+                  {{ with (.bank) }}
+                    <div class="col">
+                        {{ (i18n (printf "sc.api.bank.account.%s.correspondent.bank" ($key))) }}
+                    </div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" "fas fa-building-columns"
+                        "v" .
+                        "q" .
+                        )) }}
+                    </div>
+                  {{ end }}
+                  {{ with (.swift) }}
+                    <div class="col">
+                        {{ (i18n (printf "sc.api.bank.account.%s.correspondent.swift" ($key))) }}
+                    </div>
+                    <div class="col">
+                        {{ (partial "input-group" (dict
+                        "p" "fas fa-arrow-right-arrow-left"
+                        "v" .
+                        "q" .
+                        )) }}
+                    </div>
+                  {{ end }}
+              {{ end }}
+              {{ with (.bic) }}
+                <div class="col">
+                    {{ (i18n (printf "sc.api.bank.account.%s.bic" ($key))) }}
+                </div>
+                <div class="col">
+                    {{ (partial "input-group" (dict
+                    "p" "fas fa-building-columns"
+                    "v" .
+                    "q" .
+                    )) }}
+                </div>
+              {{ end }}
+              {{ with (.inn) }}
+                <div class="col">
+                    {{ (i18n (printf "sc.api.bank.account.%s.inn" ($key))) }}
+                </div>
+                <div class="col">
+                    {{ (partial "input-group" (dict
+                    "v" .
+                    "q" .
+                    )) }}
+                </div>
+              {{ end }}
+              {{ with (.kpp) }}
+                <div class="col">
+                    {{ (i18n (printf "sc.api.bank.account.%s.kpp" ($key))) }}
+                </div>
+                <div class="col">
+                    {{ (partial "input-group" (dict
+                    "v" .
+                    "q" .
+                    )) }}
+                </div>
+              {{ end }}
+              {{ with (.correspondent.account) }}
+                <div class="col">
+                    {{ (i18n (printf "sc.api.bank.account.%s.correspondent.account" ($key))) }}
+                </div>
+                <div class="col">
+                    {{ (partial "input-group" (dict
+                    "p" "fas fa-wallet"
+                    "v" .
+                    "q" .
+                    "t" .
+                    )) }}
+                </div>
+              {{ end }}
+              {{ with (.target) }}
+                <div class="col">
+                    {{ (i18n (printf "sc.api.bank.account.%s.target" ($key))) }}
+                </div>
+                <div class="col">
+                    {{ (partial "input-group" (dict
+                    "p" "fas fa-paper-plane"
+                    "v" .
+                    ))}}
+                </div>
+              {{ end }}
+          </div>
+        </div>
+      </div>
+    {{ end }}
+{{ end }}
+

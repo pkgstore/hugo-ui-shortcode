@@ -1,0 +1,16 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
+        {{ range . }}
+          <div class="col">
+              {{ (partial "input-group" (dict
+              "p" "fas fa-credit-card"
+              "v" (partial "card" (dict "v" .number))
+              "s" ((.currency) | upper)
+              "q" (.number)
+              ))}}
+          </div>
+        {{ end }}
+    </div>
+  </div>
+</div>
