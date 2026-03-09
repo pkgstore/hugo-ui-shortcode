@@ -1,0 +1,51 @@
+{{ range (.wallets) }}
+    {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
+    <div class="card mb-3">
+      <div class="card-header h5 fs-5">{{ (.name) }}</div>
+      <div class="card-body">
+        <form method="post" action="https://yoomoney.ru/quickpay/confirm" target="_blank">
+          <input type="hidden" name="receiver" value="{{ (.number) }}"/>
+          <input type="hidden" name="quickpay-form" value="button"/>
+          <div class="row row-cols-1 g-3">
+            <div class="col">
+              <div class="row row-cols-1 row-cols-lg-2 g-3">
+                <div class="col">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-ruble-sign fa-fw"></i></span>
+                    <input class="form-control" type="number" id="{{ ($id) }}-sum" name="sum"
+                           value="{{ (.amount) }}"
+                           min="1"/>
+                  </div>
+                  <small class="form-text text-body-secondary">
+                    <label for="{{ ($id) }}-sum">{{ (i18n "sc.donate.sum_help") }}</label>
+                  </small>
+                </div>
+                <div class="col">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="far fa-credit-card fa-fw"></i></span>
+                    <select class="form-select" id="{{ ($id) }}-paymentType" name="paymentType">
+                      <option value="AC">{{ (i18n "sc.donate.card") }}</option>
+                      <option value="PC">{{ (i18n "sc.donate.yoomoney") }}</option>
+                    </select>
+                  </div>
+                  <small class="form-text">
+                    <label for="{{ ($id) }}-paymentType">{{ (i18n "sc.donate.payment_type_help") }}</label>
+                  </small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="row row-cols-1 g-3">
+                <div class="col">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button class="btn btn-success" type="submit">{{ (i18n "sc.donate.submit") }}</button>
+                    <button class="btn btn-danger" type="reset">{{ (i18n "sc.donate.reset") }}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+{{ end }}
