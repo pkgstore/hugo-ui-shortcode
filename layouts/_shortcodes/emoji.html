@@ -8,11 +8,11 @@
   {{< emoji "smile" >}}
 */ -}}
 
-{{- $id := ((.Get 0) | default "smile") -}}
+{{- $id := (((.Get 0) | default "smile") | lower) -}}
 
 {{- if (strings.Contains ($id) ":") -}}
     {{- $id = ((printf "%s" ($id)) | emojify) -}}
-{{- else }}
+{{- else -}}
     {{- $id = ((printf ":%s:" ($id)) | emojify) -}}
 {{- end -}}
 
