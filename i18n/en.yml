@@ -86,8 +86,13 @@ sc:
         contacts: { other: 'Contacts' }
         links: { other: 'Links' }
         general: { other: 'General' }
-        organizations: { other: 'Organizations' }
+        experience: { other: 'Experience' }
         signatures: { other: 'Signatures' }
+        education: { other: 'Education' }
+        skills: { other: 'Skills' }
+        responsibilities: { other: 'Responsibilities' }
+        results: { other: 'Results' }
+        achievements: { other: 'Achievements' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.

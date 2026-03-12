@@ -23,23 +23,27 @@
           </div>
         {{ end }}
         {{ range (.dates) }}
-          <div class="col">{{ (.name) }}</div>
-          <div class="col">
-              {{ (partial "input-group" (dict
-              "p" (.icon)
-              "v" (.date)
-              )) }}
-          </div>
+          {{ if (.date) }}
+            <div class="col">{{ (.name) }}</div>
+            <div class="col">
+                {{ (partial "input-group" (dict
+                "p" (.icon)
+                "v" (.date)
+                )) }}
+            </div>
+          {{ end }}
         {{ end }}
         {{ range (.addresses) }}
-          <div class="col">{{ (.name) }}</div>
-          <div class="col">
-              {{ (partial "input-group" (dict
-              "p" (.icon)
-              "v" (.address)
-              "q" (.address)
-              )) }}
-          </div>
+          {{ if (.address) }}
+            <div class="col">{{ (.name) }}</div>
+            <div class="col">
+                {{ (partial "input-group" (dict
+                "p" (.icon)
+                "v" (.address)
+                "q" (.address)
+                )) }}
+            </div>
+          {{ end }}
         {{ end }}
     </div>
   </div>
@@ -53,6 +57,7 @@
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
           {{ range (.emails) }}
+          {{ if (.address) }}
             <div class="col">{{ (.name) }}</div>
             <div class="col">
                 {{ (partial "input-group" (dict
@@ -61,8 +66,10 @@
                 "q" (.address)
                 )) }}
             </div>
+            {{ end }}
           {{ end }}
           {{ range (.phones) }}
+          {{ if (.number) }}
             <div class="col">{{ (.name) }}</div>
             <div class="col">
                 {{ (partial "input-group" (dict
@@ -71,32 +78,64 @@
                 "q" (.number)
                 )) }}
             </div>
+            {{ end }}
           {{ end }}
       </div>
     </div>
   </div>
 {{ end }}
 
-{{ with (.organizations) }}
+{{ with (.education) }}
   <div class="card mb-3">
     <div class="card-header h5 fs-5">
-        {{ (i18n "sc.api.person.title.organizations") }}
+        {{ (i18n "sc.api.person.title.education") }}
     </div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ range . }}
+          {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
             <div class="col">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="card-title h5 fs-5">
-                    <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#{{ ($id) }}-modal">{{ (.name) }}</a>
                   </div>
-                    {{ with (.position) }}
-                      <div class="card-subtitle mb-2 text-body-secondary card-title h6 fs-6">{{ . }}</div>
-                    {{ end }}
                     {{ with (.description) }}
                       <p class="card-text">{{ . }}</p>
                     {{ end }}
+                </div>
+                <div class="card-footer text-body-secondary">
+                  <div class="small">
+                    <ul class="list-inline m-0">
+                      {{ range (.dates) }}
+                      <li class="list-inline-item me-3">
+                        <time datetime="{{ . }}" data-fn="date-local">{{ . }}</time>
+                    </li>
+                    {{ end }}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
+              <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content shadow">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="{{ ($id) }}-label">{{ (.name) }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label='{{ (i18n "close") }}'></button>
+                  </div>
+                  <div class="modal-body">
+                    {{ with (.achievements) }}
+                    <div class="card">
+                    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.achievements") }}</div>
+                    <ul class="list-group list-group-flush list-group-numbered">
+                      {{ range . }}
+                      <li class="list-group-item">{{ . }}</li>
+                      {{ end }}
+                      </ul>
+                      </div>
+                    {{ end }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -106,23 +145,96 @@
   </div>
 {{ end }}
 
-{{ with (.links) }}
+{{ with (.skills) }}
+<div class="card mb-3">
+  <div class="card-header h5 fs-5">
+      {{ (i18n "sc.api.person.title.skills") }}
+  </div>
+  <div class="card-body">
+    <div class="row row-cols-1 row-cols-lg-3 g-3">
+        {{ range . }}
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="card-title h5 fs-5">
+                  {{ (.name) }}
+                </div>
+                  {{ with (.description) }}
+                    <p class="card-text">{{ . }}</p>
+                  {{ end }}
+              </div>
+            </div>
+          </div>
+        {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ with (.experience) }}
   <div class="card mb-3">
     <div class="card-header h5 fs-5">
-        {{ (i18n "sc.api.person.title.links") }}
+        {{ (i18n "sc.api.person.title.experience") }}
     </div>
     <div class="card-body">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ range . }}
+          {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
             <div class="col">
               <div class="card h-100">
                 <div class="card-body">
                   <div class="card-title h5 fs-5">
-                    <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#{{ ($id) }}-modal">{{ (.name) }}</a>
                   </div>
+                    {{ with (.position) }}
+                      <div class="card-subtitle mb-2 text-body-secondary card-title h6 fs-6">{{ . }}</div>
+                    {{ end }}
                     {{ with (.description) }}
                       <p class="card-text">{{ . }}</p>
                     {{ end }}
+                </div>
+                <div class="card-footer text-body-secondary">
+                  <div class="small">
+                    <ul class="list-inline m-0">
+                      {{ range (.dates) }}
+                      <li class="list-inline-item me-3">
+                        <time datetime="{{ . }}" data-fn="date-local">{{ . }}</time>
+                    </li>
+                    {{ end }}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
+              <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content shadow">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="{{ ($id) }}-label">{{ (.name) }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label='{{ (i18n "close") }}'></button>
+                  </div>
+                  <div class="modal-body">
+                    {{ with (.responsibilities) }}
+                    <div class="card mb-3">
+                    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.responsibilities") }}</div>
+                    <ul class="list-group list-group-flush list-group-numbered">
+                      {{ range . }}
+                      <li class="list-group-item">{{ . }}</li>
+                      {{ end }}
+                      </ul>
+                      </div>
+                    {{ end }}
+                    {{ with (.results) }}
+                    <div class="card">
+                    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.results") }}</div>
+                    <ul class="list-group list-group-flush list-group-numbered">
+                      {{ range . }}
+                      <li class="list-group-item">{{ . }}</li>
+                      {{ end }}
+                      </ul>
+                      </div>
+                    {{ end }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -167,6 +279,32 @@
             </div>
           </div>
         {{ end }}
+    </div>
+  </div>
+{{ end }}
+
+{{ with (.links) }}
+  <div class="card mb-3">
+    <div class="card-header h5 fs-5">
+        {{ (i18n "sc.api.person.title.links") }}
+    </div>
+    <div class="card-body">
+      <div class="row row-cols-1 row-cols-lg-3 g-3">
+          {{ range . }}
+            <div class="col">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="card-title h5 fs-5">
+                    <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
+                  </div>
+                    {{ with (.description) }}
+                      <p class="card-text">{{ . }}</p>
+                    {{ end }}
+                </div>
+              </div>
+            </div>
+          {{ end }}
+      </div>
     </div>
   </div>
 {{ end }}

@@ -86,8 +86,13 @@ sc:
         contacts: { other: 'Контакты' }
         links: { other: 'Ссылки' }
         general: { other: 'Основная информация' }
-        organizations: { other: 'Организации' }
+        experience: { other: 'Опыт работы' }
         signatures: { other: 'Подписи' }
+        education: { other: 'Образование' }
+        skills: { other: 'Навыки' }
+        responsibilities: { other: 'Обязанности' }
+        results: { other: 'Результаты' }
+        achievements: { other: 'Достижения' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.
