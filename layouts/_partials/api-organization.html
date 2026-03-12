@@ -4,9 +4,7 @@
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
           {{ range . }}
-            <div class="col">
-                {{ (.type) }}
-            </div>
+            <div class="col">{{ (.type) }}</div>
             <div class="col">
                 {{ (partial "input-group" (dict
                 "p" (.icon)
@@ -21,15 +19,11 @@
 
 {{ with (.addresses) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">
-        {{ (i18n "sc.api.organization.title.addresses") }}
-    </div>
+    <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.addresses") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
           {{ range . }}
-            <div class="col">
-                {{ (.name) }}
-            </div>
+            <div class="col">{{ (.name) }}</div>
             <div class="col">
                 {{ (partial "input-group" (dict
                 "p" (.icon)
@@ -45,15 +39,11 @@
 
 {{ with (.codes) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">
-        {{ (i18n "sc.api.organization.title.codes") }}
-    </div>
+    <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.codes") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
           {{ range . }}
-            <div class="col">
-                {{ (.name) }}
-            </div>
+            <div class="col">{{ (.name) }}</div>
             <div class="col">
                 {{ (partial "input-group" (dict
                 "p" (.icon)
@@ -69,9 +59,7 @@
 
 {{ with (.banks) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">
-        {{ (i18n "sc.api.organization.title.banks") }}
-    </div>
+    <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.banks") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 g-3 align-items-center">
           {{ range . }}
@@ -80,18 +68,14 @@
                 <div class="card-header h5 fs-5">{{ (.name) }}</div>
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
-                    <div class="col">
-                        {{ (i18n "sc.api.organization.bank.name") }}
-                    </div>
+                    <div class="col">{{ (i18n "sc.api.organization.bank.name") }}</div>
                     <div class="col">
                         {{ (partial "input-group" (dict
                         "p" (.icon)
                         "v" (.name)
                         )) }}
                     </div>
-                    <div class="col">
-                        {{ (i18n "sc.api.organization.bank.bic") }}
-                    </div>
+                    <div class="col">{{ (i18n "sc.api.organization.bank.bic") }}</div>
                     <div class="col">
                         {{ (partial "input-group" (dict
                         "p" (.icon)
@@ -99,10 +83,8 @@
                         "q" (.bic)
                         )) }}
                     </div>
-                      {{ with .account }}
-                        <div class="col">
-                            {{ (i18n "sc.api.organization.bank.account.current") }}
-                        </div>
+                      {{ with (.account) }}
+                        <div class="col">{{ (i18n "sc.api.organization.bank.account.current") }}</div>
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" (.icon)
@@ -110,9 +92,7 @@
                             "q" (.current)
                             )) }}
                         </div>
-                        <div class="col">
-                            {{ (i18n "sc.api.organization.bank.account.correspondent") }}
-                        </div>
+                        <div class="col">{{ (i18n "sc.api.organization.bank.account.correspondent") }}</div>
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" (.icon)
@@ -133,23 +113,17 @@
 
 {{ with (.contacts) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">
-        {{ (i18n "sc.api.organization.title.contacts") }}
-    </div>
+    <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.contacts") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 g-3 align-items-center">
           {{ with (.emails) }}
             <div class="col">
               <div class="card">
-                <div class="card-header h5 fs-5">
-                    {{ (i18n "sc.api.organization.title.email") }}
-                </div>
+                <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.email") }}</div>
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                       {{ range . }}
-                        <div class="col">
-                            {{ .name }}
-                        </div>
+                        <div class="col">{{ (.name) }}</div>
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" (.icon)
@@ -166,15 +140,11 @@
           {{ with (.phones) }}
             <div class="col">
               <div class="card">
-                <div class="card-header h5 fs-5">
-                    {{ (i18n "sc.api.organization.title.phones") }}
-                </div>
+                <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.phones") }}</div>
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                       {{ range . }}
-                        <div class="col">
-                            {{ .name }}
-                        </div>
+                        <div class="col">{{ (.name) }}</div>
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" (.icon)
@@ -191,15 +161,11 @@
           {{ with (.sites) }}
             <div class="col">
               <div class="card">
-                <div class="card-header h5 fs-5">
-                    {{ (i18n "sc.api.organization.title.sites") }}
-                </div>
+                <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.sites") }}</div>
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                       {{ range . }}
-                        <div class="col">
-                            {{ .name }}
-                        </div>
+                        <div class="col">{{ (.name) }}</div>
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" (.icon)
@@ -216,15 +182,11 @@
           {{ with (.staff) }}
             <div class="col">
               <div class="card">
-                <div class="card-header h5 fs-5">
-                    {{ (i18n "sc.api.organization.title.staff") }}
-                </div>
+                <div class="card-header h5 fs-5">{{ (i18n "sc.api.organization.title.staff") }}</div>
                 <div class="card-body">
                   <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
                       {{ range . }}
-                        <div class="col">
-                            {{ .position }}
-                        </div>
+                        <div class="col">{{ (.position) }}</div>
                         <div class="col">
                             {{ (partial "input-group" (dict
                             "p" (.icon)

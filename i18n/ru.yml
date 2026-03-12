@@ -83,16 +83,17 @@ sc:
           title: { other: 'Реквизиты счёта' }
     person:
       title:
-        contacts: { other: 'Контакты' }
-        links: { other: 'Ссылки' }
-        general: { other: 'Основная информация' }
-        experience: { other: 'Опыт работы' }
-        signatures: { other: 'Подписи' }
-        education: { other: 'Образование' }
-        skills: { other: 'Навыки' }
-        responsibilities: { other: 'Обязанности' }
-        results: { other: 'Результаты' }
         achievements: { other: 'Достижения' }
+        contacts: { other: 'Контакты' }
+        education: { other: 'Образование' }
+        experience: { other: 'Опыт работы' }
+        general: { other: 'Основная информация' }
+        languages: { other: 'Языки' }
+        links: { other: 'Ссылки' }
+        resp: { other: 'Обязанности' }
+        results: { other: 'Результаты' }
+        signatures: { other: 'Подписи' }
+        skills: { other: 'Навыки' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.

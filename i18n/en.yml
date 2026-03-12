@@ -83,16 +83,17 @@ sc:
           title: { other: 'Account details' }
     person:
       title:
-        contacts: { other: 'Contacts' }
-        links: { other: 'Links' }
-        general: { other: 'General' }
-        experience: { other: 'Experience' }
-        signatures: { other: 'Signatures' }
-        education: { other: 'Education' }
-        skills: { other: 'Skills' }
-        responsibilities: { other: 'Responsibilities' }
-        results: { other: 'Results' }
         achievements: { other: 'Achievements' }
+        contacts: { other: 'Contacts' }
+        education: { other: 'Education' }
+        experience: { other: 'Experience' }
+        general: { other: 'General' }
+        languages: { other: 'Languages' }
+        links: { other: 'Links' }
+        resp: { other: 'Responsibilities' }
+        results: { other: 'Results' }
+        signatures: { other: 'Signatures' }
+        skills: { other: 'Skills' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.
