@@ -94,6 +94,7 @@ sc:
         results: { other: 'Results' }
         signatures: { other: 'Signatures' }
         skills: { other: 'Skills' }
+        portfolio: { other: 'Portfolio' }
 
   # ------------------------------------------------------------------------------------------------------------------ #
   # Code.

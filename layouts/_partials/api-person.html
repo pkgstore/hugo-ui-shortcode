@@ -105,9 +105,11 @@
                       <ul class="list-inline m-0">
                           {{ range $k, $v := (.dates) }}
                             <li class="list-inline-item me-3">
-                              {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw me-1"></i>{{ end }}
-                              {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw me-1"></i>{{ end }}
-                              <time datetime="{{ . }}" data-fn="date-local">{{ . }}</time>
+                              <div class="d-flex align-items-center">
+                              {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw"></i>{{ end }}
+                              {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw"></i>{{ end }}
+                              <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
+                              </div>
                             </li>
                           {{ end }}
                       </ul>
@@ -171,6 +173,65 @@
   </div>
 {{ end }}
 
+{{ with (.portfolio) }}
+  <div class="card mb-3">
+    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.portfolio") }}</div>
+    <div class="card-body">
+      <div class="row row-cols-1 row-cols-lg-2 g-3">
+          {{ range . }}
+              {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
+              <div class="col">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="card-title h5 fs-5">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#{{ ($id) }}-modal">{{ (.name) }}</a>
+                    </div>
+                      {{ with (.description) }}
+                        <p class="card-text">{{ . }}</p>
+                      {{ end }}
+                  </div>
+                  <div class="card-footer text-body-secondary">
+                    <div class="small">
+                      <ul class="list-inline m-0">
+                          {{ range $k, $v := (.dates) }}
+                            <li class="list-inline-item me-3">
+                              <div class="d-flex align-items-center">
+                              {{ if (eq $k 0) }}<i class="fas fa-calendar-alt fa-fw"></i>{{ end }}
+                              <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
+                              </div>
+                            </li>
+                          {{ end }}
+                          {{ with (.url) }}
+                            <li class="list-inline-item me-3">
+                              <a class="link-secondary" href="{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-link fa-fw"></i></a>
+                            </li>
+                          {{ end }}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" role="dialog"
+                   aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                  <div class="modal-content shadow">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="{{ ($id) }}-label">{{ (.name) }}</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label='{{ (i18n "close") }}'></button>
+                    </div>
+                    <div class="modal-body">
+                      {{ with (.content) }}{{ . | markdownify }}{{ end }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {{ end }}
+      </div>
+    </div>
+  </div>
+{{ end }}
+
 {{ with (.experience) }}
   <div class="card mb-3">
     <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.experience") }}</div>
@@ -196,9 +257,11 @@
                       <ul class="list-inline m-0">
                           {{ range $k, $v := (.dates) }}
                             <li class="list-inline-item me-3">
-                              {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw me-1"></i>{{ end }}
-                              {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw me-1"></i>{{ end }}
-                              <time datetime="{{ $v }}" data-fn="date-local">{{ $v }}</time>
+                              <div class="d-flex align-items-center">
+                              {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw"></i>{{ end }}
+                              {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw"></i>{{ end }}
+                              <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
+                              </div>
                             </li>
                           {{ end }}
                       </ul>
