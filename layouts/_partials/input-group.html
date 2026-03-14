@@ -9,7 +9,7 @@
     {{ with ($pfx) }}<span class="input-group-text"><i class="{{ ($pfx) }} fa-fw"></i></span>{{ end }}
   <input type="text" id="{{ ($id) }}-input" class="form-control" name="{{ ($id) }}-input" value="{{ ($vol) }}"
          data-fn="select-all" aria-label="{{ ($vol) }}" readonly/>
-    {{ with ($sfx) }}<span class="input-group-text">{{ ($sfx) }}</span>{{ end }}
+    {{ with ($sfx) }}<span class="input-group-text font-cond">{{ ($sfx) }}</span>{{ end }}
     {{ with ($qr) }}
         {{ if findRE `^(https?:\/\/[^ ]+)$` . }}
           <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener noreferrer"><i
