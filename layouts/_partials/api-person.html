@@ -100,15 +100,15 @@
                         <p class="card-text">{{ (. | plainify) }}</p>
                       {{ end }}
                   </div>
-                  <div class="card-footer text-body-secondary">
+                  <div class="card-footer text-body-secondary font-cond">
                     <div class="small">
                       <ul class="list-inline m-0">
                           {{ range $k, $v := (.dates) }}
                             <li class="list-inline-item me-3">
                               <div class="d-flex align-items-center">
-                              {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw"></i>{{ end }}
-                              {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw"></i>{{ end }}
-                              <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
+                                  {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw"></i>{{ end }}
+                                  {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw"></i>{{ end }}
+                                <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
                               </div>
                             </li>
                           {{ end }}
@@ -117,34 +117,11 @@
                   </div>
                 </div>
               </div>
-              <div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" role="dialog"
-                   aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                  <div class="modal-content shadow">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="{{ ($id) }}-label">{{ (.name) }}</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"
-                              aria-label='{{ (i18n "close") }}'></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row row-cols-1 g-3">
-                          {{ with (.achievements) }}
-                            <div class="col">
-                              <div class="card">
-                                <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.achievements") }}</div>
-                                <ul class="list-group list-group-flush list-group-numbered">
-                                    {{ range . }}
-                                      <li class="list-group-item">{{ . }}</li>
-                                    {{ end }}
-                                </ul>
-                              </div>
-                            </div>
-                          {{ end }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {{ (partial "api-modal-education" (dict
+              "id" ($id)
+              "title" (.name)
+              "achievements" (.achievements)
+              )) }}
           {{ end }}
       </div>
     </div>
@@ -155,7 +132,7 @@
   <div class="card mb-3">
     <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.skills") }}</div>
     <div class="card-body">
-      <div class="row row-cols-1 row-cols-lg-3 g-3">
+      <div class="row row-cols-1 row-cols-lg-3 g-3" data-masonry='{"percentPosition": true }'>
           {{ range . }}
             <div class="col">
               <div class="card h-100">
@@ -190,20 +167,21 @@
                         <p class="card-text">{{ (. | plainify) }}</p>
                       {{ end }}
                   </div>
-                  <div class="card-footer text-body-secondary">
+                  <div class="card-footer text-body-secondary font-cond">
                     <div class="small">
                       <ul class="list-inline m-0">
                           {{ range $k, $v := (.dates) }}
                             <li class="list-inline-item me-3">
                               <div class="d-flex align-items-center">
-                              {{ if (eq $k 0) }}<i class="fas fa-calendar-alt fa-fw"></i>{{ end }}
-                              <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
+                                  {{ if (eq $k 0) }}<i class="fas fa-calendar-alt fa-fw"></i>{{ end }}
+                                <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
                               </div>
                             </li>
                           {{ end }}
                           {{ with (.url) }}
                             <li class="list-inline-item me-3">
-                              <a class="link-secondary" href="{{ . }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-link fa-fw"></i></a>
+                              <a class="link-secondary" href="{{ . }}" target="_blank" rel="noopener noreferrer"><i
+                                        class="fas fa-link fa-fw"></i></a>
                             </li>
                           {{ end }}
                       </ul>
@@ -211,21 +189,11 @@
                   </div>
                 </div>
               </div>
-              <div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" role="dialog"
-                   aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                  <div class="modal-content shadow">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="{{ ($id) }}-label">{{ (.name) }}</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"
-                              aria-label='{{ (i18n "close") }}'></button>
-                    </div>
-                    <div class="modal-body">
-                      {{ with (.content) }}{{ . | markdownify }}{{ end }}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {{ (partial "modal" (dict
+              "id" ($id)
+              "title" (.name)
+              "content" (.content)
+              )) }}
           {{ end }}
       </div>
     </div>
@@ -252,15 +220,15 @@
                         <p class="card-text">{{ (. | plainify) }}</p>
                       {{ end }}
                   </div>
-                  <div class="card-footer text-body-secondary">
+                  <div class="card-footer text-body-secondary font-cond">
                     <div class="small">
                       <ul class="list-inline m-0">
                           {{ range $k, $v := (.dates) }}
                             <li class="list-inline-item me-3">
                               <div class="d-flex align-items-center">
-                              {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw"></i>{{ end }}
-                              {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw"></i>{{ end }}
-                              <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
+                                  {{ if (eq $k 0) }}<i class="fas fa-user-plus fa-fw"></i>{{ end }}
+                                  {{ if (eq $k 1) }}<i class="fas fa-user-minus fa-fw"></i>{{ end }}
+                                <time class="ms-1" datetime="{{ ($v) }}" data-fn="date-local">{{ ($v) }}</time>
                               </div>
                             </li>
                           {{ end }}
@@ -269,46 +237,12 @@
                   </div>
                 </div>
               </div>
-              <div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" role="dialog"
-                   aria-labelledby="{{ ($id) }}-label" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                  <div class="modal-content shadow">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="{{ ($id) }}-label">{{ (.name) }}</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal"
-                              aria-label='{{ (i18n "close") }}'></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row row-cols-1 g-3">
-                          {{ with (.responsibilities) }}
-                            <div class="col">
-                              <div class="card">
-                                <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.resp") }}</div>
-                                <ul class="list-group list-group-flush list-group-numbered">
-                                    {{ range . }}
-                                      <li class="list-group-item">{{ . }}</li>
-                                    {{ end }}
-                                </ul>
-                              </div>
-                            </div>
-                          {{ end }}
-                          {{ with (.results) }}
-                            <div class="col">
-                              <div class="card">
-                                <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.results") }}</div>
-                                <ul class="list-group list-group-flush list-group-numbered">
-                                    {{ range . }}
-                                      <li class="list-group-item">{{ . }}</li>
-                                    {{ end }}
-                                </ul>
-                              </div>
-                            </div>
-                          {{ end }}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {{ (partial "api-modal-experience" (dict
+              "id" ($id)
+              "title" (.name)
+              "responsibilities" (.responsibilities)
+              "results" (.results)
+              )) }}
           {{ end }}
       </div>
     </div>
@@ -338,8 +272,8 @@
                     <div class="col">
                         {{ (partial "input-group" (dict
                         "p" (.icon)
-                        "v" (.hash)
-                        "q" (.hash)
+                        "v" ((.hash) | upper)
+                        "q" ((.hash) | upper)
                         "t" (.name)
                         )) }}
                     </div>
@@ -356,7 +290,7 @@
   <div class="card mb-3">
     <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.languages") }}</div>
     <div class="card-body">
-      <div class="row row-cols-1 row-cols-lg-3 g-3">
+      <div class="row row-cols-1 row-cols-lg-3 g-3" data-masonry='{"percentPosition": true }'>
           {{ range . }}
             <div class="col">
               <div class="card h-100">
@@ -381,7 +315,7 @@
   <div class="card mb-3">
     <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.links") }}</div>
     <div class="card-body">
-      <div class="row row-cols-1 row-cols-lg-3 g-3">
+      <div class="row row-cols-1 row-cols-lg-3 g-3" data-masonry='{"percentPosition": true }'>
           {{ range . }}
             <div class="col">
               <div class="card h-100">

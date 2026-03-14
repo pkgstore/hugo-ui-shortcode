@@ -1,0 +1,45 @@
+{{ $id := (.id) }}
+{{ $title := (.title) }}
+{{ $responsibilities := (.responsibilities) }}
+{{ $results := (.results) }}
+
+<div class="modal fade" id="{{ ($id) }}-modal" tabindex="-1" role="dialog"
+     aria-labelledby="{{ ($id) }}-modal-label" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content shadow">
+      <div class="modal-header">
+        <div class="modal-title h5 fs-5 text-truncate" id="{{ ($id) }}-modal-label">{{ ($title) }}</div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label='{{ (i18n "close") }}'></button>
+      </div>
+      <div class="modal-body">
+        <div class="row row-cols-1 g-3">
+            {{ with ($responsibilities) }}
+              <div class="col">
+                <div class="card">
+                  <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.resp") }}</div>
+                  <ul class="list-group list-group-flush list-group-numbered">
+                      {{ range . }}
+                        <li class="list-group-item">{{ . }}</li>
+                      {{ end }}
+                  </ul>
+                </div>
+              </div>
+            {{ end }}
+            {{ with ($results) }}
+              <div class="col">
+                <div class="card">
+                  <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.results") }}</div>
+                  <ul class="list-group list-group-flush list-group-numbered">
+                      {{ range . }}
+                        <li class="list-group-item">{{ . }}</li>
+                      {{ end }}
+                  </ul>
+                </div>
+              </div>
+            {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
