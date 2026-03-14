@@ -1,15 +1,21 @@
 <div class="card mb-3">
   <div class="card-body">
-    <div class="row row-cols-1 row-cols-lg-3 g-3 align-items-center">
+    <div class="row row-cols-1 row-cols-lg-2 g-3">
         {{ range . }}
           <div class="col">
-              {{ (partial "input-group" (dict
-              "p" "fas fa-wallet"
-              "v" (.address)
-              "s" ((.currency) | upper)
-              "q" (.address)
-              "t" ((.currency) | upper)
-              ))}}
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="card-title h5">{{ ((.currency) | upper) }}</div>
+                <div class="card-subtitle mb-2 text-body-secondary h6">{{ ((.network) | title) }}</div>
+                  {{ (partial "input-group" (dict
+                  "p" "fas fa-wallet"
+                  "v" (.address)
+                  "s" ((.currency) | upper)
+                  "q" (.address)
+                  "t" ((.currency) | upper)
+                  ))}}
+              </div>
+            </div>
           </div>
         {{ end }}
     </div>

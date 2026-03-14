@@ -7,7 +7,7 @@
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
     <div class="modal-content shadow">
       <div class="modal-header">
-        <div class="modal-title h5 fs-5 text-truncate" id="{{ ($id) }}-modal-label">{{ ($title) }}</div>
+        <div class="modal-title h5 text-truncate" id="{{ ($id) }}-modal-label">{{ ($title) }}</div>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
                 aria-label='{{ (i18n "close") }}'></button>
       </div>
@@ -16,7 +16,7 @@
             {{ with ($achievements) }}
               <div class="col">
                 <div class="card">
-                  <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.achievements") }}</div>
+                  <div class="card-header h5">{{ (i18n "sc.api.person.title.achievements") }}</div>
                   <ul class="list-group list-group-flush list-group-numbered">
                       {{ range . }}
                         <li class="list-group-item">{{ . }}</li>

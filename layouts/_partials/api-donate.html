@@ -1,7 +1,7 @@
 {{ range (.wallets) }}
     {{ $id := (printf "id-%s" ((delimit (shuffle (seq 11 99)) "") | md5)) }}
     <div class="card mb-3">
-      <div class="card-header h5 fs-5">{{ (.name) }}</div>
+      <div class="card-header h5">{{ (.name) }}</div>
       <div class="card-body">
         <form method="post" action="https://yoomoney.ru/quickpay/confirm" target="_blank">
           <input type="hidden" name="receiver" value="{{ (.number) }}"/>

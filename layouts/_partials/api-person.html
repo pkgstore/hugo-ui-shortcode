@@ -1,5 +1,5 @@
 <div class="card mb-3">
-  <div class="card-header h5 fs-5">
+  <div class="card-header h5">
       {{ (i18n "sc.api.person.title.general") }}
   </div>
   <div class="card-body">
@@ -51,7 +51,7 @@
 
 {{ with (.contacts) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.contacts") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.contacts") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
           {{ range (.emails) }}
@@ -85,7 +85,7 @@
 
 {{ with (.education) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.education") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.education") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ range . }}
@@ -93,7 +93,7 @@
               <div class="col">
                 <div class="card h-100">
                   <div class="card-body">
-                    <div class="card-title h5 fs-5">
+                    <div class="card-title h5">
                       <a href="#" data-bs-toggle="modal" data-bs-target="#{{ ($id) }}-modal">{{ (.name) }}</a>
                     </div>
                       {{ with (.description) }}
@@ -130,14 +130,14 @@
 
 {{ with (.skills) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.skills") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.skills") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-3 g-3" data-masonry='{"percentPosition": true }'>
           {{ range . }}
             <div class="col">
-              <div class="card h-100">
+              <div class="card">
                 <div class="card-body">
-                  <div class="card-title h5 fs-5">{{ (.name) }}</div>
+                  <div class="card-title h5">{{ (.name) }}</div>
                     {{ with (.description) }}
                       <p class="card-text">{{ (. | plainify) }}</p>
                     {{ end }}
@@ -152,7 +152,7 @@
 
 {{ with (.portfolio) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.portfolio") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.portfolio") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ range . }}
@@ -160,7 +160,7 @@
               <div class="col">
                 <div class="card h-100">
                   <div class="card-body">
-                    <div class="card-title h5 fs-5">
+                    <div class="card-title h5">
                       <a href="#" data-bs-toggle="modal" data-bs-target="#{{ ($id) }}-modal">{{ (.name) }}</a>
                     </div>
                       {{ with (.description) }}
@@ -202,7 +202,7 @@
 
 {{ with (.experience) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.experience") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.experience") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-2 g-3">
           {{ range . }}
@@ -210,11 +210,11 @@
               <div class="col">
                 <div class="card h-100">
                   <div class="card-body">
-                    <div class="card-title h5 fs-5">
+                    <div class="card-title h5">
                       <a href="#" data-bs-toggle="modal" data-bs-target="#{{ ($id) }}-modal">{{ (.name) }}</a>
                     </div>
                       {{ with (.position) }}
-                        <div class="card-subtitle mb-2 text-body-secondary card-title h6 fs-6">{{ . }}</div>
+                        <div class="card-subtitle mb-2 text-body-secondary h6">{{ . }}</div>
                       {{ end }}
                       {{ with (.description) }}
                         <p class="card-text">{{ (. | plainify) }}</p>
@@ -251,53 +251,57 @@
 
 {{ with (.signatures) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.signatures") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.signatures") }}</div>
     <div class="card-body">
-        {{ range . }}
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
-                  {{ with (.email) }}
-                    <div class="col">{{ (.name) }}</div>
-                    <div class="col">
-                        {{ (partial "input-group" (dict
-                        "p" (.icon)
-                        "v" (.address)
-                        "q" (.address)
-                        )) }}
-                    </div>
-                  {{ end }}
-                  {{ with (.fingerprint) }}
-                    <div class="col">{{ (.name) }}</div>
-                    <div class="col">
-                        {{ (partial "input-group" (dict
-                        "p" (.icon)
-                        "v" ((.hash) | upper)
-                        "q" ((.hash) | upper)
-                        "t" (.name)
-                        )) }}
-                    </div>
-                  {{ end }}
+      <div class="row row-cols-1 g-3">
+          {{ range . }}
+            <div class="col">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row row-cols-1 row-cols-lg-2 g-3 align-items-center">
+                      {{ with (.email) }}
+                        <div class="col">{{ (.name) }}</div>
+                        <div class="col">
+                            {{ (partial "input-group" (dict
+                            "p" (.icon)
+                            "v" (.address)
+                            "q" (.address)
+                            )) }}
+                        </div>
+                      {{ end }}
+                      {{ with (.fingerprint) }}
+                        <div class="col">{{ (.name) }}</div>
+                        <div class="col">
+                            {{ (partial "input-group" (dict
+                            "p" (.icon)
+                            "v" ((.hash) | upper)
+                            "q" ((.hash) | upper)
+                            "t" (.name)
+                            )) }}
+                        </div>
+                      {{ end }}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        {{ end }}
+          {{ end }}
+      </div>
     </div>
   </div>
 {{ end }}
 
 {{ with (.languages) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.languages") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.languages") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-3 g-3" data-masonry='{"percentPosition": true }'>
           {{ range . }}
             <div class="col">
-              <div class="card h-100">
+              <div class="card">
                 <div class="card-body">
-                  <div class="card-title h5 fs-5">{{ (.name) }}</div>
+                  <div class="card-title h5">{{ (.name) }}</div>
                     {{ with (.level) }}
-                      <div class="card-subtitle mb-2 text-body-secondary card-title h6 fs-6">{{ . }}</div>
+                      <div class="card-subtitle mb-2 text-body-secondary h6">{{ . }}</div>
                     {{ end }}
                     {{ with (.description) }}
                       <p class="card-text">{{ (. | plainify) }}</p>
@@ -313,14 +317,14 @@
 
 {{ with (.links) }}
   <div class="card mb-3">
-    <div class="card-header h5 fs-5">{{ (i18n "sc.api.person.title.links") }}</div>
+    <div class="card-header h5">{{ (i18n "sc.api.person.title.links") }}</div>
     <div class="card-body">
       <div class="row row-cols-1 row-cols-lg-3 g-3" data-masonry='{"percentPosition": true }'>
           {{ range . }}
             <div class="col">
-              <div class="card h-100">
+              <div class="card">
                 <div class="card-body">
-                  <div class="card-title h5 fs-5">
+                  <div class="card-title h5">
                     <a href="{{ (.url) }}" target="_blank" rel="noopener noreferrer">{{ (.name) }}</a>
                   </div>
                     {{ with (.description) }}

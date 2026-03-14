@@ -4,7 +4,7 @@
   <div class="row row-cols-1 g-3">
     <div class="col">
       <div class="card">
-        <div class="card-header h5 fs-5">{{ (i18n "sc.donate.yoomoney") }}</div>
+        <div class="card-header h5">{{ (i18n "sc.donate.yoomoney") }}</div>
         <div class="card-body">
           <form method="post" action="https://yoomoney.ru/quickpay/confirm.xml">
             <input type="hidden" name="receiver" value="{{ ($wallet) }}"/>

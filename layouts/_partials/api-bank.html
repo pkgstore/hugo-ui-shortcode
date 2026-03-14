@@ -1,7 +1,7 @@
 {{ range (.accounts) }}
     {{ range $key, $value := . }}
       <div class="card mb-3">
-        <div class="card-header h5 fs-5">
+        <div class="card-header h5">
             {{ (i18n (printf "sc.api.bank.account.%s.title" ($key))) }}
           ({{ (($key) | upper) }})
         </div>
